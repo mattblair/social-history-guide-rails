@@ -10,20 +10,35 @@
 
 import 'json'
 
-puts 'ROLES'
+puts 'Populating ROLES --------------------------------------'
 YAML.load(ENV['ROLES']).each do |role|
   Role.find_or_create_by_name({ :name => role }, :without_protection => true)
-  puts 'role: ' << role
+  puts 'Added role: ' << role
 end
 
-User.destroy_all
 
-puts 'ADMIN USER'
+puts 'Populating WORKFLOW -----------------------------------'
+YAML.load(ENV['WORKFLOW_STATES']).each do |state|
+  WorkflowState.find_or_create_by_workflow_state({ :workflow_state => state }, :without_protection => true)
+  puts 'Added workflow state: ' << state
+end
+
+
+puts 'Populating MEDIA TYPES --------------------------------'
+YAML.load(ENV['MEDIA_TYPES']).each do |type|
+  MediaType.find_or_create_by_type({ :type => type }, :without_protection => true)
+  puts 'Added media type: ' << type
+end
+
+# Clear out user list, if needed
+# User.destroy_all
+
+puts 'Creating ADMIN USER -----------------------------------'
 user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 puts 'user: ' << user.name
 user.add_role :admin
 
-puts 'PDX USERS'
+puts 'Adding PDX USERS --------------------------------------'
 # pbpaste | python -mjson.tool | pbcopy
 records = JSON.parse(File.read(ENV['KYC_USER_JSON']))
 records.each do |kyc_user|
@@ -53,7 +68,7 @@ records.each do |kyc_user|
 
 end
 
-puts 'COLLECTIONS'
+puts 'Populating COLLECTIONS --------------------------------'
 
 collections = JSON.parse(File.read(ENV['KYC_COLLECTION_JSON']))
 collections.each do |kyc_collection|
@@ -80,9 +95,9 @@ collections.each do |kyc_collection|
 
 end
 
-puts 'THEMES'
+puts 'Populating THEMES -------------------------------------'
 # import from themes.json
 
 
-puts 'GUESTS'
+puts 'Populating GUESTS -------------------------------------'
 # import from kyc_users.json
