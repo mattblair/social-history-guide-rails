@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130407180352) do
+ActiveRecord::Schema.define(:version => 20130507165159) do
+
+  create_table "collections", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "author"
+    t.string   "geographical_title"
+    t.text     "geographical_scope"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "published"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
