@@ -8,6 +8,9 @@
 # Environment variables (ENV['...']) are set in the file config/application.yml.
 # See http://railsapps.github.com/rails-environment-variables.html
 
+
+# validate json files in advance:
+# pbpaste | python -mjson.tool | pbcopy
 import 'json'
 
 puts 'Populating ROLES --------------------------------------'
@@ -39,7 +42,6 @@ puts 'user: ' << user.name
 user.add_role :admin
 
 puts 'Adding PDX USERS --------------------------------------'
-# pbpaste | python -mjson.tool | pbcopy
 records = JSON.parse(File.read(ENV['KYC_USER_JSON']))
 records.each do |kyc_user|
   puts "Adding account for #{kyc_user['human_name']}"
@@ -51,21 +53,21 @@ records.each do |kyc_user|
   user.password = kyc_user['password']
   user.password_confirmation = kyc_user['password']
   
-  # don't use this in production
-  user.add_role :admin
-  
-  user.save
-  
-=begin
+  # use specific role:
   fetched_role = Role.where( :name => kyc_user['role'] )
   puts "Role: #{fetched_role.name} for #{kyc_user['role']}"
   if fetched_role
-    #user.add_role fetched_role
+    user.roles << fetched_role
   else
     puts "Role #{kyc_user['role']} not defined."
   end
-=end
-
+  
+  user.save
+  
+  # not showing errors yet. Test: use a password < 8 characters
+  user.errors do |error|
+    puts "Error saving account for #{kyc_user['human_name']}: #{error.messages}"
+  end
 end
 
 puts 'Populating COLLECTIONS --------------------------------'
