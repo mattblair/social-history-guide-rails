@@ -1,0 +1,49 @@
+<h1>Listing tidbits</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Year</th>
+    <th>Publication date</th>
+    <th>Twitter template</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Editorial notes</th>
+    <th>Image name</th>
+    <th>Image caption</th>
+    <th>Image credit</th>
+    <th>Body</th>
+    <th>Audio filename</th>
+    <th>Source</th>
+    <th>Source url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tidbits.each do |tidbit| %>
+  <tr>
+    <td><%= tidbit.title %></td>
+    <td><%= tidbit.year %></td>
+    <td><%= tidbit.publication_date %></td>
+    <td><%= tidbit.twitter_template %></td>
+    <td><%= tidbit.latitude %></td>
+    <td><%= tidbit.longitude %></td>
+    <td><%= tidbit.editorial_notes %></td>
+    <td><%= tidbit.image_name %></td>
+    <td><%= tidbit.image_caption %></td>
+    <td><%= tidbit.image_credit %></td>
+    <td><%= tidbit.body %></td>
+    <td><%= tidbit.audio_filename %></td>
+    <td><%= tidbit.source %></td>
+    <td><%= tidbit.source_url %></td>
+    <td><%= link_to 'Show', tidbit %></td>
+    <td><%= link_to 'Edit', edit_tidbit_path(tidbit) %></td>
+    <td><%= link_to 'Destroy', tidbit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tidbit', new_tidbit_path %>

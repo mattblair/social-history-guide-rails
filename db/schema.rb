@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508034154) do
+ActiveRecord::Schema.define(:version => 20130508035833) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -57,6 +57,25 @@ ActiveRecord::Schema.define(:version => 20130508034154) do
     t.float    "longitude"
     t.integer  "displayOrder"
     t.string   "keywords"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "tidbits", :force => true do |t|
+    t.string   "title"
+    t.string   "year"
+    t.datetime "publication_date"
+    t.string   "twitter_template"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.text     "editorial_notes"
+    t.string   "image_name"
+    t.string   "image_caption"
+    t.string   "image_credit"
+    t.text     "body"
+    t.string   "audio_filename"
+    t.string   "source"
+    t.text     "source_url"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

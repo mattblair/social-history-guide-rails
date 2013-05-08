@@ -1,0 +1,24 @@
+<%= simple_form_for(@tidbit) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :year %>
+    <%= f.input :publication_date %>
+    <%= f.input :twitter_template %>
+    <%= f.input :latitude %>
+    <%= f.input :longitude %>
+    <%= f.input :editorial_notes %>
+    <%= f.input :image_name %>
+    <%= f.input :image_caption %>
+    <%= f.input :image_credit %>
+    <%= f.input :body %>
+    <%= f.input :audio_filename %>
+    <%= f.input :source %>
+    <%= f.input :source_url %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

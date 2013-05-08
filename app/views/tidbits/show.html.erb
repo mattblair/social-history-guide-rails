@@ -1,0 +1,75 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @tidbit.title %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @tidbit.year %>
+</p>
+
+<p>
+  <b>Publication date:</b>
+  <%= @tidbit.publication_date %>
+</p>
+
+<p>
+  <b>Twitter template:</b>
+  <%= @tidbit.twitter_template %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @tidbit.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @tidbit.longitude %>
+</p>
+
+<p>
+  <b>Editorial notes:</b>
+  <%= @tidbit.editorial_notes %>
+</p>
+
+<p>
+  <b>Image name:</b>
+  <%= @tidbit.image_name %>
+</p>
+
+<p>
+  <b>Image caption:</b>
+  <%= @tidbit.image_caption %>
+</p>
+
+<p>
+  <b>Image credit:</b>
+  <%= @tidbit.image_credit %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @tidbit.body %>
+</p>
+
+<p>
+  <b>Audio filename:</b>
+  <%= @tidbit.audio_filename %>
+</p>
+
+<p>
+  <b>Source:</b>
+  <%= @tidbit.source %>
+</p>
+
+<p>
+  <b>Source url:</b>
+  <%= @tidbit.source_url %>
+</p>
+
+
+<%= link_to 'Edit', edit_tidbit_path(@tidbit) %> |
+<%= link_to 'Back', tidbits_path %>

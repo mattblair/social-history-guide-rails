@@ -1,4 +1,7 @@
 KycGuideRails::Application.routes.draw do
+  resources :tidbits
+
+
   resources :themes
 
 
