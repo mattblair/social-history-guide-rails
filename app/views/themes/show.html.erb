@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @theme.title %>
+</p>
+
+<p>
+  <b>Subtitle:</b>
+  <%= @theme.subtitle %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%= @theme.summary %>
+</p>
+
+<p>
+  <b>Image name:</b>
+  <%= @theme.image_name %>
+</p>
+
+<p>
+  <b>Image credit:</b>
+  <%= @theme.image_credit %>
+</p>
+
+<p>
+  <b>Twitter template:</b>
+  <%= @theme.twitter_template %>
+</p>
+
+<p>
+  <b>Editorial notes:</b>
+  <%= @theme.editorial_notes %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @theme.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @theme.longitude %>
+</p>
+
+<p>
+  <b>Displayorder:</b>
+  <%= @theme.displayOrder %>
+</p>
+
+<p>
+  <b>Keywords:</b>
+  <%= @theme.keywords %>
+</p>
+
+
+<%= link_to 'Edit', edit_theme_path(@theme) %> |
+<%= link_to 'Back', themes_path %>

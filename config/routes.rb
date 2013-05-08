@@ -1,4 +1,7 @@
 KycGuideRails::Application.routes.draw do
+  resources :themes
+
+
   authenticated :user do
     root :to => 'home#index'
   end
