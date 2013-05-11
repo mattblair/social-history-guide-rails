@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511223831) do
+ActiveRecord::Schema.define(:version => 20130511224055) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -57,8 +57,9 @@ ActiveRecord::Schema.define(:version => 20130511223831) do
     t.float    "longitude"
     t.integer  "display_order"
     t.string   "keywords"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "workflow_state_id", :default => 1
   end
 
   create_table "tidbits", :force => true do |t|

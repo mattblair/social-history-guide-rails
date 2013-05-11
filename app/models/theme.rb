@@ -19,5 +19,10 @@
 #
 
 class Theme < ActiveRecord::Base
+  
+  belongs_to :workflow_state
+  
+  delegate :state_name, :to => :workflow_state
+  
   attr_accessible :display_order, :editorial_notes, :image_credit, :image_name, :keywords, :latitude, :longitude, :subtitle, :summary, :title, :twitter_template
 end
