@@ -86,22 +86,26 @@ collections.each do |kyc_collection|
   coll.published = kyc_collection['published']
   
   coll.save
-  
-=begin
-  fetched_role = Role.where( :name => kyc_user['role'] )
-  puts "Role: #{fetched_role.name} for #{kyc_user['role']}"
-  if fetched_role
-    #user.add_role fetched_role
-  else
-    puts "Role #{kyc_user['role']} not defined."
-  end
-=end
 
 end
 
 puts 'Populating THEMES -------------------------------------'
 # import from themes.json
 
+themes = JSON.parse(File.read(ENV['KYC_THEMES_JSON']))
+themes.each do |kyc_theme|
+  
+  puts "Adding collection object for #{kyc_theme['title']}"
+  
+  theme = Theme.find_or_create_by_title :title => kyc_theme['title'], :summary => kyc_theme['summary'], :image_name => kyc_theme['image_name'], :subtitle => kyc_theme['subtitle']
+  
+  theme.latitude = kyc_theme['latitude']
+  theme.longitude = kyc_theme['longitude']
+  theme.workflow_state_id = kyc_theme['workflow_state_id']
+  
+  theme.save
+  
+end
 
 puts 'Populating GUESTS -------------------------------------'
 # import from kyc_users.json
