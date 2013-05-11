@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508035833) do
+ActiveRecord::Schema.define(:version => 20130511210313) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(:version => 20130508035833) do
   end
 
   create_table "media_types", :force => true do |t|
-    t.string   "type"
+    t.string   "human_name"
     t.string   "name"
     t.string   "icon"
     t.datetime "created_at", :null => false
@@ -76,8 +76,10 @@ ActiveRecord::Schema.define(:version => 20130508035833) do
     t.string   "audio_filename"
     t.string   "source"
     t.text     "source_url"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+    t.integer  "workflow_state_id", :default => 1
+    t.integer  "media_type_id",     :default => 3
   end
 
   create_table "users", :force => true do |t|
@@ -107,9 +109,9 @@ ActiveRecord::Schema.define(:version => 20130508035833) do
   add_index "users_roles", ["user_id", "role_id"], :name => "index_users_roles_on_user_id_and_role_id"
 
   create_table "workflow_states", :force => true do |t|
-    t.string   "workflow_state"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.string   "state_name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

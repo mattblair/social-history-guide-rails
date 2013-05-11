@@ -11,6 +11,9 @@
 
 # validate json files in advance:
 # pbpaste | python -mjson.tool | pbcopy
+# there's probably a ruby way to do this...
+
+
 import 'json'
 
 puts 'Populating ROLES --------------------------------------'
@@ -22,19 +25,18 @@ end
 
 puts 'Populating WORKFLOW -----------------------------------'
 YAML.load(ENV['WORKFLOW_STATES']).each do |state|
-  WorkflowState.find_or_create_by_workflow_state({ :workflow_state => state }, :without_protection => true)
+  WorkflowState.find_or_create_by_state_name({ :state_name => state }, :without_protection => true)
   puts 'Added workflow state: ' << state
 end
 
-
 puts 'Populating MEDIA TYPES --------------------------------'
-YAML.load(ENV['MEDIA_TYPES']).each do |type|
-  MediaType.find_or_create_by_type({ :type => type }, :without_protection => true)
-  puts 'Added media type: ' << type
+YAML.load(ENV['MEDIA_TYPES']).each do |name|
+  MediaType.find_or_create_by_name({ :name => name }, :without_protection => true)
+  puts 'Added media type: ' << name
 end
 
 # Clear out user list, if needed
-# User.destroy_all
+User.destroy_all
 
 puts 'Creating ADMIN USER -----------------------------------'
 user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
