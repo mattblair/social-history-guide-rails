@@ -12,12 +12,12 @@
 #  editorial_notes  :text
 #  latitude         :float
 #  longitude        :float
-#  displayOrder     :integer
+#  display_order    :integer
 #  keywords         :string(255)
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
 #
 
 class Theme < ActiveRecord::Base
-  attr_accessible :displayOrder, :editorial_notes, :image_credit, :image_name, :keywords, :latitude, :longitude, :subtitle, :summary, :title, :twitter_template
+  attr_accessible :display_order, :editorial_notes, :image_credit, :image_name, :keywords, :latitude, :longitude, :subtitle, :summary, :title, :twitter_template
 end
