@@ -1,3 +1,9 @@
 class Tidbit < ActiveRecord::Base
+  
+  belongs_to :workflow_state
+  belongs_to :media_type
+  
+  delegate :state_name, :to => :workflow_state
+  
   attr_accessible :audio_filename, :body, :editorial_notes, :image_caption, :image_credit, :image_name, :latitude, :longitude, :publication_date, :source, :source_url, :title, :twitter_template, :year
 end
