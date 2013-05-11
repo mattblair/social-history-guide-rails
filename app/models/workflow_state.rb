@@ -1,3 +1,6 @@
 class WorkflowState < ActiveRecord::Base
-  attr_accessible :workflow_state
+  
+  has_many :tidbits
+  
+  attr_accessible :state_name
 end
