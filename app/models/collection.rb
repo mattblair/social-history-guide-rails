@@ -16,5 +16,8 @@
 #
 
 class Collection < ActiveRecord::Base
+  
+  has_many :tidbits
+  
   attr_accessible :author, :description, :geographical_scope, :geographical_title, :latitude, :longitude, :published, :title
 end

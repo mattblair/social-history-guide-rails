@@ -20,6 +20,8 @@
 
 class Theme < ActiveRecord::Base
   
+  has_many :tidbits
+  
   belongs_to :workflow_state
   
   delegate :state_name, :to => :workflow_state
