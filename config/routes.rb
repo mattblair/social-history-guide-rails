@@ -1,4 +1,7 @@
 KycGuideRails::Application.routes.draw do
+  resources :guests
+
+
   resources :tidbits
 
 

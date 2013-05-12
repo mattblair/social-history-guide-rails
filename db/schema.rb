@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511230438) do
+ActiveRecord::Schema.define(:version => 20130512030754) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -24,6 +24,22 @@ ActiveRecord::Schema.define(:version => 20130511230438) do
     t.boolean  "published"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+  end
+
+  create_table "guests", :force => true do |t|
+    t.string   "name",              :default => "", :null => false
+    t.string   "title"
+    t.string   "organization"
+    t.string   "image_name"
+    t.text     "bio"
+    t.string   "twitter_template"
+    t.text     "editorial_notes"
+    t.text     "quote"
+    t.string   "guest_url"
+    t.string   "guest_url_text"
+    t.integer  "workflow_state_id", :default => 1
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "media_types", :force => true do |t|

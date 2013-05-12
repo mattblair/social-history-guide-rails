@@ -1,26 +1,25 @@
 # == Schema Information
 #
-# Table name: themes
+# Table name: guests
 #
 #  id                :integer          not null, primary key
+#  name              :string(255)      default(""), not null
 #  title             :string(255)
-#  subtitle          :string(255)
-#  summary           :text
+#  organization      :string(255)
 #  image_name        :string(255)
-#  image_credit      :string(255)
+#  bio               :text
 #  twitter_template  :string(255)
 #  editorial_notes   :text
-#  latitude          :float
-#  longitude         :float
-#  display_order     :integer
-#  keywords          :string(255)
+#  quote             :text
+#  guest_url         :string(255)
+#  guest_url_text    :string(255)
+#  workflow_state_id :integer          default(1)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
-#  workflow_state_id :integer          default(1)
 #
 
 require 'spec_helper'
 
-describe Theme do
+describe Guest do
   pending "add some examples to (or delete) #{__FILE__}"
 end

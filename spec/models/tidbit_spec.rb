@@ -21,6 +21,8 @@
 #  updated_at        :datetime         not null
 #  workflow_state_id :integer          default(1)
 #  media_type_id     :integer          default(3)
+#  collection_id     :integer          default(1)
+#  theme_id          :integer
 #
 
 require 'spec_helper'
