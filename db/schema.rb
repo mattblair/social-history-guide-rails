@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512030754) do
+ActiveRecord::Schema.define(:version => 20130512032627) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -60,6 +60,32 @@ ActiveRecord::Schema.define(:version => 20130512030754) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "stories", :force => true do |t|
+    t.string   "title"
+    t.string   "subtitle"
+    t.text     "summary"
+    t.string   "audio_filename"
+    t.string   "original_audio_filename"
+    t.string   "image_name"
+    t.string   "image_credit"
+    t.string   "thumbnail_name"
+    t.string   "twitter_template"
+    t.text     "editorial_notes"
+    t.integer  "editing_priority",        :default => 50
+    t.text     "audio_transcription"
+    t.integer  "display_order",           :default => 50
+    t.string   "keywords"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "workflow_state_id",       :default => 1
+    t.integer  "collection_id",           :default => 1
+    t.integer  "theme_id"
+    t.integer  "guest_id"
+    t.integer  "media_type_id",           :default => 1
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
+  end
 
   create_table "themes", :force => true do |t|
     t.string   "title"

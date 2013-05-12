@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @story.title %>
+</p>
+
+<p>
+  <b>Subtitle:</b>
+  <%= @story.subtitle %>
+</p>
+
+<p>
+  <b>Summary:</b>
+  <%= @story.summary %>
+</p>
+
+<p>
+  <b>Audio filename:</b>
+  <%= @story.audio_filename %>
+</p>
+
+<p>
+  <b>Original audio filename:</b>
+  <%= @story.original_audio_filename %>
+</p>
+
+<p>
+  <b>Image name:</b>
+  <%= @story.image_name %>
+</p>
+
+<p>
+  <b>Image credit:</b>
+  <%= @story.image_credit %>
+</p>
+
+<p>
+  <b>Thumbnail name:</b>
+  <%= @story.thumbnail_name %>
+</p>
+
+<p>
+  <b>Twitter template:</b>
+  <%= @story.twitter_template %>
+</p>
+
+<p>
+  <b>Editorial notes:</b>
+  <%= @story.editorial_notes %>
+</p>
+
+<p>
+  <b>Editing priority:</b>
+  <%= @story.editing_priority %>
+</p>
+
+<p>
+  <b>Audio transcription:</b>
+  <%= @story.audio_transcription %>
+</p>
+
+<p>
+  <b>Display order:</b>
+  <%= @story.display_order %>
+</p>
+
+<p>
+  <b>Keywords:</b>
+  <%= @story.keywords %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @story.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @story.longitude %>
+</p>
+
+
+<%= link_to 'Edit', edit_story_path(@story) %> |
+<%= link_to 'Back', stories_path %>

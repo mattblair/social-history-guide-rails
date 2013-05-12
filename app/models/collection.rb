@@ -18,6 +18,7 @@
 class Collection < ActiveRecord::Base
   
   has_many :tidbits
+  has_many :stories
   
   attr_accessible :author, :description, :geographical_scope, :geographical_title, :latitude, :longitude, :published, :title
 end

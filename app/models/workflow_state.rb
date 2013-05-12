@@ -12,6 +12,7 @@ class WorkflowState < ActiveRecord::Base
   
   has_many :themes
   has_many :tidbits
+  has_many :stories
   has_many :guests
   
   attr_accessible :state_name

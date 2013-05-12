@@ -13,6 +13,7 @@
 class MediaType < ActiveRecord::Base
   
   has_many :tidbits
+  has_many :stories
   
-  attr_accessible :icon, :name, :type
+  attr_accessible :icon, :name, :human_name
 end

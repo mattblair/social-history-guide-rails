@@ -1,0 +1,26 @@
+<%= simple_form_for(@story) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :subtitle %>
+    <%= f.input :summary %>
+    <%= f.input :audio_filename %>
+    <%= f.input :original_audio_filename %>
+    <%= f.input :image_name %>
+    <%= f.input :image_credit %>
+    <%= f.input :thumbnail_name %>
+    <%= f.input :twitter_template %>
+    <%= f.input :editorial_notes %>
+    <%= f.input :editing_priority %>
+    <%= f.input :audio_transcription %>
+    <%= f.input :display_order %>
+    <%= f.input :keywords %>
+    <%= f.input :latitude %>
+    <%= f.input :longitude %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

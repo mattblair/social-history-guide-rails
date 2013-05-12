@@ -22,5 +22,7 @@ class Guest < ActiveRecord::Base
   
   belongs_to :workflow_state
   
+  has_many :stories
+  
   attr_accessible :bio, :editorial_notes, :guest_url, :guest_url_text, :image_name, :name, :organization, :quote, :title, :twitter_template
 end

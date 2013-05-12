@@ -1,0 +1,53 @@
+<h1>Listing stories</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Subtitle</th>
+    <th>Summary</th>
+    <th>Audio filename</th>
+    <th>Original audio filename</th>
+    <th>Image name</th>
+    <th>Image credit</th>
+    <th>Thumbnail name</th>
+    <th>Twitter template</th>
+    <th>Editorial notes</th>
+    <th>Editing priority</th>
+    <th>Audio transcription</th>
+    <th>Display order</th>
+    <th>Keywords</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stories.each do |story| %>
+  <tr>
+    <td><%= story.title %></td>
+    <td><%= story.subtitle %></td>
+    <td><%= story.summary %></td>
+    <td><%= story.audio_filename %></td>
+    <td><%= story.original_audio_filename %></td>
+    <td><%= story.image_name %></td>
+    <td><%= story.image_credit %></td>
+    <td><%= story.thumbnail_name %></td>
+    <td><%= story.twitter_template %></td>
+    <td><%= story.editorial_notes %></td>
+    <td><%= story.editing_priority %></td>
+    <td><%= story.audio_transcription %></td>
+    <td><%= story.display_order %></td>
+    <td><%= story.keywords %></td>
+    <td><%= story.latitude %></td>
+    <td><%= story.longitude %></td>
+    <td><%= link_to 'Show', story %></td>
+    <td><%= link_to 'Edit', edit_story_path(story) %></td>
+    <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Story', new_story_path %>
