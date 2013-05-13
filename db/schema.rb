@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130513204913) do
+ActiveRecord::Schema.define(:version => 20130513211208) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20130513204913) do
     t.integer  "workflow_state_id", :default => 1
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.integer  "display_order",     :default => 50
+    t.text     "specialty"
   end
 
   create_table "media_types", :force => true do |t|
