@@ -22,6 +22,7 @@
 class Theme < ActiveRecord::Base
   
   has_many :tidbits
+  has_many :stories
   
   belongs_to :workflow_state
   

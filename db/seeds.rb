@@ -95,7 +95,7 @@ puts 'Populating THEMES -------------------------------------'
 themes = JSON.parse(File.read(ENV['KYC_THEMES_JSON']))
 themes.each do |kyc_theme|
   
-  puts "Adding collection object for #{kyc_theme['title']}"
+  puts "Adding theme object for #{kyc_theme['title']}"
   
   theme = Theme.find_or_create_by_title :title => kyc_theme['title'], :summary => kyc_theme['summary'], :image_name => kyc_theme['image_name'], :subtitle => kyc_theme['subtitle']
   
@@ -109,3 +109,18 @@ end
 
 puts 'Populating GUESTS -------------------------------------'
 # import from kyc_users.json
+
+guests = JSON.parse(File.read(ENV['KYC_GUESTS_JSON']))
+guests.each do |kyc_guest|
+  
+  puts "Adding guest object for #{kyc_guest['name']}"
+  
+  guest = Guest.find_or_create_by_name :name => kyc_guest['name'], :organization => kyc_guest['organization'], :bio => kyc_guest['bio']
+  
+  guest.image_name = kyc_guest['image_name']
+  guest.quote = kyc_guest['quote']
+  guest.specialty = kyc_guest['specialty']
+  
+  guest.save
+  
+end
