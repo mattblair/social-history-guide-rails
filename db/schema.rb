@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512032627) do
+ActiveRecord::Schema.define(:version => 20130513204913) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -22,8 +22,14 @@ ActiveRecord::Schema.define(:version => 20130512032627) do
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "published"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "sponsor_name"
+    t.text     "sponsor_description"
+    t.string   "sponsor_logo_name"
+    t.text     "sponsor_url"
+    t.string   "curator_name"
+    t.text     "curator_url"
   end
 
   create_table "guests", :force => true do |t|
