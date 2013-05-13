@@ -16,6 +16,8 @@
 #  workflow_state_id :integer          default(1)
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  display_order     :integer          default(50)
+#  specialty         :text
 #
 
 class Guest < ActiveRecord::Base
