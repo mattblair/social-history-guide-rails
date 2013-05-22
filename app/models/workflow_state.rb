@@ -16,4 +16,10 @@ class WorkflowState < ActiveRecord::Base
   has_many :guests
   
   attr_accessible :state_name
+  
+  # added for ActiveAdmin select controls
+  def to_s
+    state_name.capitalize
+  end
+  
 end

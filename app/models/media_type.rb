@@ -16,4 +16,10 @@ class MediaType < ActiveRecord::Base
   has_many :stories
   
   attr_accessible :icon, :name, :human_name
+  
+  # added for ActiveAdmin select controls
+  # probably a more eloquent way to put this...
+  def to_s
+    !human_name.empty? ? human_name : name.capitalize
+  end
 end
