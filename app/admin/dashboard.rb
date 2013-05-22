@@ -23,6 +23,18 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
 
+    columns do
+      column do
+        panel "Recent Stories" do
+          ul do
+            Story.order("updated_at desc").limit(5).map do |story|
+              li link_to(story.title, admin_story_path(story))
+            end
+          end
+        end
+      end
+    end
+
     #   column do
     #     panel "Info" do
     #       para "Welcome to ActiveAdmin."
