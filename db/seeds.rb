@@ -124,3 +124,27 @@ guests.each do |kyc_guest|
   guest.save
   
 end
+
+puts 'Populating STORIES ------------------------------------'
+
+stories = JSON.parse(File.read(ENV['KYC_STORIES_JSON']))
+stories.each do |kyc_story|
+  
+  if !kyc_story['title'].empty?
+    
+    puts "Adding story object for #{kyc_story['title']}"
+
+    story = Story.find_or_create_by_title :title => kyc_story['title'], :original_audio_filename => kyc_story['original_audio_filename'], :audio_filename => kyc_story['audio_filename']
+
+    story.summary = kyc_story['summary']
+    story.display_order = kyc_story['display_order']
+    story.theme_id = kyc_story['theme_id']
+    story.guest_id = kyc_story['guest_id']
+    story.editing_priority = kyc_story['editing_priority']
+    story.editorial_notes = kyc_story['editorial_notes']
+
+    story.save
+    
+  end
+  
+end
