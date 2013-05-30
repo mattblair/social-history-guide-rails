@@ -120,6 +120,7 @@ guests.each do |kyc_guest|
   guest.image_name = kyc_guest['image_name']
   guest.quote = kyc_guest['quote']
   guest.specialty = kyc_guest['specialty']
+  guest.title = kyc_guest['title']
   
   guest.save
   
@@ -137,6 +138,7 @@ stories.each do |kyc_story|
     story = Story.find_or_create_by_title :title => kyc_story['title'], :original_audio_filename => kyc_story['original_audio_filename'], :audio_filename => kyc_story['audio_filename']
 
     story.summary = kyc_story['summary']
+    story.subtitle = kyc_story['subtitle']
     story.display_order = kyc_story['display_order']
     story.theme_id = kyc_story['theme_id']
     story.guest_id = kyc_story['guest_id']
