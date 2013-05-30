@@ -1,41 +1,8 @@
-<h1>Listing guests</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Title</th>
-    <th>Organization</th>
-    <th>Image name</th>
-    <th>Bio</th>
-    <th>Twitter template</th>
-    <th>Editorial notes</th>
-    <th>Quote</th>
-    <th>Guest url</th>
-    <th>Guest url text</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Guest Experts</h1>
 
 <% @guests.each do |guest| %>
-  <tr>
-    <td><%= guest.name %></td>
-    <td><%= guest.title %></td>
-    <td><%= guest.organization %></td>
-    <td><%= guest.image_name %></td>
-    <td><%= guest.bio %></td>
-    <td><%= guest.twitter_template %></td>
-    <td><%= guest.editorial_notes %></td>
-    <td><%= guest.quote %></td>
-    <td><%= guest.guest_url %></td>
-    <td><%= guest.guest_url_text %></td>
-    <td><%= link_to 'Show', guest %></td>
-    <td><%= link_to 'Edit', edit_guest_path(guest) %></td>
-    <td><%= link_to 'Destroy', guest, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%= image_tag("#{guest.image_name}.jpg", :class => "theme_image" , :alt => "Theme image") %>
+<h2><%= link_to guest.name, guest %></h2>
+<h4><%= guest.specialty %></h4>
+<p><em><%= guest.quote %></em></p>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Guest', new_guest_path %>

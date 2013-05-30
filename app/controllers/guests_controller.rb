@@ -2,7 +2,7 @@ class GuestsController < ApplicationController
   # GET /guests
   # GET /guests.json
   def index
-    @guests = Guest.all
+    @guests = Guest.order("display_order")
 
     respond_to do |format|
       format.html # index.html.erb
