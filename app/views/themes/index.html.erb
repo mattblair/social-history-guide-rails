@@ -1,43 +1,8 @@
-<h1>Listing themes</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Subtitle</th>
-    <th>Summary</th>
-    <th>Image name</th>
-    <th>Image credit</th>
-    <th>Twitter template</th>
-    <th>Editorial notes</th>
-    <th>Latitude</th>
-    <th>Longitude</th>
-    <th>Displayorder</th>
-    <th>Keywords</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<h1>Historical Themes</h1>
 
 <% @themes.each do |theme| %>
-  <tr>
-    <td><%= theme.title %></td>
-    <td><%= theme.subtitle %></td>
-    <td><%= theme.summary %></td>
-    <td><%= theme.image_name %></td>
-    <td><%= theme.image_credit %></td>
-    <td><%= theme.twitter_template %></td>
-    <td><%= theme.editorial_notes %></td>
-    <td><%= theme.latitude %></td>
-    <td><%= theme.longitude %></td>
-    <td><%= theme.displayOrder %></td>
-    <td><%= theme.keywords %></td>
-    <td><%= link_to 'Show', theme %></td>
-    <td><%= link_to 'Edit', edit_theme_path(theme) %></td>
-    <td><%= link_to 'Destroy', theme, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<%= image_tag("#{theme.image_name}.jpg", :class => "theme_image" , :alt => "Theme image") %>
+<h3><%= link_to theme.title, theme %></h3>
+<h4><%= theme.subtitle %></h4>
+<p><%= theme.summary %></p>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Theme', new_theme_path %>

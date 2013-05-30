@@ -1,60 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @theme.title %>
-</p>
+<%= image_tag("#{@theme.image_name}.jpg", :class => "theme_image" , :alt => "Theme image") %>
+
+<h2><%= @theme.title %></h2>
+
+<h4><em><%= @theme.subtitle %></em></h4>
 
 <p>
-  <b>Subtitle:</b>
-  <%= @theme.subtitle %>
-</p>
-
-<p>
-  <b>Summary:</b>
   <%= @theme.summary %>
 </p>
 
-<p>
-  <b>Image name:</b>
-  <%= @theme.image_name %>
-</p>
+<h3>Stories</h3>
 
-<p>
-  <b>Image credit:</b>
-  <%= @theme.image_credit %>
-</p>
+<ul>
+<% @stories.each do |story| %>
 
-<p>
-  <b>Twitter template:</b>
-  <%= @theme.twitter_template %>
-</p>
+	<li><%= link_to story.title, story%></li>
 
-<p>
-  <b>Editorial notes:</b>
-  <%= @theme.editorial_notes %>
-</p>
+<% end %>
+</ul>
 
-<p>
-  <b>Latitude:</b>
-  <%= @theme.latitude %>
-</p>
+<% if false %>
+<h3>Tidbits</h3>
 
-<p>
-  <b>Longitude:</b>
-  <%= @theme.longitude %>
-</p>
+<ul>
+<% @tidbits.each do |tidbit| %>
 
-<p>
-  <b>Displayorder:</b>
-  <%= @theme.displayOrder %>
-</p>
+	<li><%= link_to tidbit.title, tidbit %></li>
 
-<p>
-  <b>Keywords:</b>
-  <%= @theme.keywords %>
-</p>
+<% end %>
+</ul>
 
+<% end %>
 
-<%= link_to 'Edit', edit_theme_path(@theme) %> |
-<%= link_to 'Back', themes_path %>
+<%= link_to 'Explore Other Themes', themes_path %>

@@ -2,8 +2,11 @@ class ThemesController < ApplicationController
   # GET /themes
   # GET /themes.json
   def index
-    @themes = Theme.all
-
+    # everything:
+    @themes = Theme.order("display_order")
+    # limit to published, stories or tidbits > 1, order by display_order
+    #@themes = Theme.where("workflow_state_id = 6")
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @themes }
@@ -14,7 +17,11 @@ class ThemesController < ApplicationController
   # GET /themes/1.json
   def show
     @theme = Theme.find(params[:id])
-
+    
+    # limit to published, collection 1, order by display_order
+    @tidbits = Tidbit.where("theme_id = #{params[:id]}").order("publication_date DESC")
+    @stories = Story.where("theme_id = #{params[:id]}").order("display_order")
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @theme }
