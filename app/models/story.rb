@@ -36,5 +36,5 @@ class Story < ActiveRecord::Base
   belongs_to :media_type
   belongs_to :workflow_state 
   
-  attr_accessible :audio_filename, :audio_transcription, :display_order, :editing_priority, :editorial_notes, :image_credit, :image_name, :keywords, :latitude, :longitude, :original_audio_filename, :subtitle, :summary, :thumbnail_name, :title, :twitter_template
+  attr_accessible :audio_filename, :audio_transcription, :display_order, :editing_priority, :editorial_notes, :image_credit, :image_name, :keywords, :latitude, :longitude, :original_audio_filename, :audio_filename, :subtitle, :summary, :thumbnail_name, :title, :twitter_template, :collection_id, :theme_id, :guest_id, :media_type_id, :workflow_state_id
 end
