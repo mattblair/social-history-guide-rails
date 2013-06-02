@@ -27,11 +27,13 @@ class Guest < ActiveRecord::Base
   has_many :stories
   
   # workflow: proposed, draft, deferred, incomplete, edited, published, testing
-  
   scope :proposed, where(:workflow_state_id => 1)
   scope :draft, where(:workflow_state_id => 2)
+  scope :deferred, where(:workflow_state_id => 3)
+  scope :incomplete, where(:workflow_state_id => 4)
   scope :edited, where(:workflow_state_id => 5)
   scope :published, where(:workflow_state_id => 6)
+  scope :testing, where(:workflow_state_id => 7)
   
   attr_accessible :bio, :editorial_notes, :guest_url, :guest_url_text, :image_name, :name, :organization, :quote, :title, :twitter_template
 end
