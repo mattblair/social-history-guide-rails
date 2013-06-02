@@ -45,22 +45,24 @@ ActiveAdmin.register Story do
   #    link_to(image_tag(story.image_name), admin_story_path(story))
   #end
 
-  sidebar :tips do
-      ul do
-        li "Second List First Item"
-        li "Second List Second Item"
-      end
+  # index does not have an individual story variable to present audio
+  sidebar :audio, :except => :index do
+  # always returns nil. should return a local-variable on show & form?
+  #sidebar :audio, :if => proc{ defined? story } do
+      audio_tag("#{story.audio_filename}.mp4", :controls => true)
   end
   
   sidebar :image, :except => :index do
       image_tag("#{story.image_name}.jpg", :size => "240x180", :class => "story_image_preview", :alt => "Story Image")
   end
   
-  # index does not have an individual story variable to present audio
-  sidebar :audio, :except => :index do
-  # always returns nil. should return a local-variable on show & form?
-  #sidebar :audio, :if => proc{ defined? story } do
-      audio_tag("#{story.audio_filename}.mp4", :controls => true)
+  sidebar :image_credits, :except => :index, :partial => "admin/resource/image_credits_sidebar"
+  
+  sidebar :tips do
+      ul do
+        li "Second List First Item"
+        li "Second List Second Item"
+      end
   end
   
   form do |f|                         

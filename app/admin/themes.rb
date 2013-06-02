@@ -37,6 +37,8 @@ ActiveAdmin.register Theme do
       image_tag("#{theme.image_name}.jpg", :size => "240x180", :class => "guest_theme_preview", :alt => "Theme Image")
   end
   
+  sidebar :image_credits, :except => :index, :partial => "admin/resource/image_credits_sidebar"
+  
   sidebar :related_stories, :except => :index do
     theme.stories.each do |story|
       li link_to(story.title, admin_story_path(story))

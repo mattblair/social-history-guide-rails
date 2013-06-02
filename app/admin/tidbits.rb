@@ -39,6 +39,8 @@ ActiveAdmin.register Tidbit do
       image_tag("#{tidbit.image_name}.jpg", :size => "240x180", :class => "guest_tidbit_preview", :alt => "Tidbit Image")
   end
   
+  sidebar :image_credits, :except => :index, :partial => "admin/resource/image_credits_sidebar"
+  
   sidebar :tips do
       ul do
         li "Second List First Item"
