@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602024126) do
+ActiveRecord::Schema.define(:version => 20130602024956) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -146,9 +146,13 @@ ActiveRecord::Schema.define(:version => 20130602024126) do
     t.float    "longitude"
     t.integer  "display_order"
     t.string   "keywords"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.integer  "workflow_state_id", :default => 1
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "workflow_state_id",       :default => 1
+    t.text     "image_credit_url"
+    t.string   "image_copyright_notice"
+    t.text     "image_copyright_url"
+    t.text     "image_copyright_details"
   end
 
   create_table "tidbits", :force => true do |t|
