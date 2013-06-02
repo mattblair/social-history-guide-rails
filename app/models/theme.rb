@@ -28,5 +28,14 @@ class Theme < ActiveRecord::Base
   
   delegate :state_name, :to => :workflow_state
   
+  # workflow: proposed, draft, deferred, incomplete, edited, published, testing
+  scope :proposed, where(:workflow_state_id => 1)
+  scope :draft, where(:workflow_state_id => 2)
+  scope :deferred, where(:workflow_state_id => 3)
+  scope :incomplete, where(:workflow_state_id => 4)
+  scope :edited, where(:workflow_state_id => 5)
+  scope :published, where(:workflow_state_id => 6)
+  scope :testing, where(:workflow_state_id => 7)
+  
   attr_accessible :display_order, :editorial_notes, :image_credit, :image_name, :keywords, :latitude, :longitude, :subtitle, :summary, :title, :twitter_template
 end
