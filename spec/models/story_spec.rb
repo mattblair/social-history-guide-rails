@@ -26,6 +26,10 @@
 #  media_type_id           :integer          default(1)
 #  created_at              :datetime         not null
 #  updated_at              :datetime         not null
+#  image_credit_url        :text
+#  image_copyright_notice  :string(255)
+#  image_copyright_url     :text
+#  image_copyright_details :text
 #
 
 require 'spec_helper'
