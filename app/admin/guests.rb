@@ -2,6 +2,10 @@ ActiveAdmin.register Guest do
   
   menu :priority => 2
   
+  # ===================================================
+  # Index
+  # ===================================================
+  
   # workflow: proposed, draft, deferred, incomplete, edited, published, testing
   scope :proposed
   scope :draft
@@ -28,9 +32,75 @@ ActiveAdmin.register Guest do
       end
   end
   
+  # ===================================================
+  # Sidebars (for all views)
+  # ===================================================
+  
+  # ===================================================
+  # Sidebars (for objects)
+  # ===================================================
+  
   sidebar :image, :except => :index do
       image_tag("#{guest.image_name}.jpg", :size => "240x180", :class => "guest_image_preview", :alt => "Guest Image")
   end
+  
+  sidebar :image_credits, :except => :index, :partial => "admin/resource/image_credits_sidebar"
+  
+  # ===================================================
+  # Show
+  # ===================================================
+  
+  show :title => "Guest Info" do |guest|
+    # how do you rename this?! passing title and name don't work
+    attributes_table do
+      row :title
+      row :organization
+      row :specialty
+      row :twitter_template do
+        simple_format guest.twitter_template
+      end
+      #row :image do
+      #  image_tag(ad.image.url)
+      #end
+      
+      # status_tag options:
+      # :ok (green)
+      # :warning (yellow)
+      # :error (red)
+      row :workflow_state do |g| 
+        status_tag g.workflow_state.to_s, (g.workflow_state_id == 6 ? :ok : :error)
+      end
+      row :release_confirmed do |g| 
+        status_tag (g.release_confirmed ? "On File" : "Needed"), (g.release_confirmed ? :ok : :error)
+      end
+    end
+    
+    panel "Biography" do
+      p guest.bio
+    end
+    
+    panel "Quote" do
+      p guest.quote
+    end
+        
+    panel "Editorial Notes" do
+      # this will not inject the unwanted title
+      #attributes_table_for guest, :workflow_state, :editorial_notes, :release_confirmed
+      p guest.editorial_notes
+      # if you nest attributes_table in a panel, it titles the whole structure "Guest Details"
+    end
+    
+    # or put this in a partial like /app/views/admin/guests/_editorial.html.erb
+    #panel "Editorial Partial" do
+    #  render 'editorial'
+    #end
+    
+    #active_admin_comments
+  end
+  
+  # ===================================================
+  # Editing
+  # ===================================================
   
   form do |f|                         
     f.inputs "Basic Information" do       
@@ -59,7 +129,7 @@ ActiveAdmin.register Guest do
       f.input :editorial_notes, :label => "Notes", :input_html => {:rows => 8, :cols => 60}
       f.input :display_order
       f.input :release_confirmed
-    end                          
+    end
     f.actions
   end
   
