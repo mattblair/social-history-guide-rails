@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602025353) do
+ActiveRecord::Schema.define(:version => 20130602025735) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -174,12 +174,19 @@ ActiveRecord::Schema.define(:version => 20130602025353) do
     t.string   "audio_filename"
     t.string   "source"
     t.text     "source_url"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
-    t.integer  "workflow_state_id", :default => 1
-    t.integer  "media_type_id",     :default => 3
-    t.integer  "collection_id",     :default => 1
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.integer  "workflow_state_id",       :default => 1
+    t.integer  "media_type_id",           :default => 3
+    t.integer  "collection_id",           :default => 1
     t.integer  "theme_id"
+    t.text     "image_credit_url"
+    t.string   "image_copyright_notice"
+    t.text     "image_copyright_url"
+    t.text     "image_copyright_details"
+    t.string   "media_copyright_notice"
+    t.text     "media_copyright_url"
+    t.text     "media_copyright_details"
   end
 
   create_table "users", :force => true do |t|
