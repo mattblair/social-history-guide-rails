@@ -1,0 +1,13 @@
+<% if resource.image_credit_url.nil?  %>
+  <p>Image by <%= resource.image_credit ? resource.image_credit : "TBD" %></p>
+<% else %>
+  <p>Image by <%= link_to resource.image_credit, resource.image_credit_url %></p>
+<% end %>
+<% if resource.image_copyright_url.nil? %>
+  <p>Copyright Notice: <%= resource.image_copyright_notice ? resource.image_copyright_notice : "Unknown" %></p>
+<% else %>
+  <p>Copyright Notice: <%= link_to resource.image_copyright_notice, resource.image_copyright_url %></p>
+<% end %>
+<p><strong>Copyright Details</strong></p>
+<p><em>(This section is not visible to the public)</em></p>
+<p><%= simple_format resource.image_copyright_details %>
