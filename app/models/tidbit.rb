@@ -35,5 +35,14 @@ class Tidbit < ActiveRecord::Base
   
   delegate :state_name, :to => :workflow_state
   
+  # workflow: proposed, draft, deferred, incomplete, edited, published, testing
+  scope :proposed, where(:workflow_state_id => 1)
+  scope :draft, where(:workflow_state_id => 2)
+  scope :deferred, where(:workflow_state_id => 3)
+  scope :incomplete, where(:workflow_state_id => 4)
+  scope :edited, where(:workflow_state_id => 5)
+  scope :published, where(:workflow_state_id => 6)
+  scope :testing, where(:workflow_state_id => 7)
+  
   attr_accessible :audio_filename, :body, :editorial_notes, :image_caption, :image_credit, :image_name, :latitude, :longitude, :publication_date, :source, :source_url, :title, :twitter_template, :year
 end
