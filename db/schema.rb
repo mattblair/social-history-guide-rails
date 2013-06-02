@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516141457) do
+ActiveRecord::Schema.define(:version => 20130602024126) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(:version => 20130516141457) do
   end
 
   create_table "guests", :force => true do |t|
-    t.string   "name",              :default => "", :null => false
+    t.string   "name",                    :default => "",    :null => false
     t.string   "title"
     t.string   "organization"
     t.string   "image_name"
@@ -76,11 +76,17 @@ ActiveRecord::Schema.define(:version => 20130516141457) do
     t.text     "quote"
     t.string   "guest_url"
     t.string   "guest_url_text"
-    t.integer  "workflow_state_id", :default => 1
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
-    t.integer  "display_order",     :default => 50
+    t.integer  "workflow_state_id",       :default => 1
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.integer  "display_order",           :default => 50
     t.text     "specialty"
+    t.string   "image_credit"
+    t.text     "image_credit_url"
+    t.string   "image_copyright_notice"
+    t.text     "image_copyright_url"
+    t.text     "image_copyright_details"
+    t.boolean  "release_confirmed",       :default => false
   end
 
   create_table "media_types", :force => true do |t|
