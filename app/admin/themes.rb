@@ -33,6 +33,10 @@ ActiveAdmin.register Theme do
       end
   end
   
+  sidebar :theme_illustration, :except => :index do
+      image_tag("#{theme.image_name}.jpg", :size => "240x180", :class => "guest_theme_preview", :alt => "Theme Image")
+  end
+  
   sidebar :related_stories, :except => :index do
     theme.stories.each do |story|
       li link_to(story.title, admin_story_path(story))
@@ -48,14 +52,18 @@ ActiveAdmin.register Theme do
   form do |f|                         
     f.inputs "Basic Info" do       
       f.input :title
-      f.input :subtitle, :hint => "(optional  )"
+      f.input :subtitle, :hint => "(optional)"
       f.input :summary, :input_html => { :class => 'autogrow', :rows => 10, :cols => 60}, :hint => "Up to ~100 words"
       f.input :keywords, :hint => "About 100 characters"
       f.input :twitter_template, :label => "Twitter Text", :input_html => { :rows => 3, :cols => 20, :maxlength => 120 }, :hint => "Less than 120 characters, to leave space for urls, RTs, etc."
     end
-    f.inputs "Media Information" do 
-      f.input :image_name
-      f.input :image_credit   
+    f.inputs "Image Details" do
+      f.input :image_name, :label => "Image Filename"
+      f.input :image_credit, :label => "Image Credit", :hint => "Displayed below the image"
+      f.input :image_credit_url, :label => "Image Credit URL", :input_html => {:rows => 1, :cols => 60}, :hint => "Image credit text links to this web address"
+      f.input :image_copyright_notice, :label => "Image Copyright Notice", :hint => "Visible to the public"
+      f.input :image_copyright_url, :label => "Image Copyright URL", :input_html => {:rows => 1, :cols => 60}, :hint => "Copyright notice links to this web address"
+      f.input :image_copyright_details, :label => "Image Copyright Details", :input_html => {:rows => 5, :cols => 60}, :hint => "Private details of copyright and licensing"
     end
     f.inputs "Note:" do
         "<div class=\"editing-note\">
