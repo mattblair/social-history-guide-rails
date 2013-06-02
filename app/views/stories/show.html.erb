@@ -4,6 +4,8 @@
 
 <%=image_tag("#{@story.image_name}.jpg", :class => "story_image", :alt => "Story Image") %>
 
+<p class="image-credit"><em>Image credit:</em> <%= @story.image_credit %></p>
+
 <h2><%= @story.title %></h2>
 
 <h4><em><%= @story.subtitle %></em></h4>
@@ -14,8 +16,6 @@
 
 <%=audio_tag("#{@story.audio_filename}.mp4", :controls => true) %>
 
-<p>
-  <em>Image credit:</em> <%= @story.image_credit %>
-</p>
+
 
 <p><em><%= link_to "Return to #{@story.theme.title}", @story.theme %></em></p>
