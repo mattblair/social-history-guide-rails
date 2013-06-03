@@ -25,6 +25,16 @@
 
 class Theme < ActiveRecord::Base
   
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
+  validates_presence_of :title, :slug
+  
+  # only generate slug once
+  def should_generate_new_friendly_id?
+    new_record?
+  end
+  
   has_many :tidbits
   has_many :stories
   

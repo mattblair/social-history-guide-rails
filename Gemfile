@@ -27,3 +27,4 @@ gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri
 gem "annotate", ">=2.5.0"
 gem "activeadmin"
 gem "meta_search",    ">= 1.1.0.pre"
+gem "friendly_id", "~> 4.0" # 5.0 is for Rails 4.0+

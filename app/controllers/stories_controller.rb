@@ -14,6 +14,7 @@ class StoriesController < ApplicationController
   # GET /stories/1.json
   def show
     @story = Story.find(params[:id])
+    #@story = Story.friendly.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,6 +36,7 @@ class StoriesController < ApplicationController
   # GET /stories/1/edit
   def edit
     @story = Story.find(params[:id])
+    #@story = Story.friendly.find(params[:id])
   end
 
   # POST /stories
@@ -57,6 +59,7 @@ class StoriesController < ApplicationController
   # PUT /stories/1.json
   def update
     @story = Story.find(params[:id])
+    #@story = Story.friendly.find(params[:id])
 
     respond_to do |format|
       if @story.update_attributes(params[:story])
@@ -73,6 +76,7 @@ class StoriesController < ApplicationController
   # DELETE /stories/1.json
   def destroy
     @story = Story.find(params[:id])
+    #@story = Story.friendly.find(params[:id])
     @story.destroy
 
     respond_to do |format|

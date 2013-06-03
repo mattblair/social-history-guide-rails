@@ -58,6 +58,7 @@ ActiveAdmin.register Theme do
       f.input :summary, :input_html => { :class => 'autogrow', :rows => 10, :cols => 60}, :hint => "Up to ~100 words"
       f.input :keywords, :hint => "About 100 characters"
       f.input :twitter_template, :label => "Twitter Text", :input_html => { :rows => 3, :cols => 20, :maxlength => 120 }, :hint => "Less than 120 characters, to leave space for urls, RTs, etc."
+      f.input :slug, :hint => "Auto-generated from title. Letters, numbers and hyphens only. Must start with a letter."
     end
     f.inputs "Image Details" do
       f.input :image_name, :label => "Image Filename"

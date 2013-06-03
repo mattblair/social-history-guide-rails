@@ -57,6 +57,7 @@ ActiveAdmin.register Tidbit do
       f.input :media_type, :label => "Format", :hint => "Some selections require additional media information below"
       f.input :year, :label => "Year (optional)", :required => false
       f.input :twitter_template, :label => "Twitter Text", :input_html => { :rows => 3, :cols => 20, :maxlength => 120 }, :hint => "Less than 120 characters, to leave space for urls, RTs, etc."
+      f.input :slug, :hint => "Auto-generated from name. Letters, numbers and hyphens only. Must start with a letter."
     end
     f.inputs "Geocoding" do 
       f.input :latitude, :input_html => { :size => 16 }

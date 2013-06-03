@@ -19,8 +19,8 @@ class ThemesController < ApplicationController
     @theme = Theme.find(params[:id])
     
     # limit to published, collection 1, order by display_order
-    @tidbits = Tidbit.where("theme_id = #{params[:id]}").order("publication_date DESC")
-    @stories = Story.where("theme_id = #{params[:id]}").order("display_order")
+    @tidbits = Tidbit.where("theme_id = #{@theme.id}").order("publication_date DESC")
+    @stories = Story.where("theme_id = #{@theme.id}").order("display_order")
     
     respond_to do |format|
       format.html # show.html.erb

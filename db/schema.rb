@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602025735) do
+ActiveRecord::Schema.define(:version => 20130603154102) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -87,7 +87,10 @@ ActiveRecord::Schema.define(:version => 20130602025735) do
     t.text     "image_copyright_url"
     t.text     "image_copyright_details"
     t.boolean  "release_confirmed",       :default => false
+    t.string   "slug"
   end
+
+  add_index "guests", ["slug"], :name => "index_guests_on_slug", :unique => true
 
   create_table "media_types", :force => true do |t|
     t.string   "human_name"
@@ -136,7 +139,10 @@ ActiveRecord::Schema.define(:version => 20130602025735) do
     t.string   "image_copyright_notice"
     t.text     "image_copyright_url"
     t.text     "image_copyright_details"
+    t.string   "slug"
   end
+
+  add_index "stories", ["slug"], :name => "index_stories_on_slug", :unique => true
 
   create_table "themes", :force => true do |t|
     t.string   "title"
@@ -157,7 +163,10 @@ ActiveRecord::Schema.define(:version => 20130602025735) do
     t.string   "image_copyright_notice"
     t.text     "image_copyright_url"
     t.text     "image_copyright_details"
+    t.string   "slug"
   end
+
+  add_index "themes", ["slug"], :name => "index_themes_on_slug", :unique => true
 
   create_table "tidbits", :force => true do |t|
     t.string   "title"
@@ -187,7 +196,10 @@ ActiveRecord::Schema.define(:version => 20130602025735) do
     t.string   "media_copyright_notice"
     t.text     "media_copyright_url"
     t.text     "media_copyright_details"
+    t.string   "slug"
   end
+
+  add_index "tidbits", ["slug"], :name => "index_tidbits_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

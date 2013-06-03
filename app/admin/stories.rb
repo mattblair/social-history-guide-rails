@@ -73,6 +73,7 @@ ActiveAdmin.register Story do
       f.input :keywords
       f.input :theme
       f.input :twitter_template, :label => "Twitter Text", :input_html => { :rows => 3, :cols => 20, :maxlength => 120 }, :hint => "Less than 120 characters, to leave space for urls, RTs, etc."
+      f.input :slug, :hint => "Auto-generated from name. Letters, numbers and hyphens only. Must start with a letter."
     end
     f.inputs "Interview Details" do
       #f.html audio_tag("#{story.audio_filename}.mp4", :controls => true)

@@ -28,8 +28,20 @@
 
 class Guest < ActiveRecord::Base
   
-  belongs_to :workflow_state
+  extend FriendlyId
+  friendly_id :name, use: :slugged
   
+  validates_presence_of :name, :slug
+  
+  # prevent slug changes after initial creation.
+  # turn this on after updating existing records in console with:
+  # Guest.find_each(&:save)
+  def should_generate_new_friendly_id?
+    new_record?
+  end
+  
+  # associations
+  belongs_to :workflow_state
   has_many :stories
   
   # workflow: proposed, draft, deferred, incomplete, edited, published, testing
@@ -41,5 +53,5 @@ class Guest < ActiveRecord::Base
   scope :published, where(:workflow_state_id => 6)
   scope :testing, where(:workflow_state_id => 7)
   
-  attr_accessible :bio, :editorial_notes, :guest_url, :guest_url_text, :image_name, :name, :organization, :quote, :title, :twitter_template, :workflow_state_id, :display_order, :specialty, :image_credit, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :release_confirmed
+  attr_accessible :bio, :editorial_notes, :guest_url, :guest_url_text, :image_name, :name, :organization, :quote, :title, :twitter_template, :workflow_state_id, :display_order, :specialty, :image_credit, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :release_confirmed, :slug
 end
