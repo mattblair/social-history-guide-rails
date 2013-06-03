@@ -49,7 +49,7 @@ ActiveAdmin.register Story do
   sidebar :audio, :except => :index do
   # always returns nil. should return a local-variable on show & form?
   #sidebar :audio, :if => proc{ defined? story } do
-      audio_tag("#{story.audio_filename}.mp4", :controls => true)
+      audio_tag("#{story.audio_filename}.mp4", :controls => true, :type => "audio/mp4")
   end
   
   sidebar :image, :except => :index do
