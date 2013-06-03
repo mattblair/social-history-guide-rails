@@ -70,6 +70,15 @@
   <%= @tidbit.source_url %>
 </p>
 
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@tidbit.latitude}%2C#{@tidbit.longitude}" %>
+
+<h3>Nearby Tidbits</h3>
+<ul>
+<% for tidbit in @tidbit.nearbys(10) %>
+  <li><%= link_to tidbit.title, tidbit %> (<%= tidbit.distance.round(2) %> miles)</li>
+<% end %>
+</ul>
+
 
 <%= link_to 'Edit', edit_tidbit_path(@tidbit) %> |
 <%= link_to 'Back', tidbits_path %>

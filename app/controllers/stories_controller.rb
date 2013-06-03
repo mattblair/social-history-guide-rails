@@ -15,7 +15,7 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     #@story = Story.friendly.find(params[:id])
-
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @story }

@@ -58,11 +58,21 @@ ActiveAdmin.register Story do
   
   sidebar :image_credits, :except => :index, :partial => "admin/resource/image_credits_sidebar"
   
-  sidebar :tips do
+  sidebar :image_tips do
       ul do
-        li "Second List First Item"
-        li "Second List Second Item"
+        li "To add an image, type the name of the file in the Image Filename
+        field, and put it on Dropbox, or email it to me. Or just enter the URL
+        for it if it's already online."
+        li "They image won't appear here until I crop it, and add it to the images folder of the website."
       end
+  end
+  
+  sidebar :location,:except => :index do
+    if story.latitude != 0.0 && story.longitude != 0.0
+      image_tag "http://maps.google.com/maps/api/staticmap?size=240x180&sensor=false&zoom=16&markers=#{story.latitude}%2C#{story.longitude}", :size => "240x180" 
+    else
+      p "Location not specified, or out of scope of this project."
+    end
   end
   
   form do |f|                         

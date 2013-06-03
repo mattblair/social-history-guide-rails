@@ -14,6 +14,13 @@
   <%= @story.summary %>
 </p>
 
+<h3>Nearby Stories</h3>
+<ul>
+<% for story in @story.nearbys(10) %>
+  <li><%= link_to story.title, story %> (<%= story.distance.round(2) %> miles)</li>
+<% end %>
+</ul>
+
 <%=audio_tag("#{@story.audio_filename}.mp4", :controls => true) %>
 
 

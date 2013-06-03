@@ -44,6 +44,17 @@ class Tidbit < ActiveRecord::Base
     new_record?
   end
   
+  # make sure coordinates are not nil:
+  before_validation :generate_coordinates
+  
+  def generate_coordinates
+    self.latitude ||= 0.0
+    self.longitude ||= 0.0
+  end
+  
+  # must have to use geocoder queries
+  reverse_geocoded_by :latitude, :longitude
+  
   belongs_to :workflow_state
   belongs_to :media_type
   
@@ -61,5 +72,5 @@ class Tidbit < ActiveRecord::Base
   scope :published, where(:workflow_state_id => 6)
   scope :testing, where(:workflow_state_id => 7)
   
-  attr_accessible :audio_filename, :body, :editorial_notes, :image_caption, :image_credit, :image_name, :latitude, :longitude, :publication_date, :source, :source_url, :title, :twitter_template, :year, :slug
+  attr_accessible :audio_filename, :body, :editorial_notes, :image_caption, :image_credit, :image_name, :latitude, :longitude, :publication_date, :source, :source_url, :title, :twitter_template, :year, :audio_filename, :workflow_state_id, :media_type_id, :collection_id, :theme_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :media_copyright_notice, :media_copyright_url, :media_copyright_details, :slug
 end
