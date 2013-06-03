@@ -68,7 +68,7 @@ ActiveAdmin.register Guest do
       # :warning (yellow)
       # :error (red)
       row :workflow_state do |g| 
-        status_tag g.workflow_state.to_s, (g.workflow_state_id == 6 ? :ok : :error)
+        status_tag g.workflow_state.to_s, (g.workflow_state_id == 6 ? :ok : :warning)
       end
       row :release_confirmed do |g| 
         status_tag (g.release_confirmed ? "On File" : "Needed"), (g.release_confirmed ? :ok : :error)
