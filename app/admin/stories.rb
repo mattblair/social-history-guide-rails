@@ -75,6 +75,58 @@ ActiveAdmin.register Story do
     end
   end
   
+  
+  # ===================================================
+  # Show
+  # ===================================================
+  
+  show :title => "Story Details" do |story|
+    # how do you rename this?! passing title and name don't work
+    attributes_table do
+      row :title
+      row :subtitle
+      row :summary
+      row :theme_id
+      row :guest_id 
+      row :twitter_template do
+        simple_format story.twitter_template
+      end
+      row :slug
+      row :keywords
+      #row :image do
+      #  image_tag(ad.image.url)
+      #end
+      
+      # status_tag options:
+      # :ok (green)
+      # :warning (yellow)
+      # :error (red)
+      row :workflow_state do |s| 
+        status_tag s.workflow_state.to_s, (s.workflow_state_id == 6 ? :ok : :warning)
+      end
+    end
+    
+    #panel "Image Details" do
+    #  attributes_table_for story, :image_name, :image_credit, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details
+    #end
+        
+    panel "Editorial Details" do
+      attributes_table_for story, :editorial_notes, :editing_priority, :display_order, :created_at, :updated_at
+    end
+    
+    # or put this in a partial like /app/views/admin/guests/_editorial.html.erb
+    #panel "Editorial Partial" do
+    #  render 'editorial'
+    #end
+    
+    panel "Audio Transcription" do
+      p story.audio_transcription
+    end
+    
+    #active_admin_comments
+  end
+  
+  
   form do |f|                         
     f.inputs "Basic Info" do       
       f.input :title
