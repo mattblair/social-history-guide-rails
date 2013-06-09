@@ -93,6 +93,12 @@ ActiveAdmin.register Tidbit do
       f.input :media_copyright_url, :label => "Media Copyright URL", :input_html => {:rows => 1, :cols => 60}, :hint => "Copyright notice links to this web address"
       f.input :media_copyright_details, :label => "Media Copyright Details", :input_html => {:rows => 5, :cols => 60}, :hint => "Private details of copyright and licensing"
     end
+    f.inputs "More Info" do
+      f.input :more_info_url, :label => "More Info URL"
+      f.input :more_info_title, :label => "More Info Title"
+      f.input :more_info_description, :input_html => {:rows => 5, :cols => 60}, :hint => "Optional"
+      f.input :more_info_notes, :input_html => {:rows => 5, :cols => 60}, :label => "More Info Notes", :hint => "Not displayed to the public"
+    end
     f.inputs "Editorial Details" do
       f.input :workflow_state
       f.input :editorial_notes, :label => "Notes"
