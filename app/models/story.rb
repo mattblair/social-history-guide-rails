@@ -59,7 +59,9 @@ class Story < ActiveRecord::Base
   belongs_to :theme
   belongs_to :guest
   belongs_to :media_type
-  belongs_to :workflow_state 
+  belongs_to :workflow_state
+  
+  belongs_to :proofreader, :class_name => AdminUser
   
   # workflow: proposed, draft, deferred, incomplete, edited, published, testing
   scope :proposed, where(:workflow_state_id => 1)
@@ -70,6 +72,6 @@ class Story < ActiveRecord::Base
   scope :published, where(:workflow_state_id => 6)
   scope :testing, where(:workflow_state_id => 7)
   
-  attr_accessible :audio_filename, :audio_transcription, :display_order, :editing_priority, :editorial_notes, :image_credit, :image_name, :keywords, :latitude, :longitude, :original_audio_filename, :audio_filename, :subtitle, :summary, :thumbnail_name, :title, :twitter_template, :collection_id, :theme_id, :guest_id, :media_type_id, :workflow_state_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :slug
+  attr_accessible :audio_filename, :audio_transcription, :display_order, :editing_priority, :editorial_notes, :image_credit, :image_name, :keywords, :latitude, :longitude, :original_audio_filename, :audio_filename, :subtitle, :summary, :thumbnail_name, :title, :twitter_template, :collection_id, :theme_id, :guest_id, :media_type_id, :workflow_state_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :slug, :photo_notes, :proofreader_id
 
 end

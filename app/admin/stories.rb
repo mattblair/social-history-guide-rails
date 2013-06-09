@@ -104,6 +104,8 @@ ActiveAdmin.register Story do
       row :workflow_state do |s| 
         status_tag s.workflow_state.to_s, (s.workflow_state_id == 6 ? :ok : :warning)
       end
+      
+      row :proofreader
     end
     
     #panel "Image Details" do
@@ -111,7 +113,7 @@ ActiveAdmin.register Story do
     #end
         
     panel "Editorial Details" do
-      attributes_table_for story, :editorial_notes, :editing_priority, :display_order, :created_at, :updated_at
+      attributes_table_for story, :editorial_notes, :photo_notes, :editing_priority, :display_order, :created_at, :updated_at
     end
     
     # or put this in a partial like /app/views/admin/guests/_editorial.html.erb
@@ -144,6 +146,7 @@ ActiveAdmin.register Story do
       f.input :audio_transcription, :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
     end
     f.inputs "Image Details" do
+      f.input :photo_notes, :label => "Photo Research Notes"
       f.input :image_name, :label => "Image Filename"
       f.input :image_credit, :label => "Image Credit", :hint => "Displayed below the image"
       f.input :image_credit_url, :label => "Image Credit URL", :input_html => {:rows => 1, :cols => 60}, :hint => "Image credit text links to this web address"
@@ -159,6 +162,7 @@ ActiveAdmin.register Story do
       f.input :workflow_state
       f.input :media_type, :label => "Format", :hint => "Most stories will be audio interviews"
       f.input :editorial_notes, :label => "Notes"
+      f.input :proofreader, :label => "Proofread By:"
       f.input :display_order
       f.input :editing_priority
     end                          

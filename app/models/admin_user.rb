@@ -23,8 +23,15 @@ class AdminUser < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
+         
+  has_many :proofread_stories, :class_name => Story, :foreign_key => :proofreader_id
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+  
+  def to_s
+    email # change to name once that's been added
+  end
+  
 end

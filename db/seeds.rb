@@ -43,7 +43,11 @@ user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => EN
 puts 'user: ' << user.name
 user.add_role :admin
 
-puts 'Adding PDX USERS --------------------------------------'
+admin_user = AdminUser.find_or_create_by_email :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
+
+admin_user.save
+
+puts 'Adding PREVIEW USERS ----------------------------------'
 records = JSON.parse(File.read(ENV['KYC_USER_JSON']))
 records.each do |kyc_user|
   puts "Adding account for #{kyc_user['human_name']}"
@@ -108,7 +112,6 @@ themes.each do |kyc_theme|
 end
 
 puts 'Populating GUESTS -------------------------------------'
-# import from kyc_users.json
 
 guests = JSON.parse(File.read(ENV['KYC_GUESTS_JSON']))
 guests.each do |kyc_guest|
@@ -121,6 +124,7 @@ guests.each do |kyc_guest|
   guest.quote = kyc_guest['quote']
   guest.specialty = kyc_guest['specialty']
   guest.title = kyc_guest['title']
+  guest.display_order = kyc_guest['display_order']
   
   guest.save
   
@@ -142,11 +146,38 @@ stories.each do |kyc_story|
     story.display_order = kyc_story['display_order']
     story.theme_id = kyc_story['theme_id']
     story.guest_id = kyc_story['guest_id']
+    story.latitude = kyc_story['latitude']
+    story.longitude = kyc_story['longitude']
     story.editing_priority = kyc_story['editing_priority']
     story.editorial_notes = kyc_story['editorial_notes']
 
     story.save
     
   end
+end
+
+puts 'Populating TIDBITS ------------------------------------'
+
+tidbits = JSON.parse(File.read(ENV['KYC_TIDBITS_JSON']))
+tidbits.each do |kyc_tidbit|
   
+  if !kyc_tidbit['title'].empty?
+    
+    puts "Adding tidbit object for #{kyc_tidbit['title']}"
+
+    tidbit = Tidbit.find_or_create_by_title :title => kyc_tidbit['title']
+
+    tidbit.body = kyc_tidbit['body']
+    tidbit.publication_date = kyc_tidbit['publication_date']
+    tidbit.latitude = kyc_tidbit['latitude']
+    tidbit.longitude = kyc_tidbit['longitude']
+    tidbit.theme_id = kyc_tidbit['theme_id']
+    tidbit.slug = kyc_tidbit['slug']
+    tidbit.editorial_notes = kyc_tidbit['editorial_notes']
+    tidbit.workflow_state_id = kyc_tidbit['workflow_state_id']
+    tidbit.media_type_id = kyc_tidbit['media_type_id']
+
+    tidbit.save
+    
+  end
 end
