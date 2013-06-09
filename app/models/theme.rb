@@ -42,6 +42,8 @@ class Theme < ActiveRecord::Base
   
   delegate :state_name, :to => :workflow_state
   
+  belongs_to :proofreader, :class_name => AdminUser
+  
   # workflow: proposed, draft, deferred, incomplete, edited, published, testing
   scope :proposed, where(:workflow_state_id => 1)
   scope :draft, where(:workflow_state_id => 2)
@@ -51,5 +53,5 @@ class Theme < ActiveRecord::Base
   scope :published, where(:workflow_state_id => 6)
   scope :testing, where(:workflow_state_id => 7)
   
-  attr_accessible :display_order, :editorial_notes, :image_credit, :image_name, :keywords, :latitude, :longitude, :subtitle, :summary, :title, :twitter_template, :workflow_state_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :slug
+  attr_accessible :display_order, :editorial_notes, :image_credit, :image_name, :keywords, :latitude, :longitude, :subtitle, :summary, :title, :twitter_template, :workflow_state_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :slug, :proofreader_id
 end

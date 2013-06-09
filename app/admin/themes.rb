@@ -82,6 +82,7 @@ ActiveAdmin.register Theme do
     f.inputs "Editorial Details" do
       f.input :workflow_state
       f.input :editorial_notes, :label => "Notes"
+      f.input :proofreader, :label => "Proofread By:"
       f.input :display_order
     end                          
     f.actions
