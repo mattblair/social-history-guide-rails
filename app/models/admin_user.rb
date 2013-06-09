@@ -25,6 +25,7 @@ class AdminUser < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :proofread_stories, :class_name => Story, :foreign_key => :proofreader_id
+  has_many :proofread_tidbits, :class_name => Tidbit, :foreign_key => :proofreader_id
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me

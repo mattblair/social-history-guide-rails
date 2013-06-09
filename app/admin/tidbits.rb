@@ -96,6 +96,7 @@ ActiveAdmin.register Tidbit do
     f.inputs "Editorial Details" do
       f.input :workflow_state
       f.input :editorial_notes, :label => "Notes"
+      f.input :proofreader, :label => "Proofread By:"
     end                          
     f.actions
   end

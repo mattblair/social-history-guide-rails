@@ -63,6 +63,8 @@ class Tidbit < ActiveRecord::Base
   
   delegate :state_name, :to => :workflow_state
   
+  belongs_to :proofreader, :class_name => AdminUser
+  
   # workflow: proposed, draft, deferred, incomplete, edited, published, testing
   scope :proposed, where(:workflow_state_id => 1)
   scope :draft, where(:workflow_state_id => 2)
@@ -72,5 +74,5 @@ class Tidbit < ActiveRecord::Base
   scope :published, where(:workflow_state_id => 6)
   scope :testing, where(:workflow_state_id => 7)
   
-  attr_accessible :audio_filename, :body, :editorial_notes, :image_caption, :image_credit, :image_name, :latitude, :longitude, :publication_date, :source, :source_url, :title, :twitter_template, :year, :audio_filename, :workflow_state_id, :media_type_id, :collection_id, :theme_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :media_copyright_notice, :media_copyright_url, :media_copyright_details, :slug
+  attr_accessible :audio_filename, :body, :editorial_notes, :image_caption, :image_credit, :image_name, :latitude, :longitude, :publication_date, :source, :source_url, :title, :twitter_template, :year, :audio_filename, :workflow_state_id, :media_type_id, :collection_id, :theme_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :media_copyright_notice, :media_copyright_url, :media_copyright_details, :slug, :photo_notes, :proofreader_id
 end
