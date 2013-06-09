@@ -44,6 +44,8 @@ class Guest < ActiveRecord::Base
   belongs_to :workflow_state
   has_many :stories
   
+  belongs_to :proofreader, :class_name => AdminUser
+  
   # workflow: proposed, draft, deferred, incomplete, edited, published, testing
   scope :proposed, where(:workflow_state_id => 1)
   scope :draft, where(:workflow_state_id => 2)
@@ -53,5 +55,5 @@ class Guest < ActiveRecord::Base
   scope :published, where(:workflow_state_id => 6)
   scope :testing, where(:workflow_state_id => 7)
   
-  attr_accessible :bio, :editorial_notes, :guest_url, :guest_url_text, :image_name, :name, :organization, :quote, :title, :twitter_template, :workflow_state_id, :display_order, :specialty, :image_credit, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :release_confirmed, :slug
+  attr_accessible :bio, :editorial_notes, :guest_url, :guest_url_text, :image_name, :name, :organization, :quote, :title, :twitter_template, :workflow_state_id, :display_order, :specialty, :image_credit, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :release_confirmed, :slug, :proofreader_id
 end

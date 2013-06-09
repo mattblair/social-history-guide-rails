@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130609220228) do
+ActiveRecord::Schema.define(:version => 20130609220542) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(:version => 20130609220228) do
     t.text     "image_copyright_details"
     t.boolean  "release_confirmed",       :default => false
     t.string   "slug"
+    t.integer  "proofreader_id"
   end
 
   add_index "guests", ["slug"], :name => "index_guests_on_slug", :unique => true

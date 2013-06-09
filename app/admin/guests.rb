@@ -74,6 +74,7 @@ ActiveAdmin.register Guest do
       row :release_confirmed do |g| 
         status_tag (g.release_confirmed ? "On File" : "Needed"), (g.release_confirmed ? :ok : :error)
       end
+      row :proofreader
     end
     
     panel "Biography" do
@@ -129,6 +130,7 @@ ActiveAdmin.register Guest do
     f.inputs "Editorial Details" do
       f.input :workflow_state
       f.input :editorial_notes, :label => "Notes", :input_html => {:rows => 8, :cols => 60}
+      f.input :proofreader, :label => "Proofread By:"
       f.input :display_order
       f.input :release_confirmed
     end

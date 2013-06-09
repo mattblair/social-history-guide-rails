@@ -27,6 +27,7 @@ class AdminUser < ActiveRecord::Base
   has_many :proofread_stories, :class_name => Story, :foreign_key => :proofreader_id
   has_many :proofread_tidbits, :class_name => Tidbit, :foreign_key => :proofreader_id
   has_many :proofread_themes, :class_name => Theme, :foreign_key => :proofreader_id
+  has_many :proofread_guests, :class_name => Guest, :foreign_key => :proofreader_id
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
