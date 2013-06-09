@@ -111,7 +111,13 @@ ActiveAdmin.register Story do
     #panel "Image Details" do
     #  attributes_table_for story, :image_name, :image_credit, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details
     #end
-        
+    
+    # or do this as a sidebar?
+    
+    panel "More Info" do
+      attributes_table_for story, :more_info_url, :more_info_title, :more_info_description, :more_info_notes
+    end
+      
     panel "Editorial Details" do
       attributes_table_for story, :editorial_notes, :photo_notes, :editing_priority, :display_order, :created_at, :updated_at
     end
@@ -157,6 +163,12 @@ ActiveAdmin.register Story do
     f.inputs "Geocoding" do 
       f.input :latitude, :input_html => { :size => 16 }
       f.input :longitude, :input_html => { :size => 16 }
+    end
+    f.inputs "More Info" do
+      f.input :more_info_url, :label => "More Info URL"
+      f.input :more_info_title, :label => "More Info Title"
+      f.input :more_info_description, :input_html => {:rows => 5, :cols => 60}, :hint => "Optional"
+      f.input :more_info_notes, :input_html => {:rows => 5, :cols => 60}, :label => "More Info Notes", :hint => "Not displayed to the public"
     end
     f.inputs "Editorial Details" do
       f.input :workflow_state
