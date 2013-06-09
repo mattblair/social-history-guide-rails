@@ -21,6 +21,8 @@
 #  image_copyright_notice  :string(255)
 #  image_copyright_url     :text
 #  image_copyright_details :text
+#  slug                    :string(255)
+#  proofreader_id          :integer
 #
 
 require 'spec_helper'

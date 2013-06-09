@@ -24,6 +24,8 @@
 #  image_copyright_url     :text
 #  image_copyright_details :text
 #  release_confirmed       :boolean          default(FALSE)
+#  slug                    :string(255)
+#  proofreader_id          :integer
 #
 
 class Guest < ActiveRecord::Base

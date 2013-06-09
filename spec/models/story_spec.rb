@@ -30,6 +30,13 @@
 #  image_copyright_notice  :string(255)
 #  image_copyright_url     :text
 #  image_copyright_details :text
+#  slug                    :string(255)
+#  photo_notes             :text
+#  proofreader_id          :integer
+#  more_info_url           :string(255)
+#  more_info_title         :string(255)
+#  more_info_description   :text
+#  more_info_notes         :text
 #
 
 require 'spec_helper'
