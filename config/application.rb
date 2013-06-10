@@ -72,5 +72,8 @@ module KycGuideRails
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    # Use JSON for versions instead of YAML
+    PaperTrail.serializer = PaperTrail::Serializers::Json
   end
 end
