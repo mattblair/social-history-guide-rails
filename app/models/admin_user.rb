@@ -30,7 +30,7 @@ class AdminUser < ActiveRecord::Base
   has_many :proofread_guests, :class_name => Guest, :foreign_key => :proofreader_id
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :human_name, :username
   # attr_accessible :title, :body
   
   def to_s

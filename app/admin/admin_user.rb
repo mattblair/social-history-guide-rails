@@ -21,10 +21,12 @@ ActiveAdmin.register AdminUser do
   filter :email                       
 
   form do |f|                         
-    f.inputs "Admin Details" do       
+    f.inputs "Admin Details" do
+      f.input :human_name
+      f.input :username
       f.input :email                  
       f.input :password               
-      f.input :password_confirmation, :label => "Confirm Password (for verification)"  
+      f.input :password_confirmation, :label => "Confirm Password (for verification)"
     end                               
     f.actions                         
   end                                 
