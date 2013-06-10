@@ -6,9 +6,10 @@ class ApplicationController < ActionController::Base
   end
   
   # stores id of AdminUser in PaperTrail.whodunnit, which is a string. 
-  # Use to_i to join to admin_users table
   def user_for_paper_trail
-    return current_admin_user 
+    # or use just current_admin_user, which will store the id
+    # then use to_i to join to admin_users table    
+    return current_admin_user.username 
   end
   
 end
