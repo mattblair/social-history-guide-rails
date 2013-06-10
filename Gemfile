@@ -22,7 +22,8 @@ group :test do
 end
 
 group :production do
-  gem 'pg'
+  # gem 'pg'
+  gem 'sqlite3'
 end
 
 #gem 'sqlite3'
@@ -54,3 +55,4 @@ gem "activeadmin"
 gem "meta_search",    ">= 1.1.0.pre"
 gem "friendly_id", "~> 4.0" # 5.0 is for Rails 4.0+
 gem "geocoder"
+gem "paper_trail", "~> 2"
