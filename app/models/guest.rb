@@ -59,5 +59,7 @@ class Guest < ActiveRecord::Base
   scope :published, where(:workflow_state_id => 6)
   scope :testing, where(:workflow_state_id => 7)
   
-  attr_accessible :bio, :editorial_notes, :guest_url, :guest_url_text, :image_name, :name, :organization, :quote, :title, :twitter_template, :workflow_state_id, :display_order, :specialty, :image_credit, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :release_confirmed, :slug, :proofreader_id
+  attr_accessible :bio, :editorial_notes, :guest_url, :guest_url_text, :image_name, :name, :organization, :quote, :title, :twitter_template, :workflow_state_id, :display_order, :specialty, :image_credit, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :slug, :proofreader_id
+  
+  attr_protected :release_confirmed
 end

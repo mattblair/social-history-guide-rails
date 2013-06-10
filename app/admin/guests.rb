@@ -132,7 +132,8 @@ ActiveAdmin.register Guest do
       f.input :editorial_notes, :label => "Notes", :input_html => {:rows => 8, :cols => 60}
       f.input :proofreader, :label => "Proofread By:"
       f.input :display_order
-      f.input :release_confirmed
+      # edit in console until admin roles are in place
+      #f.input :release_confirmed
     end
     f.actions
   end
