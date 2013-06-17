@@ -15,9 +15,14 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  human_name             :string(255)
+#  username               :string(255)
 #
 
 class AdminUser < ActiveRecord::Base
+  
+  rolify
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -31,7 +36,6 @@ class AdminUser < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :human_name, :username
-  # attr_accessible :title, :body
   
   def to_s
     email # change to name once that's been added
