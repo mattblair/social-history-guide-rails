@@ -22,7 +22,6 @@ YAML.load(ENV['ROLES']).each do |role|
   puts 'Added role: ' << role
 end
 
-
 puts 'Populating WORKFLOW -----------------------------------'
 YAML.load(ENV['WORKFLOW_STATES']).each do |state|
   WorkflowState.find_or_create_by_state_name({ :state_name => state }, :without_protection => true)
@@ -39,13 +38,48 @@ end
 User.destroy_all
 
 puts 'Creating ADMIN USER -----------------------------------'
+
+# create admin as a preview user
 user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 puts 'user: ' << user.name
 user.add_role :admin
 
+# create placeholder admin user
 admin_user = AdminUser.find_or_create_by_email :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 
 admin_user.save
+
+# generate all admin accounts listed in JSON
+
+admin_team = JSON.parse(File.read(ENV['KYC_ADMIN_USER_JSON']))
+admin_team.each do |kyc_admin_user|
+  puts "Adding admin account for #{kyc_admin_user['human_name']}"
+  # use , without_protection: true to override attribute protection
+  
+  a_user = AdminUser.find_or_create_by_email :email => kyc_admin_user['email']
+  
+  a_user.human_name = kyc_admin_user['human_name']
+  a_user.username = kyc_admin_user['username']
+  a_user.password = kyc_admin_user['password']
+  a_user.password_confirmation = kyc_admin_user['password']
+  
+  # use specific role:
+  fetched_role = Role.where( :name => kyc_admin_user['role'] )
+  puts "Role: #{fetched_role.name} for #{kyc_admin_user['role']}"
+  if fetched_role
+    a_user.roles << fetched_role
+  else
+    puts "Role #{kyc_admin_user['role']} not defined."
+  end
+  
+  a_user.save
+  
+  # not showing errors yet. Test: use a password < 8 characters
+  a_user.errors do |error|
+    puts "Error saving account for #{kyc_admin_user['human_name']}: #{error.messages}"
+  end
+end
+
 
 puts 'Adding PREVIEW USERS ----------------------------------'
 records = JSON.parse(File.read(ENV['KYC_USER_JSON']))
