@@ -23,6 +23,10 @@
 #  image_copyright_details :text
 #  slug                    :string(255)
 #  proofreader_id          :integer
+#  map_data                :text
+#  map_data_type           :integer
+#  display_in_story_list   :boolean          default(TRUE)
+#  display_in_tidbit_list  :boolean          default(TRUE)
 #
 
 class Theme < ActiveRecord::Base

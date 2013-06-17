@@ -37,6 +37,8 @@
 #  more_info_title         :string(255)
 #  more_info_description   :text
 #  more_info_notes         :text
+#  map_data                :text
+#  map_data_type           :integer          default(0)
 #
 
 class Tidbit < ActiveRecord::Base
