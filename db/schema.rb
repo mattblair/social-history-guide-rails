@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610034348) do
+ActiveRecord::Schema.define(:version => 20130617175721) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -172,8 +172,8 @@ ActiveRecord::Schema.define(:version => 20130610034348) do
     t.float    "longitude"
     t.integer  "display_order"
     t.string   "keywords"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.integer  "workflow_state_id",       :default => 1
     t.text     "image_credit_url"
     t.string   "image_copyright_notice"
@@ -181,6 +181,10 @@ ActiveRecord::Schema.define(:version => 20130610034348) do
     t.text     "image_copyright_details"
     t.string   "slug"
     t.integer  "proofreader_id"
+    t.text     "map_data"
+    t.integer  "map_data_type"
+    t.boolean  "display_in_story_list",   :default => true
+    t.boolean  "display_in_tidbit_list",  :default => true
   end
 
   add_index "themes", ["slug"], :name => "index_themes_on_slug", :unique => true

@@ -141,6 +141,11 @@ themes.each do |kyc_theme|
   theme.longitude = kyc_theme['longitude']
   theme.workflow_state_id = kyc_theme['workflow_state_id']
   
+  # this defaults to true
+  if kyc_theme['display_in_story_list']
+    theme.display_in_story_list = kyc_theme['display_in_story_list']
+  end
+  
   theme.save
   
 end
