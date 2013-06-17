@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617175721) do
+ActiveRecord::Schema.define(:version => 20130617180545) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -156,6 +156,8 @@ ActiveRecord::Schema.define(:version => 20130617175721) do
     t.string   "more_info_title"
     t.text     "more_info_description"
     t.text     "more_info_notes"
+    t.text     "map_data"
+    t.integer  "map_data_type",           :default => 0
   end
 
   add_index "stories", ["slug"], :name => "index_stories_on_slug", :unique => true
