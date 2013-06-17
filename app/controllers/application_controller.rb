@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   def user_for_paper_trail
     # or use just current_admin_user, which will store the id
     # then use to_i to join to admin_users table    
-    return current_admin_user.username 
+    return current_admin_user  #current_admin_user.username 
   end
   
 end
