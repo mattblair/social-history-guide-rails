@@ -49,11 +49,12 @@ ActiveAdmin.register Story do
   sidebar :audio, :except => :index do
   # always returns nil. should return a local-variable on show & form?
   #sidebar :audio, :if => proc{ defined? story } do
-      audio_tag("#{story.audio_filename}.mp4", :controls => true, :type => "audio/mp4")
+      audio_tag("#{story.audio_filename}.mp3", :controls => true, :type => "audio/mp4")
   end
   
   sidebar :image, :except => :index do
-      image_tag("#{story.image_name}.jpg", :size => "240x180", :class => "story_image_preview", :alt => "Story Image")
+    # if image not specified, show a placeholder here.
+    image_tag("#{story.image_name}.jpg", :size => "240x180", :class => "story_image_preview", :alt => "Story Image")
   end
   
   sidebar :image_credits, :except => :index, :partial => "admin/resource/image_credits_sidebar"
@@ -152,7 +153,7 @@ ActiveAdmin.register Story do
       f.input :audio_transcription, :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
     end
     f.inputs "Image Details" do
-      f.input :photo_notes, :label => "Photo Research Notes"
+      f.input :photo_notes, :label => "Photo Research Notes", :input_html => {:rows => 10, :cols => 60}, :hint => "Not displayed to the public"
       f.input :image_name, :label => "Image Filename"
       f.input :image_credit, :label => "Image Credit", :hint => "Displayed below the image"
       f.input :image_credit_url, :label => "Image Credit URL", :input_html => {:rows => 1, :cols => 60}, :hint => "Image credit text links to this web address"
