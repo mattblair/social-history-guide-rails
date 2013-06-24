@@ -16,6 +16,9 @@
 
 import 'json'
 
+# KYC_SEED_DATA_DEV or KYC_SEED_DATA_PROD
+seed_data_dir = ENV['KYC_SEED_DATA_DEV']
+
 puts 'Populating ROLES --------------------------------------'
 YAML.load(ENV['ROLES']).each do |role|
   Role.find_or_create_by_name({ :name => role }, :without_protection => true)
@@ -39,19 +42,21 @@ User.destroy_all
 
 puts 'Creating ADMIN USER -----------------------------------'
 
-# create admin as a preview user
+# create admin as a preview user -- if needed
 user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 puts 'user: ' << user.name
 user.add_role :admin
 
 # create placeholder admin user
+=begin
 admin_user = AdminUser.find_or_create_by_email :email => ENV['ADMIN_EMAIL'].dup, :password => ENV['ADMIN_PASSWORD'].dup, :password_confirmation => ENV['ADMIN_PASSWORD'].dup
 
 admin_user.save
+=end
 
 # generate all admin accounts listed in JSON
 
-admin_team = JSON.parse(File.read(ENV['KYC_ADMIN_USER_JSON']))
+admin_team = JSON.parse(File.read(seed_data_dir + ENV['KYC_ADMIN_USER_JSON']))
 admin_team.each do |kyc_admin_user|
   puts "Adding admin account for #{kyc_admin_user['human_name']}"
   # use , without_protection: true to override attribute protection
@@ -82,7 +87,7 @@ end
 
 
 puts 'Adding PREVIEW USERS ----------------------------------'
-records = JSON.parse(File.read(ENV['KYC_USER_JSON']))
+records = JSON.parse(File.read(seed_data_dir + ENV['KYC_USER_JSON']))
 records.each do |kyc_user|
   puts "Adding account for #{kyc_user['human_name']}"
   # use , without_protection: true to override attribute protection
@@ -112,7 +117,7 @@ end
 
 puts 'Populating COLLECTIONS --------------------------------'
 
-collections = JSON.parse(File.read(ENV['KYC_COLLECTION_JSON']))
+collections = JSON.parse(File.read(seed_data_dir + ENV['KYC_COLLECTION_JSON']))
 collections.each do |kyc_collection|
   puts "Adding collection object for #{kyc_collection['title']}"
   # use , without_protection: true to override attribute protection
@@ -130,7 +135,7 @@ end
 puts 'Populating THEMES -------------------------------------'
 # import from themes.json
 
-themes = JSON.parse(File.read(ENV['KYC_THEMES_JSON']))
+themes = JSON.parse(File.read(seed_data_dir + ENV['KYC_THEMES_JSON']))
 themes.each do |kyc_theme|
   
   puts "Adding theme object for #{kyc_theme['title']}"
@@ -152,7 +157,7 @@ end
 
 puts 'Populating GUESTS -------------------------------------'
 
-guests = JSON.parse(File.read(ENV['KYC_GUESTS_JSON']))
+guests = JSON.parse(File.read(seed_data_dir + ENV['KYC_GUESTS_JSON']))
 guests.each do |kyc_guest|
   
   puts "Adding guest object for #{kyc_guest['name']}"
@@ -171,33 +176,35 @@ end
 
 puts 'Populating STORIES ------------------------------------'
 
-stories = JSON.parse(File.read(ENV['KYC_STORIES_JSON']))
+stories = JSON.parse(File.read(seed_data_dir + ENV['KYC_STORIES_JSON']))
 stories.each do |kyc_story|
   
-  if !kyc_story['title'].empty?
+  # import all, even if they don't have titles yet
+  #if !kyc_story['title'].empty?
     
-    puts "Adding story object for #{kyc_story['title']}"
+  puts "Adding story object for #{kyc_story['title']}"
 
-    story = Story.find_or_create_by_title :title => kyc_story['title'], :original_audio_filename => kyc_story['original_audio_filename'], :audio_filename => kyc_story['audio_filename']
+  story = Story.find_or_create_by_title :title => kyc_story['title'], :original_audio_filename => kyc_story['original_audio_filename'], :audio_filename => kyc_story['audio_filename']
 
-    story.summary = kyc_story['summary']
-    story.subtitle = kyc_story['subtitle']
-    story.display_order = kyc_story['display_order']
-    story.theme_id = kyc_story['theme_id']
-    story.guest_id = kyc_story['guest_id']
-    story.latitude = kyc_story['latitude']
-    story.longitude = kyc_story['longitude']
-    story.editing_priority = kyc_story['editing_priority']
-    story.editorial_notes = kyc_story['editorial_notes']
+  story.summary = kyc_story['summary']
+  story.subtitle = kyc_story['subtitle']
+  story.display_order = kyc_story['display_order']
+  story.theme_id = kyc_story['theme_id']
+  story.guest_id = kyc_story['guest_id']
+  story.latitude = kyc_story['latitude']
+  story.longitude = kyc_story['longitude']
+  story.editing_priority = kyc_story['editing_priority']
+  story.editorial_notes = kyc_story['editorial_notes']
+  story.photo_notes = kyc_story['photo_notes']
+  story.more_info_notes = kyc_story['more_info_notes']
 
-    story.save
+  story.save
     
-  end
 end
 
 puts 'Populating TIDBITS ------------------------------------'
 
-tidbits = JSON.parse(File.read(ENV['KYC_TIDBITS_JSON']))
+tidbits = JSON.parse(File.read(seed_data_dir + ENV['KYC_TIDBITS_JSON']))
 tidbits.each do |kyc_tidbit|
   
   if !kyc_tidbit['title'].empty?
