@@ -264,6 +264,7 @@ DEPENDENCIES
   paper_trail (~> 2)
   quiet_assets (>= 1.0.2)
   rails (= 3.2.13)
+  rake (= 10.1.0)
   rolify (>= 3.2.0)
   rspec-rails (>= 2.12.2)
   sass-rails (~> 3.2.3)
