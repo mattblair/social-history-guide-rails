@@ -23,6 +23,8 @@ end
 
 group :production do
   # gem 'pg'
+  gem 'therubyracer'
+  #gem 'execjs'
   gem 'sqlite3'
 end
 
