@@ -16,8 +16,7 @@
 
 import 'json'
 
-# KYC_SEED_DATA_DEV or KYC_SEED_DATA_PROD
-seed_data_dir = ENV['KYC_SEED_DATA_DEV']
+seed_data_dir = Rails.env == "production" ? ENV['KYC_SEED_DATA_PROD'] : ENV['KYC_SEED_DATA_DEV']
 
 puts 'Populating ROLES --------------------------------------'
 YAML.load(ENV['ROLES']).each do |role|
