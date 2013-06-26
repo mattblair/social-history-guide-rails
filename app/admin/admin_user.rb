@@ -1,7 +1,7 @@
 ActiveAdmin.register AdminUser do     
   
   # to hide the admin users completely:
-  #menu false
+  menu false
   
   # to show it only to admins:
   #ActiveAdmin.register AdminUser do
