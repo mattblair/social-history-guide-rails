@@ -64,7 +64,7 @@ ActiveAdmin.register Story do
         li "To add an image, type the name of the file in the Image Filename
         field, and put it on Dropbox, or email it to me. Or just enter the URL
         for it if it's already online."
-        li "They image won't appear here until I crop it, and add it to the images folder of the website."
+        li "The image won't appear here until I crop it, and add it to the images folder of the website."
       end
   end
   
