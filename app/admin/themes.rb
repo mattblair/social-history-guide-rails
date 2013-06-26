@@ -6,13 +6,13 @@ ActiveAdmin.register Theme do
   menu :priority => 1
   
   # workflow: proposed, draft, deferred, incomplete, edited, published, testing
-  scope :proposed
+  #scope :proposed
   scope :draft
-  scope :deferred
+  #scope :deferred
   scope :incomplete
   scope :edited
   scope :published
-  scope :testing # only show to admin?
+  #scope :testing # only show to admin?
   
   filter :title
   filter :summary
