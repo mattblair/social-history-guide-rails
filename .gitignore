@@ -75,4 +75,6 @@ pickle-email-*.html
 
 # Ignore application configuration
 /config/application.yml
-/config/deploy.rb
+
+# remove comment if you need to include sensitive information
+#/config/deploy.rb
