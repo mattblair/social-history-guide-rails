@@ -66,6 +66,18 @@ class Story < ActiveRecord::Base
     self.longitude ||= 0.0
   end
   
+  def valid_coordinate?
+    # we want to test whether the coordinate has been set from its default.
+    # there's probably a better test than this.
+    # it might even make sense to test that the coordinate is within geoscope, i.e.
+    # a colleciton-specific bounding box.
+    if (self.latitude.abs + self.longitude.abs) > 0.0
+      return true
+    else
+      return false
+    end
+  end
+  
   belongs_to :collection
   belongs_to :theme
   belongs_to :guest
