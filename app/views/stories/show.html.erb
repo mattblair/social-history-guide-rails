@@ -2,8 +2,12 @@
 
 <p><em><%= link_to "Return to #{@story.theme.title}", @story.theme %></em></p>
 
+<% if false %>
 <%=image_tag("#{@story.image_name}.jpg", :class => "story_image", :alt => "Story Image") %>
+<% end %>
 
+<%-# hard code link during development, until pipeline configured for server %>
+<img alt="Story Image" class="story_image" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@story.image_name}.jpg" %> />
 <p class="image-credit"><em>Image credit:</em> <%= @story.image_credit %></p>
 
 <h2><%= @story.title %></h2>
