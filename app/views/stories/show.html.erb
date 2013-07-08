@@ -14,17 +14,19 @@
   <%= @story.summary %>
 </p>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=240x180&sensor=false&zoom=16&markers=#{@story.latitude}%2C#{@story.longitude}", :size => "240x180" %>
+<% if @story.valid_coordinate? %>
 
-<h3>Nearby Stories</h3>
-<ul>
-<% for story in @story.nearbys(10) %>
-  <li><%= link_to story.title, story %> (<%= story.distance.round(2) %> miles)</li>
+	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=240x180&sensor=false&zoom=16&markers=#{@story.latitude}%2C#{@story.longitude}", :size => "240x180" %>
+
+	<h3>Nearby Stories</h3>
+	<ul>
+	<% for story in @story.nearbys(10) %>
+	  <li><%= link_to story.title, story %> (<%= story.distance.round(2) %> miles)</li>
+	<% end %>
+	</ul>
+
 <% end %>
-</ul>
 
 <%=audio_tag("#{@story.audio_filename}.mp3", :controls => true) %>
-
-
 
 <p><em><%= link_to "Return to #{@story.theme.title}", @story.theme %></em></p>
