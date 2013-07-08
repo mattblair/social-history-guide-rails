@@ -78,7 +78,9 @@ ActiveAdmin.register Guest do
     end
     
     panel "Biography" do
-      p guest.bio
+      div do
+        simple_format guest.bio
+      end
     end
     
     panel "Quote" do
@@ -88,7 +90,9 @@ ActiveAdmin.register Guest do
     panel "Editorial Notes" do
       # this will not inject the unwanted title
       #attributes_table_for guest, :workflow_state, :editorial_notes, :release_confirmed
-      p guest.editorial_notes
+      div do
+        simple_format guest.editorial_notes
+      end
       # if you nest attributes_table in a panel, it titles the whole structure "Guest Details"
     end
     

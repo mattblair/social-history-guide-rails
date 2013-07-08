@@ -122,7 +122,11 @@ ActiveAdmin.register Story do
     end
       
     panel "Editorial Details" do
-      attributes_table_for story, :editorial_notes, :photo_notes, :editing_priority, :display_order, :created_at, :updated_at
+      div do
+        simple_format story.editorial_notes
+      end
+      attributes_table_for story, :photo_notes, :editing_priority, :display_order, :created_at, :updated_at
+      
     end
     
     # or put this in a partial like /app/views/admin/guests/_editorial.html.erb
@@ -131,7 +135,9 @@ ActiveAdmin.register Story do
     #end
     
     panel "Audio Transcription" do
-      p story.audio_transcription
+      div do
+        simple_format story.audio_transcription
+      end
     end
     
     #active_admin_comments
