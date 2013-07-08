@@ -61,6 +61,8 @@ ActiveAdmin.register Story do
   
   sidebar :image_tips do
       ul do
+        li "Images may be in jpeg or TIFF format. A PDF file is acceptable for documents. Please ask first about other formats."
+        li "Images must have a resolution of 2,048 x 1,536 pixels (width x height) or greater. The bigger the better, especially if we will need to crop the image."
         li "To add an image, type the name of the file in the Image Filename
         field, and put it on Dropbox, or email it to me. Or just enter the URL
         for it if it's already online."
