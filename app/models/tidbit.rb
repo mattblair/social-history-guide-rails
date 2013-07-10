@@ -63,6 +63,15 @@ class Tidbit < ActiveRecord::Base
     self.longitude ||= 0.0
   end
   
+  def valid_coordinate?
+    # see comment in story model
+    if (self.latitude.abs + self.longitude.abs) > 0.0
+      return true
+    else
+      return false
+    end
+  end
+  
   # must have to use geocoder queries
   reverse_geocoded_by :latitude, :longitude
   
