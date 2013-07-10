@@ -52,10 +52,14 @@ ActiveAdmin.register Story do
       audio_tag("#{story.audio_filename}.mp3", :controls => true, :type => "audio/mp4")
   end
   
+=begin
   sidebar :image, :except => :index do
     # if image not specified, show a placeholder here.
-    image_tag("#{story.image_name}.jpg", :size => "240x180", :class => "story_image_preview", :alt => "Story Image")
+    image_tag("#{story.image_name}.jpg", :size => "240x180", :class => "story_image_preview", :alt => "Story Image")    
   end
+=end
+  
+  sidebar :current_image, :except => :index, :partial => "admin/resource/story_image_sidebar"
   
   sidebar :image_credits, :except => :index, :partial => "admin/resource/image_credits_sidebar"
   
