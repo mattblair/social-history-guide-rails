@@ -3,7 +3,9 @@ class ThemesController < ApplicationController
   # GET /themes.json
   def index
     # everything:
-    @themes = Theme.order("display_order")
+    #@themes = Theme.order("display_order")
+    # for testing, limit to draft state:
+    @themes = Theme.where("workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
     # limit to published, stories or tidbits > 1, order by display_order
     #@themes = Theme.where("workflow_state_id = 6")
     
@@ -20,7 +22,7 @@ class ThemesController < ApplicationController
     
     # limit to published, collection 1, order by display_order
     @tidbits = Tidbit.where("theme_id = #{@theme.id}").order("publication_date DESC")
-    @stories = Story.where("theme_id = #{@theme.id}").order("display_order")
+    @stories = Story.where("theme_id = #{@theme.id} and workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
     
     respond_to do |format|
       format.html # show.html.erb
