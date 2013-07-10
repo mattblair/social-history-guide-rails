@@ -44,6 +44,8 @@
 
 <% end %>
 
-<%=audio_tag("#{@story.audio_filename}.mp3", :controls => true) %>
+<h4 class="more-info-section-title">More Info:</h4>
+<p><a href="<%= @story.more_info_url %>"><%= @story.more_info_title %></a></p>
+<p><%= @story.more_info_description %></p>
 
 <p><em><%= link_to "Return to #{@story.theme.title}", @story.theme %></em></p>
