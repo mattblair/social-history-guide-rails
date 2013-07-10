@@ -1,41 +1,48 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @tidbit.title %>
-</p>
+<h3><%= @tidbit.title %></h3>
 
 <p>
-  <b>Year:</b>
-  <%= @tidbit.year %>
+  <em><%= @tidbit.year %></em>
 </p>
 
-<p>
-  <b>Image name:</b>
-  <%= @tidbit.image_name %>
-</p>
+<% if false %>
+  <%=image_tag("#{@tidbit.image_name}.jpg", :class => "story_image", :alt => "Story Image") %>
+<% end %>
+
+<% if !@tidbit.image_name.nil? %>
+	<%-# hard code link during development, until pipeline configured for server %>
+	<img alt="snapshot image" class="snapshot_image" width="320" height="240" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@tidbit.image_name}.jpg" %> />
+	<p class="image-credit"><em>Image by:</em> <%= @tidbit.image_credit %></p>
+
+	<p>
+	  <em><%= @tidbit.image_caption %></em>
+	</p>
+<% end %>
+
+<% if !@tidbit.audio_filename.nil? %>
+	<audio controls="controls" >
+		<source src=<%="/audios/#{@tidbit.audio_filename}.mp3"  %> />
+		<source src=<%="/audios/#{@tidbit.audio_filename}.ogg"  %> />
+		  <!-- some other kind of failure-handling -->
+		 Needs different format 
+	</audio>
+<% end %>
 
 <p>
-  <b>Image caption:</b>
-  <%= @tidbit.image_caption %>
-</p>
-
-<p>
-  <b>Image credit:</b>
-  <%= @tidbit.image_credit %>
-</p>
-
-<p>
-  <b>Body:</b>
   <%= @tidbit.body %>
 </p>
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@tidbit.latitude}%2C#{@tidbit.longitude}" %>
+<% if @tidbit.valid_coordinate? %>
 
-<h3>Nearby Tidbits</h3>
-<ul>
-<% for tidbit in @tidbit.nearbys(10) %>
-  <li><%= link_to tidbit.title, tidbit %> (<%= tidbit.distance.round(2) %> miles)</li>
+	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=320x240&sensor=false&zoom=16&markers=#{@tidbit.latitude}%2C#{@tidbit.longitude}" %>
+
+	<h4>Nearby Tidbits</h4>
+	<ul>
+	<% for tidbit in @tidbit.nearbys(10) %>
+	  <li><%= link_to tidbit.title, tidbit %> (<%= tidbit.distance.round(2) %> miles)</li>
+	<% end %>
+	</ul>
 <% end %>
-</ul>
+
 <%= link_to 'Back to Snapshots', tidbits_path %>
