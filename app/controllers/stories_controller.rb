@@ -2,7 +2,8 @@ class StoriesController < ApplicationController
   # GET /stories
   # GET /stories.json
   def index
-    @stories = Story.all
+    #@stories = Story.all
+    @stories = Story.where("workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
 
     respond_to do |format|
       format.html # index.html.erb
