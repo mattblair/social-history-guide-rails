@@ -1,17 +1,6 @@
 <h1>Snapshots</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Publication date</th>
-    <th>Year</th>
-  </tr>
-
 <% @tidbits.each do |tidbit| %>
-  <tr>
-    <td><%= link_to tidbit.title, tidbit %></td>
-    <td><%= tidbit.publication_date %></td>
-    <td><%= tidbit.year %></td>
-  </tr>
+	<h3><%= link_to tidbit.title, tidbit %></h3>
+	<p><em>Published: <%= tidbit.publication_date %></em></p>
 <% end %>
-</table>
