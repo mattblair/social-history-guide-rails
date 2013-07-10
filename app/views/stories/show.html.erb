@@ -10,13 +10,26 @@
 <img alt="Story Image" class="story_image" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@story.image_name}.jpg" %> />
 <p class="image-credit"><em>Image credit:</em> <%= @story.image_credit %></p>
 
+<% if false %>
+<%-# need more robust handling for browsers without HTML5 audio support %>
+<%=audio_tag("#{@story.audio_filename}.mp3", :controls => true) %>
+<%-# output is incorrect? looks like:  %>
+<%-# <audio controls="controls" src="/audios/audio_filename.mp3" /> %>
+<% end %>
+
+<%-# should make multiple formats available %>
+<audio controls="controls" >
+	<source src=<%="/audios/#{@story.audio_filename}.mp3"  %> />
+	<source src=<%="/audios/#{@story.audio_filename}.ogg"  %> />
+	  <!-- some other kind of failure-handling -->
+	 Needs different format 
+</audio>
+
 <h2><%= @story.title %></h2>
 
 <h4><em><%= @story.subtitle %></em></h4>
 
-<p>
-  <%= @story.summary %>
-</p>
+<p><%= @story.summary %></p>
 
 <% if @story.valid_coordinate? %>
 
