@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    #@users = User.all
-    @themes = Theme.all
+    @themes = Theme.where("workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
   end
 end
