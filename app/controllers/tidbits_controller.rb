@@ -2,7 +2,7 @@ class TidbitsController < ApplicationController
   # GET /tidbits
   # GET /tidbits.json
   def index
-    @tidbits = Tidbit.all
+    @tidbits = Tidbit.order("publication_date DESC")
 
     respond_to do |format|
       format.html # index.html.erb
