@@ -14,6 +14,8 @@ class GuestsController < ApplicationController
   # GET /guests/1.json
   def show
     @guest = Guest.find(params[:id])
+    
+    @stories = Story.where("guest_id = #{@guest.id} and workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
 
     respond_to do |format|
       format.html # show.html.erb
