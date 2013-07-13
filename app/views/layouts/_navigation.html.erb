@@ -1,15 +1,9 @@
 <%= link_to "Know Your City Guide (Beta)", root_path, :class => 'brand' %>
 <ul class="nav">
-  <li>
-	<%= link_to 'Themes', themes_path %>
-  </li>
-  <li>
-	<%= link_to 'Guests', guests_path %>
-  </li>
-  <li>
-	<%= link_to 'Snapshots', tidbits_path %>
-  </li>
-  <li>
-	<%= link_to 'About', "about.html" %>
-  </li>
+  <li><%= link_to 'Themes', themes_path %></li>
+<% if false %>
+  <li><%= link_to 'Guests', guests_path %></li>
+<% end %>
+  <li><%= link_to 'Snapshots', tidbits_path %></li>
+  <li><%= link_to 'About', "about.html" %></li>
 </ul>
