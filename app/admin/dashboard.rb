@@ -48,7 +48,6 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-
         panel "Recently Edited to Tidbits" do
           ul do
             Tidbit.where("workflow_state_id = 2").order("updated_at desc").limit(20).map do |tidbit|
@@ -61,6 +60,15 @@ ActiveAdmin.register_page "Dashboard" do
             Tidbit.where("workflow_state_id = 2").order("updated_at desc").map do |tidbit|
               if !tidbit.valid_coordinate?
                 li link_to(tidbit.title, admin_tidbit_path(tidbit))
+              end
+            end
+          end
+        end
+        panel "Unmapped Stories" do
+          ul do
+            Story.where("workflow_state_id = 2").order("updated_at desc").map do |story|
+              if !story.valid_coordinate?
+                li link_to(story.title, admin_story_path(story))
               end
             end
           end
