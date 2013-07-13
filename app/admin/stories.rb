@@ -29,7 +29,13 @@ ActiveAdmin.register Story do
       #column :audio_filename
       column :guest, :sortable => :guest
       column :theme, :sortable => :theme
-      #column :display_order
+      column "Has Photo Notes?" do |s|
+        status_tag (s.photo_notes !="" ? "Yes" : "No"), (s.photo_notes !="" ? :ok : :error)
+      end
+      column "Has Photo?" do |s|
+        status_tag (s.image_name !="" ? "Yes" : "No"), (s.image_name !="" ? :ok : :error)
+      end
+      
       column "Last Updated", :updated_at
       
       # only show edit in the right column:
