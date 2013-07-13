@@ -1,30 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<% if false %>
+<%#- re-enable once final images are checked-in %>
 <%= image_tag("#{@guest.image_name}.jpg", :class => "theme_image" , :alt => "Theme image") %>
+<% end %>
+
+<%#- hard-coded image tag, until image handling is finalized %>
+<img alt="Guest Image" class="guest_image" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@guest.image_name}.jpg" %> />
+<p class="image-credit"><em>Image credit:</em> <%= @guest.image_credit %></p>
+
+<h2><%= @guest.name %></h2>
 
 <p>
-  <b>Name:</b>
-  <%= @guest.name %>
+  <b>Title:</b> <%= @guest.title %>
 </p>
 
 <p>
-  <b>Title:</b>
-  <%= @guest.title %>
+  <b>Organization:</b> <%= @guest.organization %>
 </p>
 
-<p>
-  <b>Organization:</b>
-  <%= @guest.organization %>
-</p>
+<%= simple_format @guest.bio %>
 
-<p>
-  <b>Bio:</b>
-  <%= @guest.bio %>
-</p>
+<% if !@guest.quote == "" %>
+	<h4><em>&ldquo;<%= @guest.quote %></em>&rdquo;</h4>
+<% end %>
 
-<p>
-  <b>Quote:</b>
-  <%= @guest.quote %>
-</p>
-
-<a href="<%= @guest.guest_url_text %>"><%= @guest.guest_url %></a>
+<% if !@guest.guest_url == "" %>
+	<p><em>More info:</em> <a href="<%= @guest.guest_url %>"><%= @guest.guest_url_text %></a></p>
+<% end %>
