@@ -57,6 +57,7 @@ ActiveAdmin.register Guest do
   show :title => "Guest Info" do |guest|
     # how do you rename this?! passing title and name don't work
     attributes_table do
+      row :name
       row :title
       row :organization
       row :specialty
