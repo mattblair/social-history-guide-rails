@@ -132,12 +132,18 @@ ActiveAdmin.register Story do
       attributes_table_for story, :more_info_url, :more_info_title, :more_info_description, :more_info_notes
     end
       
+    panel "Photo Notes" do
+      div do
+        simple_format story.photo_notes
+      end
+    end
+    
     panel "Editorial Details" do
       div do
         simple_format story.editorial_notes
       end
-      attributes_table_for story, :photo_notes, :editing_priority, :display_order, :created_at, :updated_at
       
+      attributes_table_for story, :editing_priority, :display_order, :created_at, :updated_at
     end
     
     # or put this in a partial like /app/views/admin/guests/_editorial.html.erb
