@@ -26,14 +26,15 @@ ActiveAdmin.register Story do
       column "Title" do |story|
             link_to(story.title, admin_story_path(story))
       end
-      #column :audio_filename
       column :guest, :sortable => :guest
       column :theme, :sortable => :theme
       column "Has Photo Notes?" do |s|
-        status_tag (s.photo_notes !="" ? "Yes" : "No"), (s.photo_notes !="" ? :ok : :error)
+        has_photo_notes = !s.photo_notes.nil? && s.photo_notes !=""
+        status_tag (has_photo_notes ? "Yes" : "No"), (has_photo_notes ? :ok : :error)
       end
       column "Has Photo?" do |s|
-        status_tag (s.image_name !="" ? "Yes" : "No"), (s.image_name !="" ? :ok : :error)
+        has_photo = !s.image_name.nil? && s.image_name !=""
+        status_tag (has_photo ? "Yes" : "No"), (has_photo ? :ok : :error)
       end
       
       column "Last Updated", :updated_at
