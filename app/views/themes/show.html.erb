@@ -21,16 +21,14 @@
 </ul>
 
 <% if false %>
-<h3>Tidbits</h3>
+	<h3>Tidbits</h3>
+	<ul>
+		<% @tidbits.each do |tidbit| %>
 
-<ul>
-<% @tidbits.each do |tidbit| %>
+			<li><%= link_to tidbit.title, tidbit %></li>
 
-	<li><%= link_to tidbit.title, tidbit %></li>
-
-<% end %>
-</ul>
-
+		<% end %>
+	</ul>
 <% end %>
 
 <%= link_to 'Explore Other Themes', themes_path %>
