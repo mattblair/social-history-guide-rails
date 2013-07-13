@@ -17,21 +17,35 @@ ActiveAdmin.register Guest do
   
   filter :name
   filter :specialty
-  
+
   index do
       column "Name", :sortable => :name do |guest|
             link_to(guest.name, admin_guest_path(guest))
       end
-      column :title
       column :specialty
+      column "Has Photo?" do |g|
+        status_tag (g.image_name !="" ? "Yes" : "No"), (g.image_name !="" ? :ok : :error)
+      end
       column "Last Updated", :updated_at
       
       # only show edit in the right column:
       actions :defaults => false do |guest|
         link_to "Edit", edit_admin_guest_path(guest), :class => "member_link"
       end
-  end
-  
+  end  
+
+=begin
+  index :as => :grid, :columns => 3 do |guest|
+      div :for => guest do
+        image_tag("#{guest.image_name}.jpg", :size => "240x180", :class => "guest_image_preview", :alt => "Guest Image")
+        h2 link_to(guest.name, admin_guest_path(guest))
+        div do
+          simple_format guest.title
+        end
+      end
+    end
+=end
+
   # ===================================================
   # Sidebars (for all views)
   # ===================================================
