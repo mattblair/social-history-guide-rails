@@ -1,14 +1,14 @@
 ActiveAdmin.register Story do
   
   config.sort_order = "display_order_asc"
-  config.per_page = 50
+  config.per_page = 25
   
   menu :priority => 3
   
   # workflow: proposed, draft, deferred, incomplete, edited, published, testing
-  #scope :proposed
+  scope :proposed
   scope :draft
-  #scope :deferred
+  scope :deferred
   scope :incomplete
   scope :edited
   scope :published
