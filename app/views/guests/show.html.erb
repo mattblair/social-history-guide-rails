@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<% if false %>
 <%#- re-enable once final images are checked-in %>
+<% if false %>
 <%= image_tag("#{@guest.image_name}.jpg", :class => "theme_image" , :alt => "Theme image") %>
 <% end %>
 
@@ -27,4 +27,13 @@
 
 <% if !@guest.guest_url == "" %>
 	<p><em>More info:</em> <a href="<%= @guest.guest_url %>"><%= @guest.guest_url_text %></a></p>
+<% end %>
+
+<h3>Stories</h3>
+
+<% @stories.each do |story| %>
+
+	<h4><%= link_to story.title, story%></h4>
+	<p><%= story.subtitle%></p>
+
 <% end %>
