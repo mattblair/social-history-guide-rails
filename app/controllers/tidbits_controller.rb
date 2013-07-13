@@ -2,7 +2,7 @@ class TidbitsController < ApplicationController
   # GET /tidbits
   # GET /tidbits.json
   def index
-    @tidbits = Tidbit.order("publication_date DESC")
+    @tidbits = Tidbit.where("workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("publication_date DESC")
 
     respond_to do |format|
       format.html # index.html.erb
