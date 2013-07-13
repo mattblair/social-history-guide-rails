@@ -33,7 +33,7 @@
 
 <% if @story.valid_coordinate? %>
 
-	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=240x180&sensor=false&zoom=16&markers=#{@story.latitude}%2C#{@story.longitude}", :size => "240x180" %>
+	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=240x180&sensor=false&zoom=16&markers=#{@story.latitude}%2C#{@story.longitude}", :size => "300x225" %>
 
 	<h3>Nearby Stories</h3>
 	<ul>
@@ -47,5 +47,10 @@
 <h4 class="more-info-section-title">More Info:</h4>
 <p><a href="<%= @story.more_info_url %>"><%= @story.more_info_title %></a></p>
 <p><%= @story.more_info_description %></p>
+
+<h4 class="guest-thumbnail-title">Guest Expert</h4>
+<img alt="Guest thumbnail" class="guest_thumbnail" width = "100" height = "75" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@story.guest.image_name}.jpg" %> />
+<p><%= link_to "#{@story.guest.name}", @story.guest %> </p>
+<p><%= @story.guest.title %></p>
 
 <p><em><%= link_to "Return to #{@story.theme.title}", @story.theme %></em></p>
