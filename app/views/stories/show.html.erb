@@ -1,13 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p><em><%= link_to "Return to #{@story.theme.title}", @story.theme %></em></p>
+<div class="well well-small">
+  <p><i class="icon-chevron-left"></i> <%= link_to "Return to #{@story.theme.title}", @story.theme %></p>
+</div>
+
+<div class="row-fluid">
+
+<div id="story-body-section" class="span8">
 
 <% if false %>
 <%=image_tag("#{@story.image_name}.jpg", :class => "story_image", :alt => "Story Image") %>
 <% end %>
 
 <%-# hard code link during development, until pipeline configured for server %>
-<img alt="Story Image" class="story_image" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@story.image_name}.jpg" %> />
+<% if @story.image_name.length > 1 %>
+	<img alt="Story Image" class="story_image" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@story.image_name}.jpg" %> />
+<% else %>
+	<img alt="Placeholder" class="story_image" src=<%="http://kycstatic.elsewiseapps.com/assets/kyc-placeholder.jpg" %> />
+<% end %>
+
 <p class="image-credit"><em>Image credit:</em> <%= @story.image_credit %></p>
 
 <% if false %>
@@ -25,32 +36,54 @@
 	 Needs different format 
 </audio>
 
+
 <h2><%= @story.title %></h2>
 
-<h4><em><%= @story.subtitle %></em></h4>
+<h4 class="subtitle"><em><%= @story.subtitle %></em></h4>
 
 <p><%= @story.summary %></p>
 
+</div> <!-- story-body-section -- >
+	
+</div> <!-- row-fluid -->
+	
 <% if @story.valid_coordinate? %>
+	<div id="story-geography" class="row-fluid">
+		
+		<div id="story-static-map" class="span6">
+			<h4>Story Location</h4>
+			<%= image_tag "http://maps.google.com/maps/api/staticmap?size=240x180&sensor=false&zoom=16&markers=#{@story.latitude}%2C#{@story.longitude}", :size => "300x225" %>
+		</div>
+		
+		<div id="nearby-list" class="span6">
+			<h4>Nearby Stories</h4>
+			<ul>
+				<% for story in @story.nearbys(10) %>
+		  			<li><%= link_to story.title, story %> <span class="muted"><%= story.distance.round(2) %> miles </span></li>
+				<% end %>
+			</ul>
+		</div>
 
-	<%= image_tag "http://maps.google.com/maps/api/staticmap?size=240x180&sensor=false&zoom=16&markers=#{@story.latitude}%2C#{@story.longitude}", :size => "300x225" %>
-
-	<h3>Nearby Stories</h3>
-	<ul>
-	<% for story in @story.nearbys(10) %>
-	  <li><%= link_to story.title, story %> (<%= story.distance.round(2) %> miles)</li>
-	<% end %>
-	</ul>
-
+	</div> <!-- row-fluid -->
 <% end %>
 
-<h4 class="more-info-section-title">More Info:</h4>
-<p><a href="<%= @story.more_info_url %>"><%= @story.more_info_title %></a></p>
-<p><%= @story.more_info_description %></p>
+<div class="row-fluid">
+<div id="story-guest-section" class="span6">
 
-<h4 class="guest-thumbnail-title">Guest Expert</h4>
-<img alt="Guest thumbnail" class="guest_thumbnail" width = "100" height = "75" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@story.guest.image_name}.jpg" %> />
-<p><%= link_to "#{@story.guest.name}", @story.guest %> </p>
-<p><%= @story.guest.title %></p>
+	<h4 id="guest-thumbnail-title">Guest Expert</h4>
+	<img alt="Guest thumbnail" class="guest_thumbnail" width = "100" height = "75" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@story.guest.image_name}.jpg" %> />
+	<p><%= link_to "#{@story.guest.name}", @story.guest %> </p>
+	<p><%= @story.guest.title %></p>
+</div>
 
-<p><em><%= link_to "Return to #{@story.theme.title}", @story.theme %></em></p>
+<div id="more-info-section" class ="span6">
+	<h4 class="more-info-section-title">More Info:</h4>
+	<p><a href="<%= @story.more_info_url %>"><%= @story.more_info_title %></a></p>
+	<p><%= @story.more_info_description %></p>
+</div>
+
+</div> <!-- row-fluid -->
+
+<div class="well well-small">
+  <p><i class="icon-chevron-left"></i> <%= link_to "Return to #{@story.theme.title}", @story.theme %></p>
+</div>
