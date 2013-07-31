@@ -89,4 +89,15 @@ class ThemesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def needphoto
+    @theme = Theme.find(params[:id])
+    
+    # limit to published, collection 1, order by display_order
+    @stories = Story.where("theme_id = #{@theme.id} and workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
+    
+    respond_to do |format|
+      format.html
+    end
+  end
 end

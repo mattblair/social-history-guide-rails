@@ -1,0 +1,12 @@
+<h3>Stories</h3>
+
+<% @stories.each do |story| %>
+
+	<h2><%= link_to story.title, story%></h2>
+	<p><em><%= story.subtitle%></em></p>
+	<p><em><%= story.summary%></em></p>
+	<p><em><%= story.audio_transcription%></em></p>
+	<h4>Photo Notes:</h4>
+	<p><em><%= story.photo_notes%></em></p>
+
+<% end %>
