@@ -15,7 +15,9 @@ KycGuideRails::Application.routes.draw do
 
 
   resources :themes
-
+  
+  # this is probably dev only, as a quick way to extract info
+  get '/themes/:id/needphoto', to: 'themes#needphoto'
 
   authenticated :user do
     root :to => 'home#index'
