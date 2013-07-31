@@ -16,7 +16,11 @@
 <% @stories.each do |story| %>
 	<div class="theme-story-listing">
 		<% if story.image_name.length > 1 %>
-			<%= link_to image_tag("#{story.image_name}.jpg", :class => "theme-story-thumbnail" , :alt => "Story thumbnail"), story %>
+			<%-# use hard-coded link, until images are selected and added to the asset pipeline %>
+			<% if false %>
+				<%= link_to image_tag("#{story.image_name}.jpg", :class => "theme-story-thumbnail" , :alt => "Story thumbnail"), story %>
+			<% end %>
+			<img alt="Story Thumbnail" class="theme-story-thumbnail" src=<%="http://kycstatic.elsewiseapps.com/assets/#{story.image_name}.jpg" %> />
 		<% else %>
 			<img alt="Placeholder" class="theme-story-thumbnail" src=<%="http://kycstatic.elsewiseapps.com/assets/kyc-placeholder.jpg" %> />
 		<% end %>
