@@ -1,6 +1,28 @@
-<h3>Know Your City Themes</h3>
-<ul>
+<div class="hero-unit">
+  <%= image_tag("kyc-logo-500.jpg", :class => "hero-logo" , :alt => "Know Your City Logo") %>
+  <h1>Know Your City</h1>
+  <p>A social history website and app</p>
+  <p>
+    (...probably replaced with a slideshow of some kind...)
+  </p>
+</div>
+
+<h2>Themes</h2>
+
+<ul class="thumbnails">
 <% @themes.each do |theme| %>
-  <li><%=link_to theme.title, theme %></li>
+  <li class="span4">
+    <div class="thumbnail">
+		<div class="hidden-phone">
+      		<%= link_to  image_tag("#{theme.image_name}.jpg", :class => "theme_image" , :alt => "Theme image"), theme %>
+		</div>
+      <h3><%=link_to theme.title, theme %></h3>
+      <p class="subtitle"><%= theme.subtitle %></p>
+    </div>
+  </li>
 <% end %>
 </ul>
+
+<div class="visible-phone">
+	<p>Phone Footer</p>
+</div>
