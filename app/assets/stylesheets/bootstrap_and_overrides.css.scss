@@ -1,3 +1,20 @@
+// set your own variables here, before laoding
+// https://github.com/thomas-mcdonald/bootstrap-sass
+// http://getbootstrap.com/2.3.2/customize.html#variables
+
+//$navbarBackground: #555;
+
+$baseFontFamily: "Menlo, Monaco, 'Courier New', monospace";
+
 @import "bootstrap";
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
+
+.subtitle {
+	color: #aaa;
+}
+
+.hero-logo {
+	width: 250;
+	height: 250;
+}

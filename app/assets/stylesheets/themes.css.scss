@@ -1,3 +1,30 @@
 // Place all the styles related to the themes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// make theme_image a fixed size? 
+
+.theme-story-listing {
+	background: #eee;
+	padding: 10px;
+	margin-top: 10px;
+	min-height: 90px;
+	clear: left;
+}
+
+// or use padding on both of these to make sure they don't wrap under the image? But will there always be an image? Or a placeholder image?
+.theme-story-listing.h4 {
+	clear: left;
+}
+
+.theme-story-listing.p {
+	clear: left;
+}
+
+.theme-story-thumbnail {
+	width: 120px;
+	height: 90px;
+	float: left;
+	clear: left;
+	margin-right: 10px;
+}

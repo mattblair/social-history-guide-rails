@@ -1,3 +1,36 @@
 // Place all the styles related to the stories controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#story-body-section {
+  font-family: Courier,'Courier New',monospace;
+}
+
+#story-body-section.p {
+	font-family: Georgia,'Times New Roman',serif;
+}
+
+#nearby-list {
+  margin: 5px;
+border-color: #000;	
+background: #fff;
+}
+
+#more-info-section {
+  padding: 5px;  
+  border: 1px;
+  border-color: #000;
+  background: #ddd;
+}
+
+#story-guest-section {
+	font-family: Courier,'Courier New',monospace;
+//margin: 10px 0px 10px 0px;  
+//padding: 10px;
+  background: #ddd;
+  text-color: #222;
+}
+
+#story-static-map {
+	//margin: 20px;
+}
