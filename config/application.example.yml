@@ -14,4 +14,18 @@ GMAIL_PASSWORD: Your_Password
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
-ROLES: [admin, user, VIP]
+ROLES: [admin, editor, proofreader, tester, user, backer]
+WORKFLOW_STATES: [proposed, draft, deferred, incomplete, edited, published, testing]
+MEDIA_TYPES: [audio_interview, audio_ambient, text, text_with_photo, photo_with_caption, photo_gallery, map_static]
+KYC_SEED_DATA_DEV: 
+KYC_SEED_DATA_PROD: 
+KYC_USER_JSON: kyc_users.json
+KYC_ADMIN_USER_JSON: kyc_admin_users.json
+KYC_COLLECTION_JSON: kyc_collection.json
+KYC_THEMES_JSON: kyc_themes.json
+KYC_GUESTS_JSON: kyc_guests.json
+KYC_STORIES_JSON: kyc_story_from_log130624.json
+KYC_TIDBITS_JSON: kyc-tidbits130603.json
+WORKFLOW_STATE_TO_DISPLAY: 2
+KYC_STATIC_ASSETS_URL: http://kycstatic.elsewiseapps.com/assets/
+KYC_STATIC_AUDIO_URL: http://kycstatic.elsewiseapps.com/audio/
