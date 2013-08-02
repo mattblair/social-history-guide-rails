@@ -8,34 +8,11 @@
 
 <div id="story-body-section" class="span8">
 
-<% if false %>
-<%=image_tag("#{@story.image_name}.jpg", :class => "story_image", :alt => "Story Image") %>
-<% end %>
+<%= story_image_markup(@story.image_name) %>
 
-<%-# hard code link during development, until pipeline configured for server %>
-<% if @story.image_name.length > 1 %>
-	<img alt="Story Image" class="story_image" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@story.image_name}.jpg" %> />
-<% else %>
-	<img alt="Placeholder" class="story_image" src=<%="http://kycstatic.elsewiseapps.com/assets/kyc-placeholder.jpg" %> />
-<% end %>
+<%= story_image_credit_markup(@story) %>
 
-<p class="image-credit"><em>Image credit:</em> <%= @story.image_credit %></p>
-
-<% if false %>
-<%-# need more robust handling for browsers without HTML5 audio support %>
-<%=audio_tag("#{@story.audio_filename}.mp3", :controls => true) %>
-<%-# output is incorrect? looks like:  %>
-<%-# <audio controls="controls" src="/audios/audio_filename.mp3" /> %>
-<% end %>
-
-<%-# should make multiple formats available %>
-<audio controls="controls" >
-	<source src=<%="/audios/#{@story.audio_filename}.mp3"  %> />
-	<source src=<%="/audios/#{@story.audio_filename}.ogg"  %> />
-	  <!-- some other kind of failure-handling -->
-	 Needs different format 
-</audio>
-
+<%= kyc_audio_tag(@story.audio_filename) %>
 
 <h2><%= @story.title %></h2>
 
