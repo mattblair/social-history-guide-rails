@@ -1,20 +1,38 @@
-// set your own variables here, before laoding
+// set overrides on bootstrap variables here, before laoding
 // https://github.com/thomas-mcdonald/bootstrap-sass
 // http://getbootstrap.com/2.3.2/customize.html#variables
 
-//$navbarBackground: #555;
-
+$homeLogoSize: 90px;
+$navbarHeight: $homeLogoSize + 10px;
+$navbarBackground: #fff;
 $baseFontFamily: "Menlo, Monaco, 'Courier New', monospace";
+$headingsFontFamily: "Menlo, Monaco, 'Courier New', monospace";
+
+// project variables
+$kyc-border-color: #ddd;
+$kyc-bg-color: #fff;
+$kyc-red: rgb(235, 0, 0);
+
 
 @import "bootstrap";
-body { padding-top: 60px; }
+body { padding-top: $navbarHeight + 10px; }
 @import "bootstrap-responsive";
 
 .subtitle {
 	color: #aaa;
 }
 
-.hero-logo {
-	width: 250;
-	height: 250;
+.navbar .brand {
+	margin-left: 0px;
+	color: $kyc-red;
+	font-family: Courier,'Courier New',monospace;
+	font-size: 32px;
+	line-height: 28px;
+}
+
+img#brand-logo {
+	margin-top: 5px;
+	width: $homeLogoSize;
+	height: $homeLogoSize;
+	float: left;
 }
