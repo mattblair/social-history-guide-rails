@@ -2,13 +2,20 @@
 // https://github.com/thomas-mcdonald/bootstrap-sass
 // http://getbootstrap.com/2.3.2/customize.html#variables
 
+// ============================================
+// Bootstrap Overrides
+// ============================================
+
 $homeLogoSize: 90px;
 $navbarHeight: $homeLogoSize + 10px;
 $navbarBackground: #fff;
 $baseFontFamily: "Menlo, Monaco, 'Courier New', monospace";
 $headingsFontFamily: "Menlo, Monaco, 'Courier New', monospace";
 
-// project variables
+// ============================================
+// Project variables
+// ============================================
+
 $kyc-border-color: #ddd;
 $kyc-bg-color: #fff;
 $kyc-red: rgb(235, 0, 0);
