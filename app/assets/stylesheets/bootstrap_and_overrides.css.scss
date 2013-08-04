@@ -43,3 +43,40 @@ img#brand-logo {
 	height: $homeLogoSize;
 	float: left;
 }
+
+// ============================================
+// Home Carousel
+// ============================================
+
+
+#home-carousel	 {
+      //position: relative;
+      //z-index: 9;
+	  max-width: 800px;
+    }
+
+// .carousel-control {
+//       height: 80px;
+//       margin-top: 0;
+//       font-size: 120px;
+//       text-shadow: 0 1px 1px rgba(0,0,0,.4);
+//       background-color: transparent;
+//       border: 0;
+//       z-index: 10;
+//     }
+
+.carousel .item {
+  height: 600px;
+}
+.carousel img {
+  //position: absolute;
+  //top: 0;
+  //left: 0;
+  //min-width: 100%;
+  max-width: 800px;
+  height: 600px;
+}
+
+.carousel h3 {
+	color: white;
+}
