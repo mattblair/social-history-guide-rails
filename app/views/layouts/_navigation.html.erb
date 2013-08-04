@@ -1,9 +1,14 @@
-<%= link_to "Know Your City Guide (Beta)", root_path, :class => 'brand' %>
+<%= link_to image_tag("kyc-logo-500.jpg", :id => "brand-logo" , :alt => "Know Your City Logo"), root_path %>
+<%= link_to "Know Your City Guide", root_path, :class => 'brand' %>
+
 <ul class="nav">
 <% if false %>
   <li><%= link_to 'Themes', themes_path %></li>
   <li><%= link_to 'Guests', guests_path %></li>
 <% end %>
   <li><%= link_to 'Snapshots', tidbits_path %></li>
-  <li><%= link_to 'About', "about.html" %></li>
+  <li><%= link_to 'Nearby', "/about.html", :class => "hidden-desktop" %></li>
+  <li><%= link_to 'News', tidbits_path %></li>
+  <li><%= link_to 'Donate', "/about.html" %></li>
+  <li><%= link_to 'About', "/about.html" %></li>
 </ul>
