@@ -2,10 +2,34 @@ module HomeHelper
   
   def carousel_markup 
     
-    # read hash from json or yaml instead, with keys for: image, title, caption, link
-    slides = %w(psych-market24 murnane-monument pdxA2004-002.692-cropped)
+    require 'json'
     
-    # this needs to use a loop, too, to handle a variable number of items
+    # read hash from json or yaml instead
+    slide_data = <<-DATA
+    [
+      {
+        "image": "psych-market24",
+        "title": "The Psychedelic Market",
+        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "link": "/stories/the-psychedelic-supermarket"
+      },
+      {
+        "image": "murnane-monument",
+        "title": "A Missing Memorial",
+        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "link": "/stories/south-of-the-burnside-bridge"
+      },
+      {
+        "image": "pdxA2004-002.692-cropped",
+        "title": "On the Waterfront",
+        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "link": "/stories/crimping"
+      }
+    ] 
+    DATA
+    
+    slides = JSON.parse(slide_data)
+    
     html = <<-HTML
     <div id="home-carousel" class="carousel slide">
       <ol class="carousel-indicators">
@@ -32,12 +56,12 @@ module HomeHelper
       
       a_slide = <<-slide
       <div class="#{active_class}item">
-      	<a href="/stories/the-psychedelic-supermarket">
-      	  <img alt="title" src="#{ENV['KYC_STATIC_ASSETS_URL']}#{slide}.jpg" />
+      	<a href="#{slide['link']}">
+      	  <img alt="title" src="#{ENV['KYC_STATIC_ASSETS_URL']}#{slide['image']}.jpg" />
       	</a>
   		  <div class="carousel-caption">
-            <p>Psychedelic Market</p>
-            <p>Teaser text!</p>
+            <h3>#{slide['title']}</h3>
+            <p>#{slide['caption']}</p>
   		  </div>
       </div>
       slide
