@@ -9,11 +9,19 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
 */
 
+@import "active_admin.css.scss";
+@import "bootstrap_and_overrides.css.scss";
+@import "guests.css.scss";
+@import "home.css.scss";
+@import "scaffolds.css.scss";
+@import "stories.css.scss";
+@import "themes.css.scss";
+@import "tidbits.css.scss";
+
 .content {
-  background-color: #fff;
+  background-color: $kyc-bg-color;
   padding: 20px;
   margin: 0 -20px; /* negative indent the amount of the padding to maintain the grid system */
   -webkit-border-radius: 0 0 6px 6px;
