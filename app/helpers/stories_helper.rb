@@ -77,4 +77,46 @@ module StoriesHelper
     return ''
   end
   
+  def story_nearby_list nearby_array
+    
+    html = <<-HTML 
+      <table class="table table-striped">
+        <caption>Nearby Stories</caption>
+        <tbody>
+    HTML
+    
+    nearby_array.each do |story|
+        row_html = <<-ROW 
+          <tr>
+            <td>#{link_to story.title, story}</td>
+            <td class="nearby-theme">#{story.theme.title}</td>
+            <td class="nearby-distance">#{story.distance.round(2)} miles</td>
+          </tr>
+        ROW
+        
+        html << row_html
+    end
+    
+    html << %(</tbody>)
+    html << %(</table>)
+    
+    html.html_safe
+  end
+  
+  
+  def story_more_info_markup story
+    
+    return '' if (story.more_info_description.empty?)
+    
+    html = <<-HTML
+    <div id="more-info-section">
+    	<h2>More Info:</h2>
+    	<p class="more-info-title"><a href="#{story.more_info_url}">#{story.more_info_title}</a></p>
+    	<p class="more-info-description">#{story.more_info_description}</p>
+    </div>
+    HTML
+    
+    html.html_safe
+  end
+  
 end
