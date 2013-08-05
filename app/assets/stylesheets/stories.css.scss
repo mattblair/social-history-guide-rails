@@ -9,7 +9,8 @@
 	float: left;
 }
 
-#story-image {
+// can't be an id if there are multiple photos in a slideshow
+.story-image {
 	min-width: 300px;
 	max-width: 500px;
 }
