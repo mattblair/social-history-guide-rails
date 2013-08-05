@@ -63,11 +63,22 @@ module StoriesHelper
   
   def story_image_credit_markup story
     
-    # add a div instead
-    html = "<p class=\"image-credit\"><em>Image credit:</em> #{story.image_credit}</p>"
+    if story.image_credit_url.empty?
+      credit = story.image_credit
+    else
+      credit = %(<a href="#{story.image_credit_url}">#{story.image_credit}</a>)
+    end
     
-    # image credit, with url
-    # image copyright, with url
+    # Temporary. Stories shouldn't be published without media copyright details.
+    notice = story.image_copyright_notice.empty? ? "COPYRIGHT TBD" : story.image_copyright_notice
+    
+    if story.image_copyright_url.empty?
+      copyright = %(\(#{notice}\))
+    else
+      copyright = %(\(<a href="#{story.image_copyright_url}">#{notice}</a>\))
+    end
+    
+    html = %(<p class="image-credit">Image: #{credit} #{copyright}</p>)
     
     return html.html_safe
   end
