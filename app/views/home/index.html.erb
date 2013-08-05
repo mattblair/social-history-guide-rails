@@ -3,7 +3,7 @@
 <script>
 	$(function(){
 		$('#home-carousel').carousel({
-		  interval: 4000
+		  interval: 6000
 		});
 	});
 </script>	
@@ -13,7 +13,7 @@
   <li class="span4">
     <div class="thumbnail">
 		<div class="hidden-phone">
-      		<%= link_to  image_tag("#{theme.image_name}.jpg", :class => "theme_image" , :alt => "Theme image"), theme %>
+      		<%= link_to  image_tag("#{theme.image_name}.jpg", :class => "theme_thumbnail" , :alt => "Theme image"), theme %>
 		</div>
       <h3><%=link_to theme.title, theme %></h3>
       <p class="subtitle"><%= theme.subtitle %></p>
