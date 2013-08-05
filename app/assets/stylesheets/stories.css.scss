@@ -2,35 +2,97 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#story-media-section {
+	min-width: 320px;
+	max-width: 650px;
+	margin-right: 10px;
+	float: left;
+}
+
+#story-image {
+	min-width: 300px;
+	max-width: 500px;
+}
+
+.image-credit {
+	margin-top: 8px;
+	text-align: right;
+	font-style: oblique;
+	color: #555;
+}
+
 #story-body-section {
   font-family: Courier,'Courier New',monospace;
+  margin: 10px;
+  padding: 10px;
+  min-width: 200px;
 }
 
 #story-body-section.p {
 	font-family: Georgia,'Times New Roman',serif;
 }
 
-#nearby-list {
-  margin: 5px;
-border-color: #000;	
-background: #fff;
-}
-
-#more-info-section {
-  padding: 5px;  
-  border: 1px;
-  border-color: #000;
-  background: #ddd;
-}
-
 #story-guest-section {
+	margin: 10px;
 	font-family: Courier,'Courier New',monospace;
-//margin: 10px 0px 10px 0px;  
-//padding: 10px;
-  background: #ddd;
-  text-color: #222;
+  	text-color: #222;
+	border: solid 1px $kyc-border-color;
+	min-width: 250px;
+}
+
+.guest_thumbnail {
+	width: 120px;
+	height: 90px;
+	float: right;
+	margin-left: 10px;
+}
+
+
+#story-geography {
+	clear: both;
 }
 
 #story-static-map {
 	//margin: 20px;
+	
+	h4 {
+		// TBD: save as nearby list table caption?
+		font-family: Courier,'Courier New',monospace;
+		font-size: 24px;
+		line-height: 28px;
+		margin-bottom: 10px;
+	}
+}
+
+#nearby-list {  
+ 	padding: 10px;
+  	border: solid 1px $kyc-border-color;
+	max-width: 500px;
+	float: left;
+	margin-right: 20px;
+	
+	table caption {
+		font-family: Courier,'Courier New',monospace;
+		font-size: 24px;
+		line-height: 28px;
+		margin-bottom: 10px;
+	}
+}
+
+.nearby-distance {
+	text-align: right;
+	color: #555;
+}
+
+
+#more-info-section {
+	clear: both;
+  	margin-top: 10px;
+	padding: 10px;  
+	max-width: 500px;
+  	border: solid 1px $kyc-border-color;
+
+	h2 {
+		color: #555;
+	}
 }
