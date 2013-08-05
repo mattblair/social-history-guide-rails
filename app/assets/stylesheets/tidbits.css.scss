@@ -1,3 +1,16 @@
 // Place all the styles related to the tidbits controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#snapshot-media-section {
+	min-width: 320px;
+	max-width: 650px;
+	margin-right: 10px;
+	float: left;
+}
+
+
+.snapshot-image {
+	min-width: 300px;
+	max-width: 600px;
+}
