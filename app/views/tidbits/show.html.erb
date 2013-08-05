@@ -1,37 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<h3><%= @tidbit.title %></h3>
+<div id="snapshot-media-section">
+	<% if !@tidbit.image_name.nil? %>
+		<%-# hard code link during development, until pipeline configured for server %>
+		<img alt="snapshot image" class="snapshot-image" src="<%="#{ENV['KYC_STATIC_ASSETS_URL']}#{@tidbit.image_name}.jpg" %>" />
+		
+		<%= story_image_credit_markup(@tidbit) %>
 
-<p>
-  <em><%= @tidbit.year %></em>
-</p>
+		<p>
+		  <em><%= @tidbit.image_caption %></em>
+		</p>
+	<% end %>
+</div> <!-- #tidbit-media-section -->
 
-<% if false %>
-  <%=image_tag("#{@tidbit.image_name}.jpg", :class => "story_image", :alt => "Story Image") %>
-<% end %>
+<div id="tidbit-body-section">
 
-<% if !@tidbit.image_name.nil? %>
-	<%-# hard code link during development, until pipeline configured for server %>
-	<img alt="snapshot image" class="snapshot_image" width="320" height="240" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@tidbit.image_name}.jpg" %> />
-	<p class="image-credit"><em>Image by:</em> <%= @tidbit.image_credit %></p>
+	<h3><%= @tidbit.title %></h3>
 
-	<p>
-	  <em><%= @tidbit.image_caption %></em>
-	</p>
-<% end %>
+	<p><em><%= @tidbit.year %></em></p>
 
-<% if !@tidbit.audio_filename.nil? %>
-	<audio controls="controls" >
-		<source src=<%="/audios/#{@tidbit.audio_filename}.mp3"  %> />
-		<source src=<%="/audios/#{@tidbit.audio_filename}.ogg"  %> />
-		  <!-- some other kind of failure-handling -->
-		 Needs different format 
-	</audio>
-<% end %>
+	<%= kyc_audio_tag(@tidbit.audio_filename) %>
+	
+	<p><%= @tidbit.body %></p>
 
-<p>
-  <%= @tidbit.body %>
-</p>
+</div> <!-- #tidbit-body-section -->
 
 <% if @tidbit.valid_coordinate? %>
 
