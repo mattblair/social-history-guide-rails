@@ -31,10 +31,16 @@ body { padding-top: $navbarHeight + 10px; }
 
 .navbar .brand {
 	margin-left: 0px;
+	//padding-top: 15px;
 	color: $kyc-red;
 	font-family: Courier,'Courier New',monospace;
 	font-size: 32px;
 	line-height: 28px;
+}
+
+.navbar .brand-tagline {
+	clear: both;
+	color: #555;
 }
 
 img#brand-logo {
