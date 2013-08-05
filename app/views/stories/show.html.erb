@@ -1,66 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<div class="well well-small">
-  <p><i class="icon-chevron-left"></i> <%= link_to "Return to #{@story.theme.title}", @story.theme %></p>
-</div>
+<div id="story-media-section">
+	<%= story_image_markup(@story.image_name) %>
 
-<div class="row-fluid">
-
-<div id="story-body-section" class="span8">
-
-<%= story_image_markup(@story.image_name) %>
-
-<%= story_image_credit_markup(@story) %>
-
-<%= kyc_audio_tag(@story.audio_filename) %>
-
-<h2><%= @story.title %></h2>
-
-<h4 class="subtitle"><em><%= @story.subtitle %></em></h4>
-
-<p><%= @story.summary %></p>
-
-</div> <!-- story-body-section -- >
+	<%= story_image_credit_markup(@story) %>
 	
-</div> <!-- row-fluid -->
+</div> <!-- #story-media-section -->
+
+<div id="story-body-section">
+
+	<h2><%= @story.title %></h2>
+
+	<h4 class="subtitle"><em><%= @story.subtitle %></em></h4>
+
+	<%= kyc_audio_tag(@story.audio_filename) %>
+
+	<p><%= @story.summary %></p>
 	
-<% if @story.valid_coordinate? %>
-	<div id="story-geography" class="row-fluid">
-		
-		<div id="story-static-map" class="span6">
-			<h4>Story Location</h4>
-			<%= image_tag "http://maps.google.com/maps/api/staticmap?size=240x180&sensor=false&zoom=16&markers=#{@story.latitude}%2C#{@story.longitude}", :size => "300x225" %>
-		</div>
-		
-		<div id="nearby-list" class="span6">
-			<h4>Nearby Stories</h4>
-			<ul>
-				<% for story in @story.nearbys(10) %>
-		  			<li><%= link_to story.title, story %> <span class="muted"><%= story.distance.round(2) %> miles </span></li>
-				<% end %>
-			</ul>
-		</div>
+</div> <!-- story-body-section -->
 
-	</div> <!-- row-fluid -->
-<% end %>
+<!-- might want to roll this into story body section, especially if not much text -->
 
-<div class="row-fluid">
-<div id="story-guest-section" class="span6">
-
-	<h4 id="guest-thumbnail-title">Guest Expert</h4>
-	<img alt="Guest thumbnail" class="guest_thumbnail" width = "100" height = "75" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@story.guest.image_name}.jpg" %> />
+<div id="story-guest-section">
+	<img alt="Guest thumbnail" class="guest_thumbnail" src="<%="#{ENV['KYC_STATIC_ASSETS_URL']}#{@story.guest.image_name}.jpg" %>" />
+	<h4 id="guest-thumbnail-title">As Told By...</h4>
 	<p><%= link_to "#{@story.guest.name}", @story.guest %> </p>
 	<p><%= @story.guest.title %></p>
 </div>
 
-<div id="more-info-section" class ="span6">
-	<h4 class="more-info-section-title">More Info:</h4>
-	<p><a href="<%= @story.more_info_url %>"><%= @story.more_info_title %></a></p>
-	<p><%= @story.more_info_description %></p>
-</div>
 
-</div> <!-- row-fluid -->
+<% if @story.valid_coordinate? %>
+	<div id="story-geography">
+		
+		<div id="nearby-list">
+			<%= story_nearby_list(@story.nearbys(10)) %>
+		</div>
+		
+		<div id="story-static-map">
+			<h4>Story Location</h4>
+			<%= image_tag "http://maps.google.com/maps/api/staticmap?size=240x180&sensor=false&zoom=16&markers=#{@story.latitude}%2C#{@story.longitude}", :size => "300x225" %>
+		</div>
+		
+	</div> <!-- #story-geography -->
+<% end %>
 
-<div class="well well-small">
+
+<%= story_more_info_markup(@story) %>
+
+<div class="back-nav-bottom">
   <p><i class="icon-chevron-left"></i> <%= link_to "Return to #{@story.theme.title}", @story.theme %></p>
 </div>
