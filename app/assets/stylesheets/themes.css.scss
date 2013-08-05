@@ -4,9 +4,19 @@
 
 // make theme_image a fixed size? 
 
+#theme-image {
+	min-width: 320px;
+	max-width: 500px;
+	float: left;
+}
+
+#theme-summary {
+	padding: 10px;
+	min-width: 200px;
+}
+
 .theme-story-listing {
 	background: $kyc-bg-color;
-	//padding: 10px;
 	margin-top: 10px;
 	min-height: 90px;
 	min-width: 320px;
