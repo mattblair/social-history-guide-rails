@@ -3,7 +3,7 @@
 <div id="snapshot-media-section">
 	<% if !@tidbit.image_name.nil? %>
 		<%-# hard code link during development, until pipeline configured for server %>
-		<img alt="snapshot image" class="snapshot-image" src="<%="#{ENV['KYC_STATIC_ASSETS_URL']}#{@tidbit.image_name}.jpg" %>" />
+		<img alt="snapshot image" class="snapshot-image" src="<%="#{ENV['KYC_STATIC_PHOTOS_URL']}#{@tidbit.image_name}.jpg" %>" />
 		
 		<%= story_image_credit_markup(@tidbit) %>
 
