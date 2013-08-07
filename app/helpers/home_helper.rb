@@ -57,7 +57,7 @@ module HomeHelper
       a_slide = <<-slide
       <div class="#{active_class}item">
       	<a href="#{slide['link']}">
-      	  <img alt="title" src="#{ENV['KYC_STATIC_ASSETS_URL']}#{slide['image']}.jpg" />
+      	  <img alt="title" src="#{ENV['KYC_STATIC_PHOTOS_URL']}#{slide['image']}.jpg" />
       	</a>
   		  <div class="carousel-caption">
             <h3>#{slide['title']}</h3>

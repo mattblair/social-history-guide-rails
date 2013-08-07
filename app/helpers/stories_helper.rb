@@ -25,7 +25,7 @@ module StoriesHelper
       # always use the first one
       thumb_name = images[0] + "-tn"
     end
-    html = "<img alt=\"Story Thumbnail\" class=\"theme-story-thumbnail\" src=\"#{ENV['KYC_STATIC_ASSETS_URL']}#{thumb_name}.jpg\" />"
+    html = "<img alt=\"Story Thumbnail\" class=\"theme-story-thumbnail\" src=\"#{ENV['KYC_STATIC_PHOTOS_URL']}#{thumb_name}.jpg\" />"
     return html.html_safe
   end
 
@@ -35,7 +35,7 @@ module StoriesHelper
     
     # what will the handling be for stories that have no image or media content?
     if image_field.empty?
-      html = "<img alt=\"Placeholder\" class=\"story-image\" src=\"#{ENV['KYC_STATIC_ASSETS_URL']}kyc-placeholder.jpg\" />"
+      html = "<img alt=\"Placeholder\" class=\"story-image\" src=\"#{ENV['KYC_STATIC_PHOTOS_URL']}kyc-placeholder.jpg\" />"
     else 
       
       # test case: "murnane-monument ilwu-harry-bridges"
@@ -44,7 +44,7 @@ module StoriesHelper
       if images.count > 1 # if multiple, show carousel code
         
         # temp, until carousel implemented show second image:
-        html = "<img alt=\"Story Image\" class=\"story-image\" src=\"#{ENV['KYC_STATIC_ASSETS_URL']}#{images[1]}.jpg\" />"
+        html = "<img alt=\"Story Image\" class=\"story-image\" src=\"#{ENV['KYC_STATIC_PHOTOS_URL']}#{images[1]}.jpg\" />"
         
         # prefix slideshow stuff
         
@@ -56,7 +56,7 @@ module StoriesHelper
         
       else # just show the image
         
-        html = "<img alt=\"Story Image\" class=\"story-image\" src=\"#{ENV['KYC_STATIC_ASSETS_URL']}#{@story.image_name}.jpg\" />"
+        html = "<img alt=\"Story Image\" class=\"story-image\" src=\"#{ENV['KYC_STATIC_PHOTOS_URL']}#{@story.image_name}.jpg\" />"
       end
     end
     return html.html_safe
