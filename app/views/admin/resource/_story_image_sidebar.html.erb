@@ -1,6 +1,6 @@
 <%-# hard code link during development, until pipeline configured for server %>
-<% if @story.image_name.length > 1 %>
-<img alt="Story Image" class="story_image" width="240" height="180" src=<%="http://kycstatic.elsewiseapps.com/assets/#{@story.image_name}.jpg" %> />
+<% if !@story.image_name.nil? %>
+<img alt="Story Image" class="story_image" width="240" height="180" src=<%="#{ENV['KYC_STATIC_PHOTOS_URL']}#{@story.image_name}.jpg" %> />
 <% else %>
-<img alt="Placeholder" class="admin_sidebar_image" width="240" height="180" src=<%="http://kycstatic.elsewiseapps.com/assets/kyc-placeholder.jpg" %> />
+<img alt="Placeholder" class="admin_sidebar_image" width="240" height="180" src=<%="#{ENV['KYC_STATIC_PHOTOS_URL']}kyc-placeholder.jpg" %> />
 <% end %>

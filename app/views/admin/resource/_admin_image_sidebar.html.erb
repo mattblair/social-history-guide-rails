@@ -1,7 +1,7 @@
 <%-# hard code link during development, might use pipeline for server %>
 
 <% if resource.image_name.length > 1 %>
-<img alt="Current Image" class="admin_sidebar_image" width="240" height="180" src=<%="http://kycstatic.elsewiseapps.com/assets/#{resource.image_name}.jpg" %> />
+<img alt="Current Image" class="admin_sidebar_image" width="240" height="180" src=<%="#{ENV['KYC_STATIC_PHOTOS_URL']}#{resource.image_name}.jpg" %> />
 <% else %>
-<img alt="Placeholder" class="admin_sidebar_image" width="240" height="180" src=<%="http://kycstatic.elsewiseapps.com/assets/kyc-placeholder.jpg" %> />
+<img alt="Placeholder" class="admin_sidebar_image" width="240" height="180" src=<%="#{ENV['KYC_STATIC_PHOTOS_URL']}kyc-placeholder.jpg" %> />
 <% end %>
