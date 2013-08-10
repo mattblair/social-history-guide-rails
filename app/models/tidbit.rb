@@ -39,6 +39,7 @@
 #  more_info_notes         :text
 #  map_data                :text
 #  map_data_type           :integer          default(0)
+#  location_valid          :boolean          default(FALSE)
 #
 
 class Tidbit < ActiveRecord::Base
