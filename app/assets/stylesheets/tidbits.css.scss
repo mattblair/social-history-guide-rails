@@ -2,6 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+// ============================================
+// Listings
+// ============================================
+
+.tidbit-listing {
+	background: $kyc-bg-color;
+	margin-top: 10px;
+	min-height: 90px;
+	min-width: 320px;
+	clear: left;
+	border: solid 1px $kyc-border-color;
+}
+
+.tidbit-publish-date {
+	color: #444;
+}
+
+.tidbit-year {
+	padding: 5px;
+	color: white;
+	background-color: black;
+}
+
+// ============================================
+// Show
+// ============================================
+
 #snapshot-media-section {
 	min-width: 320px;
 	max-width: 650px;
@@ -14,3 +42,4 @@
 	min-width: 300px;
 	max-width: 600px;
 }
+
