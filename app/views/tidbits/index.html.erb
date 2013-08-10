@@ -5,7 +5,7 @@
 		<a href="<%="/tidbits/#{tidbit.slug}" %>"> <%= story_thumbnail_tag(tidbit.image_name) %> </a>
 		
 		<h4><%= link_to tidbit.title, tidbit%></h4>
-		<p class="tidbit-publish-date">Published: <%= tidbit.publication_date.to_formatted_s(:long) %></p>
+		<p class="tidbit-publish-date">Published: <%= tidbit.publication_date.to_formatted_s(:kyc_long_date) %></p>
 		<% if !tidbit.year.nil? %>
 			<p class="tidbit-year"><%= tidbit.year %></p>
 		<% end %>
