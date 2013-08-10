@@ -1,0 +1,15 @@
+<h1>Tidbits nearby</h1>
+<p>Should include stories, too</p>
+
+<%-# This data will feed the map, instead of just a list... %>
+<% @tidbits.each do |tidbit| %>
+	<div class="tidbit-listing">		
+		<h4><%= link_to tidbit.title, tidbit%></h4>
+		<p><% if !tidbit.year.nil? %>
+			<span class="tidbit-year"><%= tidbit.year %></span>
+		<% end %>
+		</p>
+		<p>Latitude: <%= tidbit.latitude %></p>
+		<p>Longitude: <%= tidbit.longitude %></p>
+	</div>
+<% end %>
