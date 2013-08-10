@@ -33,11 +33,17 @@ default_run_options[:pty] = true
 
 # directory served by static server
 set :assets_path, "/home/ewmedia/webapps/kycstatic/"
+set :photos_path, "/home/ewmedia/webapps/kycstatic/photos/"
 set :domain, "#{user}@web91.webfaction.com"
 set :config_path, "#{deploy_to}/current/config/"
-
 set :prod_db_path, "#{deploy_to}/current/db/production.sqlite3"
-set :db_archive_path, "/Users/matt/Dropbox/appWorkingNotes/knowYourCity/dbBackups"
+
+set :db_archive_path, "#{ENV['HOME']}/Dropbox/appWorkingNotes/knowYourCity/dbBackups"
+set :json_archive_path, "#{ENV['HOME']}/Dropbox/appWorkingNotes/knowYourCity/jsonBackups"
+set :photo_source_path, "#{ENV['HOME']}/Dropbox/appWorkingNotes/knowYourCity/webPhotos/"
+
+# to generate photos at all needed sizes before rsync
+set :photo_scaling_script, "#{ENV['HOME']}/Documents/codeProjects/knowYourCity/contentScripts/kyc-scale-photos.rb"
 
 require 'time'
 
@@ -71,10 +77,16 @@ namespace :deploy do
     puts %x{rsync --times --rsh=ssh --human-readable --progress config/application.yml #{domain}:#{config_path}}
     puts %x{rsync --times --rsh=ssh --human-readable --progress config/database.yml #{domain}:#{config_path}}
   end
+  
+  desc "Upload photos to static photos directory"
+  task :push_photos do
+    # could also call kyc-scale-photos.rb here to generate the latest set of photos
+    # :photo_scaling_script
+    %x{rsync --recursive --times --rsh=ssh --compress --human-readable --progress #{photo_source_path} #{domain}:#{photos_path}}
+  end
 end
 
 # via https://gist.github.com/andrik/3609935
-
 
 namespace :assets do
   desc 'Run the precompile task locally and rsync with static server'
