@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617180656) do
+ActiveRecord::Schema.define(:version => 20130810165738) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -143,8 +143,8 @@ ActiveRecord::Schema.define(:version => 20130617180656) do
     t.integer  "theme_id"
     t.integer  "guest_id"
     t.integer  "media_type_id",           :default => 1
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.text     "image_credit_url"
     t.string   "image_copyright_notice"
     t.text     "image_copyright_url"
@@ -158,6 +158,8 @@ ActiveRecord::Schema.define(:version => 20130617180656) do
     t.text     "more_info_notes"
     t.text     "map_data"
     t.integer  "map_data_type",           :default => 0
+    t.string   "image_caption"
+    t.boolean  "location_valid",          :default => false
   end
 
   add_index "stories", ["slug"], :name => "index_stories_on_slug", :unique => true
