@@ -11,5 +11,24 @@ module ApplicationHelper
     HTML
     html.html_safe
   end
-
+  
+  # use fractions for longer distances, and round to the nearest 1/4 mile?
+  def humanize_distance distance, metric
+    
+    # < half km, use meters. < 1/4 mile, use feet.
+    conversion_threshold = metric ? 0.5 : 0.25
+    
+    if distance < conversion_threshold
+      conversion_factor = metric ? 1000 : 5280
+      converted_distance = distance*conversion_factor
+      unit = metric ? "meters" : "feet"
+      text = "#{converted_distance.round(0).to_s} #{unit}"
+    else
+      unit = metric ? "km" : "miles"
+      text = "#{distance.to_s} #{unit}"
+    end
+    
+    text
+  end
+  
 end

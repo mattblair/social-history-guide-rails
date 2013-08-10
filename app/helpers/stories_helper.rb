@@ -102,7 +102,7 @@ module StoriesHelper
           <tr>
             <td>#{link_to story.title, story}</td>
             <td class="nearby-theme">#{story.theme.title}</td>
-            <td class="nearby-distance">#{story.distance.round(2)} miles</td>
+            <td class="nearby-distance">#{humanize_distance(story.distance.round(2), false)}</td>
           </tr>
         ROW
         
