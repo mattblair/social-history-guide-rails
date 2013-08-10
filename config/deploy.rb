@@ -55,7 +55,26 @@ end
 namespace :archive do
   desc 'Save the current data as JSON'
   task :json_files, :roles => :web do
-    #
+    # make a timestamped folder in json_archive_path
+    
+    json_dir = "#{json_archive_path}/#{archive_timestamp}"
+    
+    Dir.mkdir(json_dir)
+    
+    prod_url = "https://kyc-beta.elsewiseapps.com"
+        
+    models_to_fetch = ["themes", "guests", "stories", "tidbits"]
+    
+    models_to_fetch.each do |model_name|
+      
+      # Example that works at the command line.
+      # curl https://kyc-beta.elsewiseapps.com/tidbits.json --insecure -o ./tidbits.json
+      # will require authentication in the future to get unpublished content
+      # fails when called this way, with the message: "No such file or directory"
+      # use Net::HTTP instead?
+      %x{"curl #{prod_url}/#{model_name}.json --insecure -o #{json_dir}/#{model_name}.json"}
+      
+    end
   end
   
   desc 'Save the production database to the local dev machine'
