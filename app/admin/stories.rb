@@ -181,6 +181,7 @@ ActiveAdmin.register Story do
     f.inputs "Image Details" do
       f.input :photo_notes, :label => "Photo Research Notes", :input_html => {:rows => 10, :cols => 60}, :hint => "Not displayed to the public"
       f.input :image_name, :label => "Image Filename"
+      f.input :image_caption, :label => "Caption"
       f.input :image_credit, :label => "Image Credit", :hint => "Displayed below the image"
       f.input :image_credit_url, :label => "Image Credit URL", :input_html => {:rows => 1, :cols => 60}, :hint => "Image credit text links to this web address"
       f.input :image_copyright_notice, :label => "Image Copyright Notice", :hint => "Visible to the public"
