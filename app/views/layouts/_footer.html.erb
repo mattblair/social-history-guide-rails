@@ -1,5 +1,11 @@
-<%-# this is temporary... %>
-<p class="footer-menu-list"> Suggestions &amp; Submissions | Contact | About | Credits</p>
+<p class="footer-menu-list"> 
+	<%= link_to_unless_current "About", about_path %> | 
+	<%= link_to_unless_current "Credits", credits_path %> | 	
+	<%= link_to_unless_current "Suggestions & Submissions", suggestions_path %> | 
+	<%= link_to_unless_current "Contact", contact_path %>
+</p>
+
+<%-# If you wnt to add login links to the footer %>
 
 <% if false %>
 	<ul class="footer-sign-in">

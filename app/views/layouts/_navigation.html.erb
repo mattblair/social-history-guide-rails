@@ -2,13 +2,8 @@
 <%= link_to "Know Your City Guide", root_path, :class => 'brand' %>
 
 <ul class="nav">
-<% if false %>
-  <li><%= link_to 'Themes', themes_path %></li>
-  <li><%= link_to 'Guests', guests_path %></li>
-<% end %>
   <li><%= link_to 'Flashbacks', tidbits_path %></li>
-  <li><%= link_to 'Nearby', "/about.html", :class => "hidden-desktop" %></li>
-  <li><%= link_to 'News', tidbits_path %></li>
-  <li><%= link_to 'Donate', "/about.html" %></li>
-  <li><%= link_to 'About', "/about.html" %></li>
+  <li><%= link_to_unless_current "Nearby", nearby_path, :class => "hidden-desktop" %></li>
+  <li><%= link_to_unless_current "Donate", donate_path %></li>
+  <li><%= link_to_unless_current "About", about_path %></li>
 </ul>
