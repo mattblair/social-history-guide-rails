@@ -1,6 +1,13 @@
-<h1>Snapshots</h1>
+<h1>Flashbacks</h1>
 
 <% @tidbits.each do |tidbit| %>
-	<h3><%= link_to tidbit.title, tidbit %></h3>
-	<p><em>Published: <%= tidbit.publication_date %></em></p>
+	<div class="tidbit-listing">		
+		<a href="<%="/tidbits/#{tidbit.slug}" %>"> <%= story_thumbnail_tag(tidbit.image_name) %> </a>
+		
+		<h4><%= link_to tidbit.title, tidbit%></h4>
+		<p class="tidbit-publish-date">Published: <%= tidbit.publication_date.to_formatted_s(:long) %></p>
+		<% if !tidbit.year.nil? %>
+			<p class="tidbit-year"><%= tidbit.year %></p>
+		<% end %>
+	</div>
 <% end %>
