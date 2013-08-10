@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130810165738) do
+ActiveRecord::Schema.define(:version => 20130810170136) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -208,8 +208,8 @@ ActiveRecord::Schema.define(:version => 20130810165738) do
     t.string   "audio_filename"
     t.string   "source"
     t.text     "source_url"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
     t.integer  "workflow_state_id",       :default => 1
     t.integer  "media_type_id",           :default => 3
     t.integer  "collection_id",           :default => 1
@@ -230,6 +230,7 @@ ActiveRecord::Schema.define(:version => 20130810165738) do
     t.text     "more_info_notes"
     t.text     "map_data"
     t.integer  "map_data_type",           :default => 0
+    t.boolean  "location_valid",          :default => false
   end
 
   add_index "tidbits", ["slug"], :name => "index_tidbits_on_slug", :unique => true
