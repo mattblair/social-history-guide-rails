@@ -65,6 +65,8 @@ ActiveAdmin.register Tidbit do
       f.input :publication_date, :as => :date_select
       f.input :body, :label => "Body (up to 250 words)", :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
       f.input :theme
+      f.input :source, :label => "Source", :hint => "Author or Interviewee"
+      f.input :source_url, :label => "Source URL", :hint => "(optional)"
       f.input :media_type, :label => "Format", :hint => "Some selections require additional media information below"
       f.input :year, :label => "Year (optional)", :required => false
       f.input :twitter_template, :label => "Twitter Text", :input_html => { :rows => 3, :cols => 20, :maxlength => 120 }, :hint => "Less than 120 characters, to leave space for urls, RTs, etc."
