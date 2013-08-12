@@ -78,6 +78,26 @@ class Tidbit < ActiveRecord::Base
     self.location_valid = self.valid_coordinate?
   end
   
+  def to_geojson
+    
+    geojson = <<-JSON 
+    {
+  	    "type": "Feature",
+  	    "properties": {
+  	        "title": "#{self.title}",
+  	        "theme": "#{self.theme.title}",
+  	        "link": "/tidbits/#{self.slug}"
+  	    },
+  	    "geometry": {
+  	        "type": "Point",
+  	        "coordinates": [#{self.longitude}, #{self.latitude}]
+  	    }
+  	}
+    JSON
+    
+    geojson
+  end
+  
   # must have to use geocoder queries
   reverse_geocoded_by :latitude, :longitude
   
