@@ -8,6 +8,16 @@ class StaticPageController < ApplicationController
     
     @tidbits = Tidbit.where('location_valid' => true)
     
+    features = []
+    
+    @tidbits.each do |tidbit| 
+      features << tidbit.to_geojson.html_safe
+    end
+    
+    @geojson = "[#{features.join(",")}]".html_safe
+    
+    # calculate a centroid here, too?
+    
   end
 
   def contact
