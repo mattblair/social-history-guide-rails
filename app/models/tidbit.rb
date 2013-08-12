@@ -58,6 +58,7 @@ class Tidbit < ActiveRecord::Base
   
   # make sure coordinates are not nil:
   before_validation :generate_coordinates
+  before_validation :set_pub_date
   after_validation :persist_coordinate_validity
   
   def generate_coordinates
@@ -72,6 +73,10 @@ class Tidbit < ActiveRecord::Base
     else
       return false
     end
+  end
+  
+  def set_pub_date
+    self.publication_date ||= DateTime.now
   end
   
   def persist_coordinate_validity
