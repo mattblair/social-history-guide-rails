@@ -85,6 +85,27 @@ class Story < ActiveRecord::Base
     self.location_valid = self.valid_coordinate?
   end
   
+  def to_geojson
+    
+    geojson = <<-JSON 
+    {
+  	    "type": "Feature",
+  	    "properties": {
+  	        "title": "#{self.title}",
+  	        "theme": "#{self.theme.title}",
+  	        "link": "/stories/#{self.slug}",
+  	        "popupContent": "<a href=\"/stories/#{self.slug}\">#{self.title}</a>"
+  	    },
+  	    "geometry": {
+  	        "type": "Point",
+  	        "coordinates": [#{self.longitude}, #{self.latitude}]
+  	    }
+  	}
+    JSON
+    
+    geojson
+  end
+  
   belongs_to :collection
   belongs_to :theme
   belongs_to :guest
