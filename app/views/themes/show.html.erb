@@ -33,7 +33,18 @@
 
 <% end %>
 
-<p><%= @geojson %></p>
+<div id="map" style="width: 500px; height: 400px" ></div>
+
+<%= javascript_include_tag "leaflet-providers" %>
+<%= javascript_include_tag "kyc-leaflet" %>
+
+<script>
+var map = L.map('map').setView([45.523683, -122.663764], 13);
+addTilesToMap('Stamen.Toner', map)
+
+var initialGeoJSONData = <%= @geojson %>;
+addGeoJSONToMap(initialGeoJSONData, map);
+</script>
 
 <% if false %>
 	<h3>Tidbits</h3>
