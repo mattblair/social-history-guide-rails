@@ -85,16 +85,18 @@ class Story < ActiveRecord::Base
     self.location_valid = self.valid_coordinate?
   end
   
+  # features can have properties added for client-side filtering and presentation
   def to_geojson
     
+    # define popup content here? Example:
+    # "popupContent": "<a href=\"/stories/#{self.slug}\">#{self.title}</a>"
     geojson = <<-JSON 
     {
   	    "type": "Feature",
   	    "properties": {
   	        "title": "#{self.title}",
   	        "theme": "#{self.theme.title}",
-  	        "link": "/stories/#{self.slug}",
-  	        "popupContent": "<a href=\"/stories/#{self.slug}\">#{self.title}</a>"
+  	        "link": "/stories/#{self.slug}"
   	    },
   	    "geometry": {
   	        "type": "Point",
@@ -104,6 +106,20 @@ class Story < ActiveRecord::Base
     JSON
     
     geojson
+  end
+  
+  def to_geojson_point 
+    point = <<-JSON
+      {
+          "type": "Point",
+          "coordinates": [
+              #{self.longitude},
+              #{self.latitude}
+          ]
+      }
+    JSON
+    
+    point
   end
   
   belongs_to :collection
