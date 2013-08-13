@@ -85,12 +85,14 @@ class Tidbit < ActiveRecord::Base
   
   def to_geojson
     
+    theme_title = self.theme.nil? ? "" : self.theme.title
+    
     geojson = <<-JSON 
     {
   	    "type": "Feature",
   	    "properties": {
   	        "title": "#{self.title}",
-  	        "theme": "#{self.theme.title}",
+  	        "theme": "#{theme_title}",
   	        "link": "/tidbits/#{self.slug}"
   	    },
   	    "geometry": {
