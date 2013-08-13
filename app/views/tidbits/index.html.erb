@@ -1,5 +1,18 @@
 <h1>Flashbacks</h1>
 
+<div id="map" style="width: 500px; height: 400px" ></div>
+
+<%= javascript_include_tag "leaflet-providers" %>
+<%= javascript_include_tag "kyc-leaflet" %>
+
+<script>
+var map = L.map('map').setView([45.523683, -122.663764], 13);
+addTilesToMap('Stamen.Toner', map)
+
+var initialGeoJSONData = <%= @geojson %>;
+addGeoJSONToMap(initialGeoJSONData, map);
+</script>
+
 <% @tidbits.each do |tidbit| %>
 	<div class="tidbit-listing">		
 		<a href="<%="/tidbits/#{tidbit.slug}" %>"> <%= story_thumbnail_tag(tidbit.image_name) %> </a>
