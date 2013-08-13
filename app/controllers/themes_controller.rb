@@ -22,7 +22,7 @@ class ThemesController < ApplicationController
     @tidbits = Tidbit.where("theme_id = #{@theme.id}").order("publication_date DESC")
     @stories = Story.where("theme_id = #{@theme.id} and workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
     
-    @mappable_stories = Story.where("theme_id = #{@theme.id} and location_valid = 1 and workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
+    @mappable_stories = Story.where("theme_id = #{@theme.id} and location_valid = 't' and workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
     
     features = []
     
