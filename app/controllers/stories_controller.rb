@@ -15,7 +15,10 @@ class StoriesController < ApplicationController
   # GET /stories/1.json
   def show
     @story = Story.find(params[:id])
-    #@story = Story.friendly.find(params[:id])
+    
+    # we probably just want to show a dot on the map, e.g. no popup
+    #@geojson = @story.to_geojson.html_safe
+    @geojson = @story.to_geojson_point.html_safe
     
     respond_to do |format|
       format.html # show.html.erb
