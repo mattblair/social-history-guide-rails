@@ -2,9 +2,7 @@ class ThemesController < ApplicationController
   # GET /themes
   # GET /themes.json
   def index
-    # everything:
-    #@themes = Theme.order("display_order")
-    # for testing, limit to draft state:
+    # for testing, limit to environmentally-defined state:
     @themes = Theme.where("workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
     # limit to published, stories or tidbits > 1, order by display_order
     #@themes = Theme.where("workflow_state_id = 6")
@@ -23,6 +21,16 @@ class ThemesController < ApplicationController
     # limit to published, collection 1, order by display_order
     @tidbits = Tidbit.where("theme_id = #{@theme.id}").order("publication_date DESC")
     @stories = Story.where("theme_id = #{@theme.id} and workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
+    
+    @mappable_stories = Story.where("theme_id = #{@theme.id} and location_valid = 1 and workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
+    
+    features = []
+    
+    @mappable_stories.each do |story| 
+      features << story.to_geojson.html_safe
+    end
+    
+    @geojson = "[#{features.join(",")}]".html_safe
     
     respond_to do |format|
       format.html # show.html.erb
