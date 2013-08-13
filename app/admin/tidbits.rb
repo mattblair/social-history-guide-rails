@@ -34,9 +34,7 @@ ActiveAdmin.register Tidbit do
       end
   end
   
-  sidebar :main_image, :except => :index do
-      image_tag("#{tidbit.image_name}.jpg", :size => "240x180", :class => "guest_tidbit_preview", :alt => "Tidbit Image")
-  end
+  sidebar :current_image, :except => :index, :partial => "admin/resource/admin_image_sidebar"
   
   sidebar :image_credits, :except => :index, :partial => "admin/resource/image_credits_sidebar"
   
