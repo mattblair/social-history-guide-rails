@@ -30,7 +30,7 @@ class ThemesController < ApplicationController
       features << story.to_geojson.html_safe
     end
     
-    @geojson = "[#{features.join(",")}]".html_safe
+    @geojson = "{\"type\": \"FeatureCollection\",\"features\": [#{features.join(",")}]}".html_safe
     
     respond_to do |format|
       format.html # show.html.erb
