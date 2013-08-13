@@ -36,10 +36,20 @@
 			<%= story_nearby_list(@story.nearbys(10)) %>
 		</div>
 		
-		<div id="story-static-map">
-			<h4>Story Location</h4>
-			<%= image_tag "http://maps.google.com/maps/api/staticmap?size=240x180&sensor=false&zoom=16&markers=#{@story.latitude}%2C#{@story.longitude}", :size => "300x225" %>
-		</div>
+		<div id="map" style="width: 300px; height: 225px" ></div>
+
+		<%= javascript_include_tag "leaflet-providers" %>
+		<%= javascript_include_tag "kyc-leaflet" %>
+
+		<script>
+		var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
+		var map = L.map('map').setView(centroid, 15);
+		addTilesToMap('Stamen.Toner', map)
+
+		var initialGeoJSONData = <%= @geojson %>;
+		//addGeoJSONToMap(initialGeoJSONData, map);
+		addMarkerToMap(centroid[0], centroid[1], map);
+		</script>
 		
 	</div> <!-- #story-geography -->
 <% end %>
