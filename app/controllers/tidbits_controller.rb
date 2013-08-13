@@ -3,6 +3,16 @@ class TidbitsController < ApplicationController
   # GET /tidbits.json
   def index
     @tidbits = Tidbit.where("workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("publication_date DESC")
+    
+    features = []
+    
+    @tidbits.each do |tidbit| 
+      features << tidbit.to_geojson.html_safe
+    end
+    
+    @geojson = "{\"type\": \"FeatureCollection\",\"features\": [#{features.join(",")}]}".html_safe
+    
+    # calculate a centroid and scale here, too?
 
     respond_to do |format|
       format.html # index.html.erb
