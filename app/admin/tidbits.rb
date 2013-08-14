@@ -41,8 +41,7 @@ ActiveAdmin.register Tidbit do
   sidebar :image_tips do
       ul do
         li "To add an image, type the name of the file in the Image Filename
-        field, and put it on Dropbox, or email it to me. Or just enter the URL
-        for it if it's already online."
+        field, and put it on Dropbox, or email it to me."
         li "They image won't appear here until I crop it, and add it to the images folder of the website."
       end
   end
@@ -53,26 +52,32 @@ ActiveAdmin.register Tidbit do
     else
       p "Location not specified, or out of scope of this project."
     end
-    
-    
   end
   
-  form do |f|                         
+  form do |f|
+    f.actions
     f.inputs "Basic Info" do       
       f.input :title                  
       f.input :publication_date, :as => :date_select
       f.input :body, :label => "Body (up to 250 words)", :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
       f.input :theme
       f.input :source, :label => "Source", :hint => "Author or Interviewee"
-      f.input :source_url, :label => "Source URL", :hint => "(optional)"
+      f.input :source_url, :label => "Source URL", :hint => "(optional)", :input_html => {:rows => 1, :cols => 60}
       f.input :media_type, :label => "Format", :hint => "Some selections require additional media information below"
       f.input :year, :label => "Year (optional)", :required => false
       f.input :twitter_template, :label => "Twitter Text", :input_html => { :rows => 3, :cols => 20, :maxlength => 120 }, :hint => "Less than 120 characters, to leave space for urls, RTs, etc."
       f.input :slug, :hint => "Auto-generated from name. Letters, numbers and hyphens only. Must start with a letter."
     end
-    f.inputs "Geocoding" do 
-      f.input :latitude, :input_html => { :size => 16 }
-      f.input :longitude, :input_html => { :size => 16 }
+    f.inputs "More Info" do
+      f.input :more_info_url, :label => "More Info URL"
+      f.input :more_info_title, :label => "More Info Title"
+      f.input :more_info_description, :input_html => {:rows => 5, :cols => 60}, :hint => "Optional"
+      f.input :more_info_notes, :input_html => {:rows => 5, :cols => 60}, :label => "More Info Notes", :hint => "Not displayed to the public"
+    end
+    f.inputs "Editorial Details" do
+      f.input :workflow_state
+      f.input :editorial_notes, :label => "Notes", :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
+      f.input :proofreader, :label => "Proofread By:"
     end
     f.inputs "Image Details" do
       f.input :image_name, :label => "Image Filename"
@@ -93,18 +98,14 @@ ActiveAdmin.register Tidbit do
       f.input :media_copyright_url, :label => "Media Copyright URL", :input_html => {:rows => 1, :cols => 60}, :hint => "Copyright notice links to this web address"
       f.input :media_copyright_details, :label => "Media Copyright Details", :input_html => {:rows => 5, :cols => 60}, :hint => "Private details of copyright and licensing"
     end
-    f.inputs "More Info" do
-      f.input :more_info_url, :label => "More Info URL"
-      f.input :more_info_title, :label => "More Info Title"
-      f.input :more_info_description, :input_html => {:rows => 5, :cols => 60}, :hint => "Optional"
-      f.input :more_info_notes, :input_html => {:rows => 5, :cols => 60}, :label => "More Info Notes", :hint => "Not displayed to the public"
+    f.inputs "Geocoding" do 
+      f.input :latitude, :input_html => { :size => 16 }
+      f.input :longitude, :input_html => { :size => 16 }
     end
-    f.inputs "Editorial Details" do
-      f.input :workflow_state
-      f.input :editorial_notes, :label => "Notes"
-      f.input :proofreader, :label => "Proofread By:"
-    end                          
+    f.inputs "Map Data" do
+      f.input :map_data, :input_html => { :rows => 10, :cols => 60 }, :hint => "Should be valid GeoJSON"
+      f.input :map_data_type, :hint => "Might not be used. Leave as 0 for now."
+    end
     f.actions
   end
-  
 end
