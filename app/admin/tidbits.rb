@@ -54,6 +54,71 @@ ActiveAdmin.register Tidbit do
     end
   end
   
+  
+  # ===================================================
+  # Show
+  # ===================================================
+  
+  show :title => "Flashback Details" do |tidbit|
+    # how do you rename this?! passing title and name don't work
+    attributes_table do
+      row :title
+      row :year
+      row :publication_date
+      row :theme_id
+      row :source
+      row :source_url
+      row :twitter_template do
+        simple_format tidbit.twitter_template
+      end
+      row :slug
+            
+      # status_tag options:
+      # :ok (green)
+      # :warning (yellow)
+      # :error (red)
+      row :workflow_state do |s| 
+        status_tag s.workflow_state.to_s, (s.workflow_state_id == 6 ? :ok : :warning)
+      end
+      
+      #row :proofreader
+    end
+    
+    panel "More Info" do
+      attributes_table_for tidbit, :more_info_title, :more_info_url, :more_info_description, :more_info_notes
+    end
+      
+    panel "Photo Notes" do
+      div do
+        simple_format tidbit.photo_notes
+      end
+    end
+    
+    panel "Editorial Details" do
+      div do
+        simple_format tidbit.editorial_notes
+      end
+      
+      attributes_table_for tidbit, :proofreader, :created_at, :updated_at
+    end
+    
+    panel "Media Copyright" do
+      attributes_table_for tidbit, :media_copyright_notice, :media_copyright_url, :media_copyright_details
+    end
+    
+    panel "Map Data" do
+      div do
+        simple_format tidbit.map_data
+      end
+    end
+    
+    #active_admin_comments
+  end
+  
+  # ===================================================
+  # Edit
+  # ===================================================
+  
   form do |f|
     f.actions
     f.inputs "Basic Info" do       
