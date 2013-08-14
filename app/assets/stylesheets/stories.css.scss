@@ -17,16 +17,25 @@
 
 .story-image-caption {
 	padding: 5px;
+	font-size: 14px;
 	background-color: #333;
 	color: #ccc;
+	margin-bottom: 0px;
 }
 
 // not limited to story -- move?
 .image-credit {
-	margin-top: 8px;
+	margin-top: 0px;
+	padding: 5px;
 	text-align: right;
 	font-style: oblique;
-	color: #555;
+	font-size: 10px;
+	background-color: #333;
+	color: #ccc;
+	
+	a {
+		color: #ccc;
+	}
 }
 
 #story-body-section {
@@ -60,6 +69,7 @@
 	clear: both;
 }
 
+// probably deprecated
 #story-static-map {
 	//margin: 20px;
 	
@@ -72,12 +82,35 @@
 	}
 }
 
+#story-map-container {
+	float: left;
+}
+
+#story-map {
+	width: 480px;
+	height: 360px;
+}
+
+#story-location-button {
+	font-size: 20px;
+	text-align: center;
+	width: 480px;
+	background-color: #000;
+	padding: 5px;
+	
+	a {
+		margin-top: 5px;
+		color: #ccc;
+	}
+}
+
 #nearby-list {  
  	padding: 10px;
   	border: solid 1px $kyc-border-color;
-	max-width: 500px;
-	float: left;
-	margin-right: 20px;
+	max-width: 480px;
+	float: right;
+	margin-left: 20px;
+	margin-bottom: 10px;
 	
 	table caption {
 		font-family: Courier,'Courier New',monospace;
