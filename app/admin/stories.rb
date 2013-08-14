@@ -108,9 +108,6 @@ ActiveAdmin.register Story do
       end
       row :slug
       row :keywords
-      #row :image do
-      #  image_tag(ad.image.url)
-      #end
       
       # status_tag options:
       # :ok (green)
@@ -122,12 +119,6 @@ ActiveAdmin.register Story do
       
       row :proofreader
     end
-    
-    #panel "Image Details" do
-    #  attributes_table_for story, :image_name, :image_credit, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details
-    #end
-    
-    # or do this as a sidebar?
     
     panel "More Info" do
       attributes_table_for story, :more_info_title, :more_info_url, :more_info_description, :more_info_notes
@@ -174,8 +165,8 @@ ActiveAdmin.register Story do
       f.input :slug, :hint => "Auto-generated from name. Letters, numbers and hyphens only. Must start with a letter."
     end
     f.inputs "More Info" do
-      f.input :more_info_url, :label => "More Info URL"
       f.input :more_info_title, :label => "More Info Title"
+      f.input :more_info_url, :label => "More Info URL"
       f.input :more_info_description, :input_html => {:rows => 5, :cols => 60}, :hint => "Optional"
       f.input :more_info_notes, :input_html => {:rows => 5, :cols => 60}, :label => "More Info Notes", :hint => "Not displayed to the public"
     end
