@@ -42,8 +42,8 @@
 var map = L.map('map').setView([45.523683, -122.663764], 13);
 addTilesToMap('Stamen.Toner', map)
 
-var initialGeoJSONData = <%= @geojson %>;
-addGeoJSONToMap(initialGeoJSONData, map);
+var storyGeoJSON = <%= @geojson %>;
+addGeoJSONToMap(storyGeoJSON, map);
 </script>
 
 <% if false %>
