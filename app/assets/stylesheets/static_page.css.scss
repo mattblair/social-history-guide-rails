@@ -3,7 +3,29 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+#nearby-map-container {
+	float: left;
+}
+
 #nearby-map { 
-	height: 180px;  
-	width: 500px;
+	width: 600px;
+	height: 450px;  
+}
+
+@media only screen and (max-device-width: 480px) {
+	
+	#nearby-map-container {
+		float: none;
+	}
+	
+	#nearby-map {
+		width: 320px;
+		height: 240px;
+		margin-left: 0px;
+	}
+
+	#nearby-location-button {
+		font-size: 18px;
+		width: 320px;
+	}
 }

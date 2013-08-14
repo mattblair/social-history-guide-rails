@@ -120,6 +120,30 @@
 	}
 }
 
+@media only screen and (max-device-width: 480px) {
+	
+	#story-map-container {
+		float: none;
+	}
+	
+	#story-map {
+		width: 320px;
+		height: 240px;
+	}
+
+	#story-location-button {
+		font-size: 18px;
+		width: 320px;
+	}
+	
+	#nearby-list {  
+		max-width: 320px;
+		float: none;
+		margin-left: 0px;
+		margin-bottom: 10px;
+	}
+}
+
 .nearby-distance {
 	text-align: right;
 	color: #555;
