@@ -130,7 +130,7 @@ ActiveAdmin.register Story do
     # or do this as a sidebar?
     
     panel "More Info" do
-      attributes_table_for story, :more_info_url, :more_info_title, :more_info_description, :more_info_notes
+      attributes_table_for story, :more_info_title, :more_info_url, :more_info_description, :more_info_notes
     end
       
     panel "Photo Notes" do
