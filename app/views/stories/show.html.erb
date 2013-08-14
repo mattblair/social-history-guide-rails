@@ -32,24 +32,28 @@
 <% if @story.valid_coordinate? %>
 	<div id="story-geography">
 		
-		<div id="nearby-list">
-			<%= story_nearby_list(@story.nearbys(10)) %>
-		</div>
-		
-		<div id="map" style="width: 300px; height: 225px" ></div>
+		<div id="story-map-container">
+		<div id="story-map"></div>
 
 		<%= javascript_include_tag "leaflet-providers" %>
 		<%= javascript_include_tag "kyc-leaflet" %>
 
 		<script>
 		var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
-		var map = L.map('map').setView(centroid, 15);
+		var map = L.map('story-map').setView(centroid, 15);
 		addTilesToMap('Stamen.Toner', map)
 
 		var initialGeoJSONData = <%= @geojson %>;
 		//addGeoJSONToMap(initialGeoJSONData, map);
 		addMarkerToMap(centroid[0], centroid[1], map);
 		</script>
+		
+		<div id="story-location-button"><p><a href="javascript:addUserToMap(map, true)">Show my location</a></p></div>
+		</div> <!-- id="story-map-container" -->
+		
+		<div id="nearby-list">
+			<%= story_nearby_list(@story.nearbys(12).limit(10)) %>
+		</div>
 		
 	</div> <!-- #story-geography -->
 <% end %>
