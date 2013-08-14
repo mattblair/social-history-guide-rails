@@ -82,17 +82,8 @@ ActiveAdmin.register_page "Dashboard" do
     
   end # content
   
-  # include a sidebar directly:
-=begin
-  sidebar :help do
-      ul do
-        li "Second List First Item"
-        li "Second List Second Item"
-      end
-  end
-=end
-
   # or with a partial:
+  sidebar :visit_site, :partial => "admin/resource/site_link"
   sidebar :research_resources, :partial => "admin/resource/research_sidebar"
   sidebar :relevant_twitter_accounts, :partial => "admin/resource/historical_twitter"
   sidebar :other_resources, :partial => "admin/resource/other_sidebar"
