@@ -25,16 +25,16 @@ ActiveAdmin.register_page "Dashboard" do
 
     columns do
       column do
-        panel "Stories Without Photo Notes" do
+        panel "Stories Without Photos" do
           ul do
-            Story.where("workflow_state_id = 2 and photo_notes = ''").order("updated_at desc").limit(20).map do |story|
+            Story.where("workflow_state_id = 2 and image_name = ''").order("updated_at desc").limit(20).map do |story|
               li link_to(story.title, admin_story_path(story))
             end
           end
         end
-        panel "Draft Stories Without Photos" do
+        panel "Unmapped Draft Stories" do
           ul do
-            Story.where("workflow_state_id = 2 and image_name = ''").order("updated_at desc").limit(20).map do |story|
+            Story.where('workflow_state_id = 2 and location_valid != "t"').order("updated_at desc").map do |story|
               li link_to(story.title, admin_story_path(story))
             end
           end
@@ -47,29 +47,26 @@ ActiveAdmin.register_page "Dashboard" do
           end
         end
       end
+      
       column do
-        panel "Recently Edited to Tidbits" do
+        panel "Flashbacks Without Photos" do
           ul do
-            Tidbit.where("workflow_state_id = 2").order("updated_at desc").limit(20).map do |tidbit|
+            Tidbit.where("workflow_state_id = 2 and image_name = ''").order("updated_at desc").limit(20).map do |story|
+              li link_to(story.title, admin_story_path(story))
+            end
+          end
+        end
+        panel "Unmapped Draft Flashbacks" do
+          ul do
+            Tidbit.where('workflow_state_id = 2 and location_valid != "t"').order("updated_at desc").map do |tidbit|
               li link_to(tidbit.title, admin_tidbit_path(tidbit))
             end
           end
         end
-        panel "Unmapped Tidbits" do
+        panel "Recently Edited Flashbacks" do
           ul do
-            Tidbit.where("workflow_state_id = 2").order("updated_at desc").map do |tidbit|
-              if !tidbit.valid_coordinate?
-                li link_to(tidbit.title, admin_tidbit_path(tidbit))
-              end
-            end
-          end
-        end
-        panel "Unmapped Stories" do
-          ul do
-            Story.where("workflow_state_id = 2").order("updated_at desc").map do |story|
-              if !story.valid_coordinate?
-                li link_to(story.title, admin_story_path(story))
-              end
+            Tidbit.where("workflow_state_id = 2").order("updated_at desc").limit(20).map do |tidbit|
+              li link_to(tidbit.title, admin_tidbit_path(tidbit))
             end
           end
         end
