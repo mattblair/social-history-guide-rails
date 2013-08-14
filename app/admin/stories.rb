@@ -162,7 +162,8 @@ ActiveAdmin.register Story do
   end
   
   
-  form do |f|                         
+  form do |f|
+    f.actions           
     f.inputs "Basic Info" do       
       f.input :title
       f.input :subtitle
@@ -172,11 +173,24 @@ ActiveAdmin.register Story do
       f.input :twitter_template, :label => "Twitter Text", :input_html => { :rows => 3, :cols => 20, :maxlength => 120 }, :hint => "Less than 120 characters, to leave space for urls, RTs, etc."
       f.input :slug, :hint => "Auto-generated from name. Letters, numbers and hyphens only. Must start with a letter."
     end
+    f.inputs "More Info" do
+      f.input :more_info_url, :label => "More Info URL"
+      f.input :more_info_title, :label => "More Info Title"
+      f.input :more_info_description, :input_html => {:rows => 5, :cols => 60}, :hint => "Optional"
+      f.input :more_info_notes, :input_html => {:rows => 5, :cols => 60}, :label => "More Info Notes", :hint => "Not displayed to the public"
+    end
     f.inputs "Interview Details" do
-      #f.html audio_tag("#{story.audio_filename}.mp4", :controls => true)
       f.input :guest
       f.input :audio_filename
       f.input :audio_transcription, :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
+    end
+    f.inputs "Editorial Details" do
+      f.input :workflow_state
+      f.input :media_type, :label => "Format", :hint => "Most stories will be audio interviews"
+      f.input :editorial_notes, :label => "Notes", :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
+      f.input :proofreader, :label => "Proofread By:"
+      f.input :display_order
+      f.input :editing_priority
     end
     f.inputs "Image Details" do
       f.input :photo_notes, :label => "Photo Research Notes", :input_html => {:rows => 10, :cols => 60}, :hint => "Not displayed to the public"
@@ -192,21 +206,10 @@ ActiveAdmin.register Story do
       f.input :latitude, :input_html => { :size => 16 }
       f.input :longitude, :input_html => { :size => 16 }
     end
-    f.inputs "More Info" do
-      f.input :more_info_url, :label => "More Info URL"
-      f.input :more_info_title, :label => "More Info Title"
-      f.input :more_info_description, :input_html => {:rows => 5, :cols => 60}, :hint => "Optional"
-      f.input :more_info_notes, :input_html => {:rows => 5, :cols => 60}, :label => "More Info Notes", :hint => "Not displayed to the public"
+    f.inputs "Map Data" do
+      f.input :map_data, :input_html => { :rows => 10, :cols => 60 }, :hint => "Should be valid GeoJSON"
+      f.input :map_data_type, :hint => "Might not be used. Leave as 0 for now."
     end
-    f.inputs "Editorial Details" do
-      f.input :workflow_state
-      f.input :media_type, :label => "Format", :hint => "Most stories will be audio interviews"
-      f.input :editorial_notes, :label => "Notes"
-      f.input :proofreader, :label => "Proofread By:"
-      f.input :display_order
-      f.input :editing_priority
-    end                          
     f.actions
   end
-  
 end
