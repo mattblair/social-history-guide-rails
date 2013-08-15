@@ -62,7 +62,7 @@ class Story < ActiveRecord::Base
   
   # make sure coordinates are not nil:
   before_validation :generate_coordinates
-  before_save :persist_coordinate_validity
+  after_validation :persist_coordinate_validity
   
   def generate_coordinates
     self.latitude ||= 0.0
