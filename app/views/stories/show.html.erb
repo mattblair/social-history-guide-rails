@@ -1,9 +1,35 @@
 <p id="notice"><%= notice %></p>
 
 <div id="story-media-section">
-	<%= story_image_markup(@story.image_name) %>
-	<p class="story-image-caption"><%= @story.image_caption %> </p>
-	<%= story_image_credit_markup(@story) %>
+	<%-# will become map_interview afer edits...%>
+	<% if @story.media_type.name == "geojson_map" %>
+		
+		<div id="media-map-container">
+		<div id="media-map"></div>
+
+		<%= javascript_include_tag "leaflet-providers" %>
+		<%= javascript_include_tag "kyc-leaflet" %>
+
+		<script>
+		var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
+		var map = L.map('media-map').setView(centroid, 13);
+		addTilesToMap('Stamen.TonerLite', map)
+
+		addGeoJSONToMap(<%= @media_geojson %>, map);
+		</script>
+		
+		<div id="media-location-button"><p><a href="javascript:addUserToMap(map, true)">Show my location</a></p></div>
+		</div> <!-- id="media-map-container" -->
+		
+		
+	<%-# will become photo_interview after edits...%>
+	<% elsif @story.media_type.name == "audio_interview" %>
+		<%= story_image_markup(@story.image_name) %>
+		<p class="story-image-caption"><%= @story.image_caption %> </p>
+		<%= story_image_credit_markup(@story) %>
+	<% else %>
+		<p>Implicit handling of interview_only media type.</p>
+	<% end %>
 	
 </div> <!-- #story-media-section -->
 
@@ -32,24 +58,27 @@
 <% if @story.valid_coordinate? %>
 	<div id="story-geography">
 		
-		<div id="story-map-container">
-		<div id="story-map"></div>
+		<!-- don't repeat map if the main media for the story is a map? -->
+		<% if @story.media_type.name != "geojson_map" %>
+			<div id="story-map-container">
+			<div id="story-map"></div>
 
-		<%= javascript_include_tag "leaflet-providers" %>
-		<%= javascript_include_tag "kyc-leaflet" %>
+			<%= javascript_include_tag "leaflet-providers" %>
+			<%= javascript_include_tag "kyc-leaflet" %>
 
-		<script>
-		var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
-		var map = L.map('story-map').setView(centroid, 15);
-		addTilesToMap('Stamen.Toner', map)
+			<script>
+			var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
+			var map = L.map('story-map').setView(centroid, 15);
+			addTilesToMap('Stamen.Toner', map)
 
-		var initialGeoJSONData = <%= @geojson %>;
-		//addGeoJSONToMap(initialGeoJSONData, map);
-		addMarkerToMap(centroid[0], centroid[1], map);
-		</script>
+			var initialGeoJSONData = <%= @geojson %>;
+			//addGeoJSONToMap(initialGeoJSONData, map);
+			addMarkerToMap(centroid[0], centroid[1], map);
+			</script>
 		
-		<div id="story-location-button"><p><a href="javascript:addUserToMap(map, true)">Show my location</a></p></div>
-		</div> <!-- id="story-map-container" -->
+			<div id="story-location-button"><p><a href="javascript:addUserToMap(map, true)">Show my location</a></p></div>
+			</div> <!-- id="story-map-container" -->
+		<% end %> <!-- of if media is a map conditional-->
 		
 		<div id="nearby-list">
 			<%= story_nearby_list(@story.nearbys(12).limit(10)) %>
