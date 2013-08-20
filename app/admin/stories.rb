@@ -177,7 +177,7 @@ ActiveAdmin.register Story do
     end
     f.inputs "Editorial Details" do
       f.input :workflow_state
-      f.input :media_type, :label => "Format", :hint => "Most stories will be audio interviews"
+      f.input :media_type, :label => "Format", :hint => "Most stories will be photo_interview type"
       f.input :editorial_notes, :label => "Notes", :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
       f.input :proofreader, :label => "Proofread By:"
       f.input :display_order
