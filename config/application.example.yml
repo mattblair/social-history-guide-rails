@@ -16,7 +16,7 @@ ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
 ROLES: [admin, editor, proofreader, tester, user, backer]
 WORKFLOW_STATES: [proposed, draft, deferred, incomplete, edited, published, testing]
-MEDIA_TYPES: [audio_interview, audio_ambient, text, text_with_photo, photo_with_caption, photo_gallery, map_static]
+MEDIA_TYPES: [photo_interview, map_interview, interview_only, ambient_audio, text_only, text_with_photo, photo_gallery, map_static]
 KYC_SEED_DATA_DEV: 
 KYC_SEED_DATA_PROD: 
 KYC_USER_JSON: kyc_users.json
