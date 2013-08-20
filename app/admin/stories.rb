@@ -198,7 +198,7 @@ ActiveAdmin.register Story do
       f.input :longitude, :input_html => { :size => 16 }
     end
     f.inputs "Map Data" do
-      f.input :map_data, :input_html => { :rows => 10, :cols => 60 }, :hint => "Should be valid GeoJSON"
+      f.input :map_data, :input_html => { :rows => 10, :cols => 60 }, :hint => "Recommended: validate GeoJSON with geojsonlint.com"
       f.input :map_data_type, :hint => "Might not be used. Leave as 0 for now."
     end
     f.actions
