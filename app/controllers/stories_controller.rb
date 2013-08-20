@@ -16,6 +16,9 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     
+    # the map data if it's show in place of a photo
+    @media_geojson = @story.map_data.html_safe
+    
     # we probably just want to show a dot on the map, e.g. no popup
     #@geojson = @story.to_geojson.html_safe
     @geojson = @story.to_geojson_point.html_safe
