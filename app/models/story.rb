@@ -41,6 +41,8 @@
 #  map_data_type           :integer          default(0)
 #  image_caption           :string(255)
 #  location_valid          :boolean          default(FALSE)
+#  image_usage_cleared     :boolean          default(FALSE)
+#  image_status_id         :integer          default(1)
 #
 
 class Story < ActiveRecord::Base

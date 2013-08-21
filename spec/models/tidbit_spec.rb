@@ -40,6 +40,9 @@
 #  map_data                :text
 #  map_data_type           :integer          default(0)
 #  location_valid          :boolean          default(FALSE)
+#  keywords                :string(255)
+#  image_usage_cleared     :boolean          default(FALSE)
+#  image_status_id         :integer          default(1)
 #
 
 require 'spec_helper'
