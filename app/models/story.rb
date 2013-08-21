@@ -127,6 +127,7 @@ class Story < ActiveRecord::Base
   belongs_to :guest
   belongs_to :media_type
   belongs_to :workflow_state
+  belongs_to :image_status
   
   belongs_to :proofreader, :class_name => AdminUser
   
@@ -139,6 +140,6 @@ class Story < ActiveRecord::Base
   scope :published, where(:workflow_state_id => 6)
   scope :testing, where(:workflow_state_id => 7)
   
-  attr_accessible :audio_filename, :audio_transcription, :display_order, :editing_priority, :editorial_notes, :image_credit, :image_name, :image_caption, :keywords, :latitude, :longitude, :original_audio_filename, :audio_filename, :subtitle, :summary, :thumbnail_name, :title, :twitter_template, :collection_id, :theme_id, :guest_id, :media_type_id, :workflow_state_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :slug, :photo_notes, :proofreader_id, :more_info_url, :more_info_title, :more_info_description, :more_info_notes, :location_valid, :map_data, :map_data_type
+  attr_accessible :audio_filename, :audio_transcription, :display_order, :editing_priority, :editorial_notes, :image_credit, :image_name, :image_caption, :keywords, :latitude, :longitude, :original_audio_filename, :audio_filename, :subtitle, :summary, :thumbnail_name, :title, :twitter_template, :collection_id, :theme_id, :guest_id, :media_type_id, :workflow_state_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :slug, :photo_notes, :proofreader_id, :more_info_url, :more_info_title, :more_info_description, :more_info_notes, :location_valid, :map_data, :map_data_type, :image_usage_cleared, :image_status_id
 
 end
