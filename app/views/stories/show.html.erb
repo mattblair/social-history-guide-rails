@@ -1,8 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <div id="story-media-section">
-	<%-# will become map_interview afer edits...%>
-	<% if @story.media_type.name == "geojson_map" %>
+	<% if @story.media_type.name == "map_interview" %>
 		
 		<div id="media-map-container">
 		<div id="media-map"></div>
@@ -12,7 +11,7 @@
 
 		<script>
 		var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
-		var map = L.map('media-map').setView(centroid, 13);
+		var map = L.map('media-map').setView(centroid, 16);
 		addTilesToMap('Stamen.TonerLite', map)
 
 		addGeoJSONToMap(<%= @media_geojson %>, map);
@@ -21,9 +20,7 @@
 		<div id="media-location-button"><p><a href="javascript:addUserToMap(map, true)">Show my location</a></p></div>
 		</div> <!-- id="media-map-container" -->
 		
-		
-	<%-# will become photo_interview after edits...%>
-	<% elsif @story.media_type.name == "audio_interview" %>
+	<% elsif @story.media_type.name == "photo_interview" %>
 		<%= story_image_markup(@story.image_name) %>
 		<p class="story-image-caption"><%= @story.image_caption %> </p>
 		<%= story_image_credit_markup(@story) %>
@@ -59,7 +56,7 @@
 	<div id="story-geography">
 		
 		<!-- don't repeat map if the main media for the story is a map? -->
-		<% if @story.media_type.name != "geojson_map" %>
+		<% if @story.media_type.name != "map_interview" %>
 			<div id="story-map-container">
 			<div id="story-map"></div>
 
