@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821144658) do
+ActiveRecord::Schema.define(:version => 20130821145822) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -240,6 +240,9 @@ ActiveRecord::Schema.define(:version => 20130821144658) do
     t.text     "map_data"
     t.integer  "map_data_type",           :default => 0
     t.boolean  "location_valid",          :default => false
+    t.string   "keywords"
+    t.boolean  "image_usage_cleared",     :default => false
+    t.integer  "image_status_id",         :default => 1
   end
 
   add_index "tidbits", ["slug"], :name => "index_tidbits_on_slug", :unique => true

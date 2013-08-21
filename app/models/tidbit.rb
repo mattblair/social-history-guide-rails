@@ -110,6 +110,7 @@ class Tidbit < ActiveRecord::Base
   
   belongs_to :workflow_state
   belongs_to :media_type
+  belongs_to :image_status
   
   belongs_to :collection
   belongs_to :theme
@@ -127,5 +128,5 @@ class Tidbit < ActiveRecord::Base
   scope :published, where(:workflow_state_id => 6)
   scope :testing, where(:workflow_state_id => 7)
   
-  attr_accessible :audio_filename, :body, :editorial_notes, :image_caption, :image_credit, :image_name, :latitude, :longitude, :publication_date, :source, :source_url, :title, :twitter_template, :year, :audio_filename, :workflow_state_id, :media_type_id, :collection_id, :theme_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :media_copyright_notice, :media_copyright_url, :media_copyright_details, :slug, :photo_notes, :proofreader_id, :more_info_url, :more_info_title, :more_info_description, :more_info_notes, :map_data, :map_data_type, :location_valid
+  attr_accessible :audio_filename, :body, :editorial_notes, :image_caption, :image_credit, :image_name, :latitude, :longitude, :publication_date, :source, :source_url, :title, :twitter_template, :year, :audio_filename, :workflow_state_id, :media_type_id, :collection_id, :theme_id, :image_credit_url, :image_copyright_notice, :image_copyright_url, :image_copyright_details, :media_copyright_notice, :media_copyright_url, :media_copyright_details, :slug, :photo_notes, :proofreader_id, :more_info_url, :more_info_title, :more_info_description, :more_info_notes, :map_data, :map_data_type, :location_valid, :keywords, :image_usage_cleared, :image_status_id
 end
