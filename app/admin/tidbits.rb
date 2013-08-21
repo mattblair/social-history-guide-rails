@@ -26,6 +26,17 @@ ActiveAdmin.register Tidbit do
       end
       column :theme, :sortable => :theme
       column :publication_date
+      column "Photo Status" do |t|
+        photo_status = t.image_status.human_name
+        if t.image_status.name == "available"
+          status_style = :ok
+        elsif t.image_status.name == "tbd"
+          status_style = :error
+        else
+          status_style = :warning
+        end
+        status_tag photo_status, status_style
+      end
       column "Last Updated", :updated_at
       
       # only show edit in the right column:
