@@ -169,7 +169,7 @@ ActiveAdmin.register Story do
     f.inputs "Basic Info" do       
       f.input :title
       f.input :subtitle
-      f.input :summary, :label => "Summary (up to ~100 words)", :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
+      f.input :summary, :label => "Summary (up to ~100 words)", :hint => "Refer to guest by last name. Other details will be displayed in a guest section of the story view.", :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
       f.input :keywords
       f.input :theme
       f.input :twitter_template, :label => "Twitter Text", :input_html => { :rows => 3, :cols => 20, :maxlength => 120 }, :hint => "Less than 120 characters, to leave space for urls, RTs, etc."
