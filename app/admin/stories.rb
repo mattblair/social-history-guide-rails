@@ -32,10 +32,14 @@ ActiveAdmin.register Story do
         has_photo_notes = !s.photo_notes.nil? && s.photo_notes !=""
         status_tag (has_photo_notes ? "Yes" : "No"), (has_photo_notes ? :ok : :error)
       end
-      column "Has Photo?" do |s|
-        has_photo = !s.image_name.nil? && s.image_name !=""
-        status_tag (has_photo ? "Yes" : "No"), (has_photo ? :ok : :error)
+      column "Photo Status" do |s|
+        photo_status = s.image_status.human_name
+        status_tag photo_status, (s.image_status.name == "available" ? :ok : :error)
       end
+      #column "Has Photo?" do |s|
+      #  has_photo = !s.image_name.nil? && s.image_name !=""
+      #  status_tag (has_photo ? "Yes" : "No"), (has_photo ? :ok : :error)
+      #end
       
       column "Last Updated", :updated_at
       
