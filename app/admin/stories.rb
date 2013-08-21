@@ -34,7 +34,14 @@ ActiveAdmin.register Story do
       end
       column "Photo Status" do |s|
         photo_status = s.image_status.human_name
-        status_tag photo_status, (s.image_status.name == "available" ? :ok : :error)
+        if s.image_status.name == "available"
+          status_style = :ok
+        elsif s.image_status.name == "tbd"
+          status_style = :error
+        else
+          status_style = :warning
+        end
+        status_tag photo_status, status_style
       end
       #column "Has Photo?" do |s|
       #  has_photo = !s.image_name.nil? && s.image_name !=""
