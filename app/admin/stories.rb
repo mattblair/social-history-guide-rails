@@ -135,7 +135,7 @@ ActiveAdmin.register Story do
         simple_format story.editorial_notes
       end
       
-      attributes_table_for story, :editing_priority, :display_order, :created_at, :updated_at
+      attributes_table_for story, :image_status, :editing_priority, :display_order, :created_at, :updated_at
     end
     
     # or put this in a partial like /app/views/admin/guests/_editorial.html.erb
@@ -192,6 +192,7 @@ ActiveAdmin.register Story do
       f.input :image_copyright_notice, :label => "Image Copyright Notice", :hint => "Visible to the public"
       f.input :image_copyright_url, :label => "Image Copyright URL", :input_html => {:rows => 1, :cols => 60}, :hint => "Copyright notice links to this web address"
       f.input :image_copyright_details, :label => "Image Copyright Details", :input_html => {:rows => 5, :cols => 60}, :hint => "Private details of copyright and licensing"
+      f.input :image_status
     end
     f.inputs "Geocoding" do 
       f.input :latitude, :input_html => { :size => 16 }
