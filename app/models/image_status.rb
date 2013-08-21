@@ -15,4 +15,9 @@ class ImageStatus < ActiveRecord::Base
   has_many :tidbits
   
   attr_accessible :human_name, :name
+  
+  def to_s
+    human_name.empty? ? name.capitalize : human_name
+  end
+  
 end

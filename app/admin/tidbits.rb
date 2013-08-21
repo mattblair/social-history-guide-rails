@@ -66,6 +66,7 @@ ActiveAdmin.register Tidbit do
       row :year
       row :publication_date
       row :theme_id
+      row :keywords      
       row :source
       row :source_url
       row :twitter_template do
@@ -99,7 +100,7 @@ ActiveAdmin.register Tidbit do
         simple_format tidbit.editorial_notes
       end
       
-      attributes_table_for tidbit, :proofreader, :created_at, :updated_at
+      attributes_table_for tidbit, :proofreader, :image_status, :created_at, :updated_at
     end
     
     panel "Media Copyright" do
@@ -126,6 +127,7 @@ ActiveAdmin.register Tidbit do
       f.input :publication_date, :as => :date_select
       f.input :body, :label => "Body (up to 250 words)", :input_html => { :class => 'autogrow', :rows => 10, :cols => 60  }
       f.input :theme
+      f.input :keywords
       f.input :source, :label => "Source", :hint => "Author or Interviewee"
       f.input :source_url, :label => "Source URL", :hint => "(optional)", :input_html => {:rows => 1, :cols => 60}
       f.input :media_type, :label => "Format", :hint => "Some selections require additional media information below"
@@ -152,6 +154,7 @@ ActiveAdmin.register Tidbit do
       f.input :image_copyright_notice, :label => "Image Copyright Notice", :hint => "Visible to the public"
       f.input :image_copyright_url, :label => "Image Copyright URL", :input_html => {:rows => 1, :cols => 60}, :hint => "Copyright notice links to this web address"
       f.input :image_copyright_details, :label => "Image Copyright Details", :input_html => {:rows => 5, :cols => 60}, :hint => "Private details of copyright and licensing"
+      f.input :image_status
     end
     f.inputs "Additional Media" do 
       f.input :audio_filename
