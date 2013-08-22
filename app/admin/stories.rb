@@ -27,9 +27,17 @@ ActiveAdmin.register Story do
       column "Title" do |story|
             link_to(story.title, admin_story_path(story))
       end
-      column :guest, :sortable => :guest
+      #column :guest, :sortable => :guest
       column :theme, :sortable => :theme
-      column "Has Photo Notes?" do |s|
+      column "Text Added?" do |s|
+        if s.summary.empty? || s.subtitle.empty?
+          text_edited = false
+        else
+          text_edited = (s.summary.length > 10 && s.subtitle.length > 10) || s.proofreader_id > 0
+        end
+        status_tag (text_edited ? "Yes" : "No"), (text_edited ? :ok : :error)
+      end
+      column "Photo Notes?" do |s|
         has_photo_notes = !s.photo_notes.nil? && s.photo_notes !=""
         status_tag (has_photo_notes ? "Yes" : "No"), (has_photo_notes ? :ok : :error)
       end
