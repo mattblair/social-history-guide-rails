@@ -16,6 +16,7 @@ ActiveAdmin.register Tidbit do
   filter :title
   filter :media_type_id
   filter :theme_id
+  filter :image_status_id
   filter :publication_date
   filter :editorial_notes
   

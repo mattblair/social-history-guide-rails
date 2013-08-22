@@ -18,6 +18,7 @@ ActiveAdmin.register Story do
   filter :subtitle
   filter :theme_id
   filter :guest_id
+  filter :image_status_id
   filter :editorial_notes
   filter :keywords
   
