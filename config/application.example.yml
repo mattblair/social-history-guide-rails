@@ -30,3 +30,4 @@ WORKFLOW_STATE_TO_DISPLAY: 2
 KYC_STATIC_ASSETS_URL: http://kycstatic.elsewiseapps.com/assets/
 KYC_STATIC_AUDIO_URL: http://kycstatic.elsewiseapps.com/audio/
 KYC_STATIC_PHOTOS_URL: http://kycstatic.elsewiseapps.com/assets/
+WEBSITE_NAME: Know Your City Guide
