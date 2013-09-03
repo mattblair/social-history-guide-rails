@@ -83,7 +83,7 @@ module StoriesHelper
     
     # define in stories.css.scss if a distinction needs to be made
     #css_class = for_map ? "map-credit" : "image-credit"
-    css_class = "image-credit"
+    css_class = "media-credit"
     credit_prefix = for_map ? "Map Data" : "Image"
     html = %(<p class="#{css_class}">#{credit_prefix}: #{credit} #{copyright}</p>)
     
