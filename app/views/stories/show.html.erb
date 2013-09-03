@@ -19,14 +19,14 @@
 		addGeoJSONToMap(<%= @media_geojson %>, map);
 		</script>
 		<p class="story-image-caption"><%= @story.image_caption %> </p>
-		<%= image_credit_markup(@story, true) %>
+		<%= media_credit_markup(@story, true) %>
 		<div id="media-location-button"><p><a href="javascript:addUserToMap(map, true)">Show my location</a></p></div>
 		</div> <!-- id="media-map-container" -->
 		
 	<% elsif @story.media_type.name == "photo_interview" %>
 		<%= story_image_markup(@story.image_name) %>
 		<p class="story-image-caption"><%= @story.image_caption %> </p>
-		<%= image_credit_markup(@story, false) %>
+		<%= media_credit_markup(@story, false) %>
 	<% else %>
 		<p>Implicit handling of interview_only media type.</p>
 	<% end %>

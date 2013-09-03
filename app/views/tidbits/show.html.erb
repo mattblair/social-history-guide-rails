@@ -7,7 +7,7 @@
 		<%-# hard code link during development, until pipeline configured for server %>
 		<img alt="snapshot image" class="snapshot-image" src="<%="#{ENV['KYC_STATIC_PHOTOS_URL']}#{@tidbit.image_name}.jpg" %>" />
 		
-		<%= image_credit_markup(@tidbit, false) %>
+		<%= media_credit_markup(@tidbit, false) %>
 
 		<p>
 		  <em><%= @tidbit.image_caption %></em>

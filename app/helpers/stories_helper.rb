@@ -62,22 +62,23 @@ module StoriesHelper
     return html.html_safe
   end
   
+  # content can be a story or a tidbit
   # for_map is a boolean that determines prefix, class
-  def image_credit_markup story, for_map
+  def media_credit_markup content, for_map
     
-    if story.image_credit_url.empty?
-      credit = story.image_credit
+    if content.image_credit_url.empty?
+      credit = content.image_credit
     else
-      credit = %(<a href="#{story.image_credit_url}">#{story.image_credit}</a>)
+      credit = %(<a href="#{content.image_credit_url}">#{content.image_credit}</a>)
     end
     
     # Temporary. Stories shouldn't be published without media copyright details.
-    notice = story.image_copyright_notice.empty? ? "COPYRIGHT TBD" : story.image_copyright_notice
+    notice = content.image_copyright_notice.empty? ? "COPYRIGHT TBD" : content.image_copyright_notice
     
-    if story.image_copyright_url.empty?
+    if content.image_copyright_url.empty?
       copyright = %(\(#{notice}\))
     else
-      copyright = %(\(<a href="#{story.image_copyright_url}">#{notice}</a>\))
+      copyright = %(\(<a href="#{content.image_copyright_url}">#{notice}</a>\))
     end
     
     # define in stories.css.scss if a distinction needs to be made
