@@ -62,7 +62,8 @@ module StoriesHelper
     return html.html_safe
   end
   
-  def story_image_credit_markup story
+  # for_map is a boolean that determines prefix, class
+  def image_credit_markup story, for_map
     
     if story.image_credit_url.empty?
       credit = story.image_credit
@@ -79,7 +80,11 @@ module StoriesHelper
       copyright = %(\(<a href="#{story.image_copyright_url}">#{notice}</a>\))
     end
     
-    html = %(<p class="image-credit">Image: #{credit} #{copyright}</p>)
+    # define in stories.css.scss if a distinction needs to be made
+    #css_class = for_map ? "map-credit" : "image-credit"
+    css_class = "image-credit"
+    credit_prefix = for_map ? "Map Data" : "Image"
+    html = %(<p class="#{css_class}">#{credit_prefix}: #{credit} #{copyright}</p>)
     
     return html.html_safe
   end
