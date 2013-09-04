@@ -98,7 +98,20 @@ class ThemesController < ApplicationController
     end
   end
   
+  # example URL: http://127.0.0.1:3000/themes/gay-history/needphoto/
   def needphoto
+    @theme = Theme.find(params[:id])
+    
+    # limit to published, collection 1, order by display_order
+    @stories = Story.where("theme_id = #{@theme.id} and workflow_state_id = #{ENV['WORKFLOW_STATE_TO_DISPLAY']}").order("display_order")
+    
+    respond_to do |format|
+      format.html
+    end
+  end
+  
+  # http://127.0.0.1:3000/themes/gay-history/docexport/
+  def docexport
     @theme = Theme.find(params[:id])
     
     # limit to published, collection 1, order by display_order

@@ -1,0 +1,16 @@
+<h2><%= @theme.title %> Stories</h2>
+
+<% @stories.each do |story| %>
+
+	<h4><%= story.title %></h4>
+	<p><strong>Subtitle:</strong> <%= story.subtitle%></p>
+	<p><strong>Summary:</strong> <%= story.summary%></p>
+	
+	<% if false %>
+	  	<% if not story.image_name.nil? && story.media_type.name == "photo_interview" %>
+			<img alt="Story Image" class="story-image" src="<%= "#{ENV['KYC_STATIC_PHOTOS_URL']}#{story.image_name}.jpg" %>" />
+			<p class="story-image-caption"><%= story.image_caption %> </p>
+		<% end %>
+	<% end %>
+
+<% end %>
