@@ -1,11 +1,13 @@
 <p class="footer-menu-list"> 
 	<%= link_to_unless_current "About", about_path %> | 
-	<%= link_to_unless_current "Credits", credits_path %> | 	
+	<%= link_to_unless_current "Credits", credits_path %> | 
+	<% if false %> <!-- Deferred until > 1.0 release -->	
 	<%= link_to_unless_current "Suggestions & Submissions", suggestions_path %> | 
+	<% end %>
 	<%= link_to_unless_current "Contact", contact_path %>
 </p>
 
-<%-# If you wnt to add login links to the footer %>
+<%-# If you want to add login links to the footer %>
 
 <% if false %>
 	<ul class="footer-sign-in">
