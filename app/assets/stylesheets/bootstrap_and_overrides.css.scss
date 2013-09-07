@@ -43,10 +43,19 @@ body { padding-top: $navbarHeight + 10px; }
 	color: #555;
 }
 
+// intended for clickable logo
 img#brand-logo {
 	margin-top: 5px;
 	width: $homeLogoSize;
 	height: $homeLogoSize;
+	float: left;
+}
+
+// for graphic that includes logo and title
+img#header-link {
+	margin-top: 5px;
+	width: 480px; // phone: 320
+	height: 100px; // phone: 66
 	float: left;
 }
 

@@ -1,8 +1,15 @@
+<!-- Original design with logo, and text link -->
+<% if false %>
 <%= link_to image_tag("pshg-icon-100.png", :id => "brand-logo" , :alt => "PDX Social History Guide Logo"), root_path %>
 <%= link_to "PDX Social History Guide", root_path, :class => 'brand' %>
-
+<% end %>
+<!-- Logo and handwritten title -->
+<%= link_to image_tag("pshg-header-480.png", :id => "header-link" , :alt => "PDX Social History Guide"), root_path %>
+<!-- Top menu options -->
 <ul class="nav">
+  <% if false %> <!-- Deferred until > 1.0 release -->
   <li><%= link_to 'Flashbacks', tidbits_path %></li>
+  <% end %>
   <li><%= link_to_unless_current "Nearby", nearby_path, :class => "hidden-desktop" %></li>
   <li><%= link_to_unless_current "Donate", donate_path %></li>
   <li><%= link_to_unless_current "About", about_path %></li>
