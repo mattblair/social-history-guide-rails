@@ -46,14 +46,7 @@
 </div> <!-- story-body-section -->
 
 <!-- might want to roll this into story body section, especially if not much text -->
-
-<div id="story-guest-section">
-	<img alt="Guest thumbnail" class="guest_thumbnail" src="<%="#{ENV['KYC_STATIC_PHOTOS_URL']}#{@story.guest.image_name}.jpg" %>" />
-	<h4 id="guest-thumbnail-title">As Told By...</h4>
-	<p><%= link_to "#{@story.guest.name}", @story.guest %> </p>
-	<p><%= @story.guest.title %></p>
-</div>
-
+<%= guest_stub_markup(@story.guest, false) %>
 
 <% if @story.valid_coordinate? %>
 	<div id="story-geography">

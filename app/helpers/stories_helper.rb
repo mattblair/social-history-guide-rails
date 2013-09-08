@@ -90,6 +90,36 @@ module StoriesHelper
     return html.html_safe
   end
   
+  # probably specific to stories, might be used for themes
+  # in initial version, this may be the only presentaiton of guest info
+  # since we don't have enough details
+  # first argument: the Guest object
+  # second argument: boolean to show link to guest page
+  def guest_stub_markup guest, show_link
+    
+    html = ''
+    html << %(<div id="story-guest-section">)
+    
+    if !guest.image_name.nil?
+      html << %(<img alt="Guest thumbnail" class="guest_thumbnail" src="#{ENV['KYC_STATIC_PHOTOS_URL']}#{guest.image_name}.jpg" />)
+    end
+    	
+    html << %(<h4 id="guest-thumbnail-title">As Told By...</h4>)
+    
+    if show_link
+      html << %(<p>#{link_to(guest.name, guest)}</p>)
+    else
+      html << %(<p>#{guest.name}</p>)
+    end
+    	
+    html << %(<p>#{guest.title}</p>)
+    html << %(<p>#{guest.organization}</p>)
+    html << %(<p>#{guest.bio}</p>)
+    html << %(</div>)
+    
+    html.html_safe
+  end
+  
   def story_dynamic_map geojson_chunk
     # returns the markup for a dynamic map with one or more labelled points
     return ''
