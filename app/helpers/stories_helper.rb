@@ -18,7 +18,7 @@ module StoriesHelper
   def story_thumbnail_tag image_field
     if image_field.empty?
       # should there be a thumbnail-sized version? Or will we omit?
-      thumb_name = "kyc-placeholder"
+      thumb_name = "pshg-placeholder" # was "kyc-placeholder"
     else
       images = image_field.split(" ")
       
