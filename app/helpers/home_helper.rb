@@ -17,7 +17,7 @@ module HomeHelper
         "image": "murnane-monument",
         "title": "A Missing Memorial",
         "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "link": "/stories/south-of-the-burnside-bridge"
+        "link": "/stories/francis-murnane-memorial"
       },
       {
         "image": "pdxA2004-002.692-cropped",
