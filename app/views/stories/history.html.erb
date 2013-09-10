@@ -1,0 +1,35 @@
+<% title @story.title %>
+
+<p id="notice"><%= notice %></p>
+
+<%-# Get an array of admin users here, for quick lookup %>
+
+<h4>Last Editor: <%= @story.originator %></h4>
+
+<%-# Paper Trail docs: https://github.com/airblade/paper_trail %>
+
+<% @story.versions.each do |version| %>
+	
+	<% if version.whodunnit.to_i > 0 %>
+		<% au = AdminUser.find(id = version.whodunnit.to_i) %>
+	  <% elsif %>
+		<% au = nil %>
+	<% end %>
+		
+	<% author = au.nil? ? "Unknown" : au.human_name %>
+	
+	<h3><%= "#{version.index.to_s}: #{version.event}d by #{author} at #{version.created_at.to_s}" %></h3>
+	
+	<%-# Requires the versions column to have an object_changes column %>
+	<p><%= version.changeset %></p>
+	
+	<%-# This is a raw object, which would need to be customized for each model %>
+	
+	<% if version.object %>
+		<% story_object = JSON.parse(version.object) %>
+		<p><strong>Title:</strong> <%= story_object['title'] %></p>
+		<p><strong>Subtitle:</strong> <%= story_object["subtitle"] %></p>
+		<p><strong>Summary:</strong> <%= story_object["summary"] %></p>
+	<% end %>
+	
+<% end %>

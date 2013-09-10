@@ -26,6 +26,10 @@ KycGuideRails::Application.routes.draw do
   # this is probably dev only, as a quick way to extract info
   get '/themes/:id/needphoto', to: 'themes#needphoto'
   get '/themes/:id/story-text', to: 'themes#docexport'
+  
+  if Rails.env == "development"
+    get '/stories/:id/history', to: 'stories#history'
+  end
 
   authenticated :user do
     root :to => 'home#index'

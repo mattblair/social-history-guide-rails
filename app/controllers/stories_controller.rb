@@ -30,6 +30,16 @@ class StoriesController < ApplicationController
       format.json { render json: @story }
     end
   end
+  
+  # development only:
+  # GET /stories/1/history
+  def history
+    @story = Story.find(params[:id])
+    
+    respond_to do |format|
+      format.html # show.html.erb
+    end
+  end
 
   # GET /stories/new
   # GET /stories/new.json
