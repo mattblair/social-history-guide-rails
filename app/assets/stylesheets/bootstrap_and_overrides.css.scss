@@ -115,7 +115,16 @@ img#header-link {
 // Footer
 // ============================================
 
-.footer-menu-list {
+footer {
 	text-align: center;
+}
+
+.footer-menu-list {
 	margin-top: 10px;
+}
+
+.footer-credit {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 1.3em;
 }
