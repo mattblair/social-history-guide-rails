@@ -64,19 +64,17 @@
 }
 
 #story-body-section {
-  font-family: Courier,'Courier New',monospace;
   margin: 10px;
   padding: 10px;
   min-width: 200px;
 }
 
 #story-body-section.p {
-	font-family: Georgia,'Times New Roman',serif;
+	//font-family: Georgia,'Times New Roman',serif;
 }
 
 #story-guest-section {
 	margin: 10px;
-	font-family: Courier,'Courier New',monospace;
   	text-color: #222;
 	border: solid 1px $kyc-border-color;
 	min-width: 250px;
@@ -99,8 +97,6 @@
 	//margin: 20px;
 	
 	h4 {
-		// TBD: save as nearby list table caption?
-		font-family: Courier,'Courier New',monospace;
 		font-size: 24px;
 		line-height: 28px;
 		margin-bottom: 10px;
@@ -138,7 +134,6 @@
 	margin-bottom: 10px;
 	
 	table caption {
-		font-family: Courier,'Courier New',monospace;
 		font-size: 24px;
 		line-height: 28px;
 		margin-bottom: 10px;
