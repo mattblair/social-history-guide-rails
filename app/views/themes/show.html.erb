@@ -16,13 +16,13 @@
 <div class="row">
 
 	<div class="span6">
-	<div id="map" style="width: 500px; height: 400px"></div>
+	<div id="theme-map" style="width: 520px; height: 420px"></div>
 
 	<%= javascript_include_tag "leaflet-providers" %>
 	<%= javascript_include_tag "kyc-leaflet" %>
 
 	<script>
-	var map = L.map('map').setView([45.523683, -122.663764], 13);
+	var map = L.map('theme-map').setView([45.523683, -122.663764], 13);
 	addTilesToMap('OpenStreetMap.Mapnik', map)
 
 	var storyGeoJSON = <%= @geojson %>;
