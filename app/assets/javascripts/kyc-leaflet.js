@@ -19,11 +19,13 @@ function addTilesToMap(tileSource, map) {
 function addMarkerToMap(lat, lng, map) {
 	
 	var redPin = L.icon({
-	    iconUrl: 'http://kycstatic.elsewiseapps.com/assets/marker-icon.png',
-	    shadowUrl: 'http://kycstatic.elsewiseapps.com/assets/marker-icon-shadow.png',
+	    //iconUrl: 'http://kycstatic.elsewiseapps.com/assets/marker-icon.png',
+		iconUrl: 'http://kycstatic.elsewiseapps.com/assets/kbb-thin-pin.png',
+	    //shadowUrl: 'http://kycstatic.elsewiseapps.com/assets/marker-icon-shadow.png',
+		shadowUrl: 'http://kycstatic.elsewiseapps.com/assets/empty-pin-shadow.png',
 
-	    iconSize:     [18, 50], // size of the icon
-	    shadowSize:   [50, 64], // size of the shadow
+	    iconSize:     [15, 56], // actual size: 15, 56
+	    shadowSize:   [10, 10], // was 50, 64
 	    iconAnchor:   [11, 49], // point of the icon which will correspond to marker's location
 	    shadowAnchor: [4, 62],  // the same for the shadow
 	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
