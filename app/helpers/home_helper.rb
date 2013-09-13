@@ -8,15 +8,21 @@ module HomeHelper
     slide_data = <<-DATA
     [
       {
-        "image": "psych-market24",
-        "title": "The Psychedelic Market",
-        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        "link": "/stories/the-psychedelic-supermarket"
+        "image": "A2004-002.704",
+        "title": "Floods and Parks",
+        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
+        "link": "/stories/dkc-mccall-waterfront-park"
+      },
+      {
+        "image": "duniway-slide",
+        "title": "Abigail Scott Duniway",
+        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "link": "/stories/abigail-scott-duniway"
       },
       {
         "image": "murnane-monument",
         "title": "A Missing Memorial",
-        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ...",
         "link": "/stories/francis-murnane-memorial"
       },
       {
@@ -24,6 +30,12 @@ module HomeHelper
         "title": "On the Waterfront",
         "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "link": "/stories/crimping"
+      },
+      {
+        "image": "psych-market24",
+        "title": "The Psychedelic Market",
+        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...",
+        "link": "/stories/the-psychedelic-supermarket"
       }
     ] 
     DATA
