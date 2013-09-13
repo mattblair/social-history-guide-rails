@@ -14,7 +14,7 @@
 		<script>
 		var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
 		var map = L.map('media-map').setView(centroid, 16);
-		addTilesToMap('Stamen.TonerLite', map)
+		addTilesToMap('OpenStreetMap.Mapnik', map)
 
 		addGeoJSONToMap(<%= @media_geojson %>, map);
 		</script>
@@ -62,7 +62,7 @@
 			<script>
 			var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
 			var map = L.map('story-map').setView(centroid, 15);
-			addTilesToMap('Stamen.Toner', map)
+			addTilesToMap('OpenStreetMap.BlackAndWhite', map)
 
 			var initialGeoJSONData = <%= @geojson %>;
 			//addGeoJSONToMap(initialGeoJSONData, map);
