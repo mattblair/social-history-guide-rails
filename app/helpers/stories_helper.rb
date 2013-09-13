@@ -73,7 +73,7 @@ module StoriesHelper
     end
     
     # Temporary. Stories shouldn't be published without media copyright details.
-    notice = content.image_copyright_notice.empty? ? "COPYRIGHT TBD" : content.image_copyright_notice
+    notice = content.image_copyright_notice.empty? ? "Used by Permission" : content.image_copyright_notice
     
     if content.image_copyright_url.empty?
       copyright = %(\(#{notice}\))
