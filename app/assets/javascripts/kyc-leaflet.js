@@ -18,7 +18,8 @@ function addTilesToMap(tileSource, map) {
 // based on http://leafletjs.com/examples/custom-icons.html
 function addMarkerToMap(lat, lng, map) {
 	
-	var redPin = L.icon({
+	// was redPin -- do we want a color?
+	var thinPin = L.icon({
 	    //iconUrl: 'http://kycstatic.elsewiseapps.com/assets/marker-icon.png',
 		iconUrl: 'http://kycstatic.elsewiseapps.com/assets/kbb-thin-pin.png',
 	    //shadowUrl: 'http://kycstatic.elsewiseapps.com/assets/marker-icon-shadow.png',
@@ -31,7 +32,7 @@ function addMarkerToMap(lat, lng, map) {
 	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
 	});
 	
-	L.marker([lat, lng], {icon: redPin}).addTo(map);
+	L.marker([lat, lng], {icon: thinPin}).addTo(map);
 }
 
 // from the mobile demo: 
@@ -79,6 +80,18 @@ function addGeoJSONToMap(geojson, map) {
 	    opacity: 1,
 	    fillOpacity: 0.7
 	};
+	
+	// used for pin version of marker
+	var thinPin = L.icon({
+		iconUrl: 'http://kycstatic.elsewiseapps.com/assets/kbb-thin-pin.png',
+		shadowUrl: 'http://kycstatic.elsewiseapps.com/assets/empty-pin-shadow.png',
+	
+	    iconSize:     [15, 56], // actual size: 15, 56
+	    shadowSize:   [10, 10], // was 50, 64
+	    iconAnchor:   [11, 49], // point of the icon which will correspond to marker's location
+	    shadowAnchor: [4, 62],  // the same for the shadow
+	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+	});
 
 	function onEachFeature(feature, layer) {
 	    if (feature.properties && feature.properties.title && feature.properties.link) {
@@ -89,7 +102,8 @@ function addGeoJSONToMap(geojson, map) {
 	L.geoJson(geojson, {
 	    onEachFeature: onEachFeature,
 		pointToLayer: function (feature, latlng) {
-		        return L.circleMarker(latlng, geojsonMarkerOptions);
+		        //return L.circleMarker(latlng, geojsonMarkerOptions);
+				return L.marker(latlng, {icon: thinPin});
 		    }
 	}).addTo(map);
 }
