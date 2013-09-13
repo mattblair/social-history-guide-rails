@@ -2,17 +2,36 @@
 
 <p id="notice"><%= notice %></p>
 
-<%= image_tag("#{@theme.image_name}.jpg", :id => "theme-image" , :alt => "Theme image") %>
+<div class="row">
+<%= image_tag("#{@theme.image_name}.jpg", :id => "theme-image" , :alt => "Theme image", :class => "span6") %>
 
-<div class="page-header" id="theme-summary">
+<div class="page-header span6" id="theme-summary">
 	<h1><%= @theme.title %></h1>
 	<h4><em><%= @theme.subtitle %></em></h4>
-
-	<p>
-	  <%= @theme.summary %>
-	</p>
+	<p><%= @theme.summary %></p>
 </div>
 
+</div> <!-- end of first .row -->
+
+<div class="row">
+
+	<div class="span6">
+	<div id="map" style="width: 500px; height: 400px"></div>
+
+	<%= javascript_include_tag "leaflet-providers" %>
+	<%= javascript_include_tag "kyc-leaflet" %>
+
+	<script>
+	var map = L.map('map').setView([45.523683, -122.663764], 13);
+	addTilesToMap('Stamen.Toner', map)
+
+	var storyGeoJSON = <%= @geojson %>;
+	addGeoJSONToMap(storyGeoJSON, map);
+	</script>
+
+	</div>  <!-- end of span6 div -->
+	
+	<div class="span6">
 <% @stories.each do |story| %>
 	<div class="theme-story-listing">
 		<% if false %>
@@ -34,19 +53,10 @@
 	</div>
 
 <% end %>
+</div>  <!-- end of span6 div -->
+</div> <!-- end of second .row -->
 
-<div id="map" style="width: 500px; height: 400px" ></div>
 
-<%= javascript_include_tag "leaflet-providers" %>
-<%= javascript_include_tag "kyc-leaflet" %>
-
-<script>
-var map = L.map('map').setView([45.523683, -122.663764], 13);
-addTilesToMap('Stamen.Toner', map)
-
-var storyGeoJSON = <%= @geojson %>;
-addGeoJSONToMap(storyGeoJSON, map);
-</script>
 
 <% if false %>
 	<h3>Tidbits</h3>
