@@ -1,10 +1,10 @@
 KycGuideRails::Application.routes.draw do
   
   get "about", to: 'static_page#about'  
-  get "nearby", to: 'static_page#nearby'
+  #get "nearby", to: 'static_page#nearby'
   get "contact", to: 'static_page#contact'
   get "credits", to: 'static_page#credits'
-  get "suggestions", to: 'static_page#suggestions'
+  #get "suggestions", to: 'static_page#suggestions'
   get "donate", to: 'static_page#donate'
 
   root :to => "home#index"
@@ -14,21 +14,20 @@ KycGuideRails::Application.routes.draw do
 
   resources :stories
 
-
   resources :guests
-
-
-  resources :tidbits
-
-
+  
   resources :themes
   
-  # this is probably dev only, as a quick way to extract info
-  get '/themes/:id/needphoto', to: 'themes#needphoto'
-  get '/themes/:id/story-text', to: 'themes#docexport'
-  
   if Rails.env == "development"
+    
+    get "nearby", to: 'static_page#nearby'
+    
+    resources :tidbits
+    
+    # utility views for content management:
     get '/stories/:id/history', to: 'stories#history'
+    get '/themes/:id/needphoto', to: 'themes#needphoto'
+    get '/themes/:id/story-text', to: 'themes#docexport'
   end
 
   authenticated :user do
