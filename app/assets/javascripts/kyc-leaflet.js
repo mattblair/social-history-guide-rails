@@ -90,7 +90,7 @@ function addGeoJSONToMap(geojson, map) {
 	    shadowSize:   [10, 10], // was 50, 64
 	    iconAnchor:   [11, 49], // point of the icon which will correspond to marker's location
 	    shadowAnchor: [4, 62],  // the same for the shadow
-	    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+	    popupAnchor:  [-6, -45] // point from which the popup should open relative to the iconAnchor
 	});
 
 	function onEachFeature(feature, layer) {
