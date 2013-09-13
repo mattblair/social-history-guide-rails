@@ -10,8 +10,10 @@ $homeLogoSize: 100px;
 $navbarHeight: $homeLogoSize + 10px;
 $navbarBackground: #fff;
 $baseFontFamily: Menlo, Monaco, 'Courier New', monospace;
-$headingsFontFamily: 'Helvetica Neue', Helvetica, Verdana;
+$headingsFontFamily: Futura, helvetica, arial, verdana, sans-serif;
+//'Helvetica Neue', Helvetica, Verdana;
 // or Courier,'Courier New',monospace
+// or Palatino?
 
 $baseFontSize: 15px;
 $baseLineHeight: 22px;
@@ -38,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .subtitle {
-	color: #aaa;
+	color: $pshg-medium-gray;
 }
 
 .navbar .brand {
@@ -117,8 +119,8 @@ img#header-link {
 // ============================================
 
 .back-nav-bottom {
-	font-size: 1.5em;
-	margin-top: 20px;
+	font-size: 1.2em;
+	margin-top: 40px;
 	text-align: center;
 	clear: both;
 }
