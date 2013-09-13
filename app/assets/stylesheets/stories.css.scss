@@ -3,16 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #story-media-section {
-	min-width: 320px;
-	max-width: 650px;
-	margin-right: 10px;
-	float: left;
+	//min-width: 320px;
+	//max-width: 650px;
+	//width: 100%;
+	//margin-right: 10px;
+	//float: left;
 }
 
 // can't be an id if there are multiple photos in a slideshow
 .story-image {
-	min-width: 300px;
-	max-width: 500px;
+	//min-width: 300px;
+	//max-width: 500px;
+	//width: 100%;
 }
 
 .story-image-caption {
@@ -64,9 +66,9 @@
 }
 
 #story-body-section {
-  margin: 10px;
-  padding: 10px;
-  min-width: 200px;
+  //margin: 10px;
+  //padding: 10px;
+  //min-width: 200px;
 }
 
 #story-body-section.p {
@@ -74,8 +76,8 @@
 }
 
 #story-guest-section {
-	margin: 10px;
-  	text-color: #222;
+	//margin: 10px;
+  	//text-color: #222;
 	border: solid 1px $kyc-border-color;
 	min-width: 250px;
 }
@@ -85,11 +87,13 @@
 	height: 120px;
 	float: right;
 	margin-left: 10px;
+	margin-bottom: 10px;
 }
 
 
 #story-geography {
 	clear: both;
+	margin-top: 10px;
 }
 
 // probably deprecated
@@ -108,19 +112,19 @@
 }
 
 #story-map {
-	width: 480px;
-	height: 360px;
+	width: 520px;
+	height: 390px;
 }
 
 #story-location-button {
-	font-size: 20px;
+	font-size: 18px;
 	text-align: center;
-	width: 480px;
+	width: 520px;
 	background-color: #000;
 	padding: 5px;
 	
 	a {
-		margin-top: 5px;
+		margin-top: 8px;
 		color: #ccc;
 	}
 }
@@ -128,9 +132,10 @@
 #nearby-list {  
  	padding: 10px;
   	border: solid 1px $kyc-border-color;
-	max-width: 480px;
-	float: right;
-	margin-left: 20px;
+	max-width: 520px;
+	//width: 100%;
+	//float: right;
+	//margin-left: 20px;
 	margin-bottom: 10px;
 	
 	table caption {
@@ -174,10 +179,18 @@
 	clear: both;
   	margin-top: 10px;
 	padding: 10px;  
-	max-width: 500px;
+	//max-width: 500px;
+	width: 100%;
   	border: solid 1px $kyc-border-color;
 
 	h2 {
 		color: #555;
 	}
+}
+
+.more-info-header {
+	color: #fff;
+	margin: 0px;
+	padding: 10px;
+	background-color: $pshg-dark-gray;
 }

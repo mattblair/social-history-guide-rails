@@ -2,7 +2,8 @@
 
 <p id="notice"><%= notice %></p>
 
-<div id="story-media-section">
+<div class="row">
+<div id="story-media-section" class="span6">
 	<% if @story.media_type.name == "map_interview" %>
 		
 		<div id="media-map-container">
@@ -30,10 +31,9 @@
 	<% else %>
 		<!-- no media available -->
 	<% end %>
-	
 </div> <!-- #story-media-section -->
 
-<div id="story-body-section">
+<div id="story-body-section" class="span6">
 
 	<h2><%= @story.title %></h2>
 
@@ -42,18 +42,17 @@
 	<%= kyc_audio_tag(@story.audio_filename) %>
 
 	<p><%= @story.summary %></p>
-	
+	<%= guest_stub_markup(@story.guest, false) %>
+	<%= story_more_info_markup(@story) %>
 </div> <!-- story-body-section -->
-
-<!-- might want to roll this into story body section, especially if not much text -->
-<%= guest_stub_markup(@story.guest, false) %>
+</div> <!-- end of top row -->
 
 <% if @story.valid_coordinate? %>
-	<div id="story-geography">
+	<div id="story-geography" class="row">
 		
 		<!-- don't repeat map if the main media for the story is a map? -->
 		<% if @story.media_type.name != "map_interview" %>
-			<div id="story-map-container">
+			<div id="story-map-container" class="span6">
 			<div id="story-map"></div>
 
 			<%= javascript_include_tag "leaflet-providers" %>
@@ -73,15 +72,12 @@
 			</div> <!-- id="story-map-container" -->
 		<% end %> <!-- of if media is a map conditional-->
 		
-		<div id="nearby-list">
+		<div id="nearby-list" class="span6">
 			<%= story_nearby_list(@story.nearbys(12).limit(10)) %>
 		</div>
 		
 	</div> <!-- #story-geography -->
 <% end %>
-
-
-<%= story_more_info_markup(@story) %>
 
 <div class="back-nav-bottom">
   <p><i class="icon-chevron-left"></i> <%= link_to "Return to #{@story.theme.title}", @story.theme %></p>
