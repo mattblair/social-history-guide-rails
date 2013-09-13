@@ -31,7 +31,7 @@ module HomeHelper
     slides = JSON.parse(slide_data)
     
     html = <<-HTML
-    <div id="home-carousel" class="carousel slide">
+    <div id="home-carousel" class="carousel slide span8">
       <ol class="carousel-indicators">
     HTML
     
