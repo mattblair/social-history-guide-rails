@@ -109,7 +109,7 @@ module StoriesHelper
     if show_link
       html << %(<p>#{link_to(guest.name, guest)}</p>)
     else
-      html << %(<p>#{guest.name}</p>)
+      html << %(<p><strong>#{guest.name}</strong></p>)
     end
     	
     html << %(<p>#{guest.title}</p>)

@@ -9,8 +9,12 @@
 $homeLogoSize: 100px;
 $navbarHeight: $homeLogoSize + 10px;
 $navbarBackground: #fff;
-$baseFontFamily: "Menlo, Monaco, 'Courier New', monospace";
-$headingsFontFamily: "Menlo, Monaco, 'Courier New', monospace";
+$baseFontFamily: Menlo, Monaco, 'Courier New', monospace;
+$headingsFontFamily: 'Helvetica Neue', Helvetica, Verdana;
+// or Courier,'Courier New',monospace
+
+$baseFontSize: 15px;
+$baseLineHeight: 22px;
 
 // ============================================
 // Project variables
@@ -19,11 +23,19 @@ $headingsFontFamily: "Menlo, Monaco, 'Courier New', monospace";
 $kyc-border-color: #ddd;
 $kyc-bg-color: #fff;
 $kyc-red: rgb(235, 0, 0);
+$pshg-brown: #322;
+$pshg-light-gray: #ccc;
+$pshg-medium-gray: #999;
+$pshg-dark-gray: #333;
 
 
 @import "bootstrap";
 body { padding-top: $navbarHeight + 10px; }
 @import "bootstrap-responsive";
+
+h1, h2, h3, h4, h5, h6 {
+	color: $kyc-red;
+}
 
 .subtitle {
 	color: #aaa;
