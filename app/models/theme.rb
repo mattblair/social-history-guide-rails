@@ -27,6 +27,7 @@
 #  map_data_type           :integer
 #  display_in_story_list   :boolean          default(TRUE)
 #  display_in_tidbit_list  :boolean          default(TRUE)
+#  zoom_level              :integer          default(12)
 #
 
 class Theme < ActiveRecord::Base
