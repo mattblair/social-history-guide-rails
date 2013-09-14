@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// ========================================
+// Story Media
+// ========================================
+
 #story-media-section {
 	//min-width: 320px;
 	//max-width: 650px;
@@ -66,46 +70,60 @@
 	}
 }
 
+// ========================================
+// Story Text
+// ========================================
+
 #story-body-section {
   //margin: 10px;
   //padding: 10px;
   //min-width: 200px;
 }
 
-#story-body-section.p {
-	//font-family: Georgia,'Times New Roman',serif;
-}
-
+// only use padding if you use a border
 #story-guest-section {
-	//margin: 10px;
-  	//text-color: #222;
+	clear: both;
 	border: solid 1px $kyc-border-color;
-	min-width: 250px;
+	padding: 10px;
+	width: 100%;
 }
 
 .guest_thumbnail {
 	width: 160px;
 	height: 120px;
 	float: right;
+	margin-top: 10px;
 	margin-left: 10px;
 	margin-bottom: 10px;
 }
 
+// only use padding if you use a border
+#more-info-section {
+	clear: both;
+	border: solid 1px $kyc-border-color;
+	padding: 10px;
+  	margin-top: 10px;
+	width: 100%;
+
+	h2 {
+		color: #555;
+	}
+}
+
+.more-info-header {
+	color: #fff;
+	margin: 0px;
+	padding: 10px;
+	background-color: $pshg-dark-gray;
+}
+
+// ========================================
+// Geography section
+// ========================================
 
 #story-geography {
 	clear: both;
 	margin-top: 10px;
-}
-
-// probably deprecated
-#story-static-map {
-	//margin: 20px;
-	
-	h4 {
-		font-size: 24px;
-		line-height: 28px;
-		margin-bottom: 10px;
-	}
 }
 
 #story-map-container {
@@ -146,6 +164,15 @@
 	}
 }
 
+.nearby-distance {
+	text-align: right;
+	color: #555;
+}
+
+// ========================================
+// Media Queries
+// ========================================
+
 @media only screen and (max-device-width: 480px) {
 	
 	#story-map-container {
@@ -168,30 +195,4 @@
 		margin-left: 0px;
 		margin-bottom: 10px;
 	}
-}
-
-.nearby-distance {
-	text-align: right;
-	color: #555;
-}
-
-
-#more-info-section {
-	clear: both;
-  	margin-top: 10px;
-	padding: 10px;  
-	//max-width: 500px;
-	width: 100%;
-  	border: solid 1px $kyc-border-color;
-
-	h2 {
-		color: #555;
-	}
-}
-
-.more-info-header {
-	color: #fff;
-	margin: 0px;
-	padding: 10px;
-	background-color: $pshg-dark-gray;
 }
