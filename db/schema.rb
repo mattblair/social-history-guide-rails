@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821145822) do
+ActiveRecord::Schema.define(:version => 20130914155456) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -198,6 +198,7 @@ ActiveRecord::Schema.define(:version => 20130821145822) do
     t.integer  "map_data_type"
     t.boolean  "display_in_story_list",   :default => true
     t.boolean  "display_in_tidbit_list",  :default => true
+    t.integer  "zoom_level",              :default => 12
   end
 
   add_index "themes", ["slug"], :name => "index_themes_on_slug", :unique => true
