@@ -68,7 +68,9 @@
 			addMarkerToMap(centroid[0], centroid[1], map);
 			</script>
 		
-			<div id="story-location-button"><p><a href="javascript:addUserToMap(map, true)">Show my location</a></p></div>
+			<div id="story-location-button">
+				<p><a href="javascript:addUserToMap(map, true)">Show my location</a></p>
+			</div>
 			</div> <!-- id="story-map-container" -->
 		<% end %> <!-- of if media is a map conditional-->
 		
@@ -76,7 +78,7 @@
 			<%= story_nearby_list(@story.nearbys(12).limit(10)) %>
 		</div>
 		
-	</div> <!-- #story-geography -->
+	</div> <!-- #story-geography and geography row-->
 <% end %>
 
 <div class="back-nav-bottom">
