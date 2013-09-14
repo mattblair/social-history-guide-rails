@@ -78,6 +78,7 @@ ActiveAdmin.register Theme do
     f.inputs "Geocoding" do 
       f.input :latitude, :input_html => { :size => 16 }
       f.input :longitude, :input_html => { :size => 16 }
+      f.input :zoom_level
     end
     f.inputs "Editorial Details" do
       f.input :workflow_state
