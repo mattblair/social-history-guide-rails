@@ -12,6 +12,7 @@
 // Stamen.Toner
 // Stamen.TonerLite
 
+// launch website with: Stamen.Terrain
 function addTilesToMap(tileSource, map) {
 	
 	L.tileLayer.provider(tileSource).addTo(map);

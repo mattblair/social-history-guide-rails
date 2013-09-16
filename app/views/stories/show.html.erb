@@ -16,7 +16,7 @@
 	<script>
 	var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
 	var map = L.map('media-map').setView(centroid, 16);
-	addTilesToMap('OpenStreetMap.Mapnik', map)
+	addTilesToMap('Stamen.Terrain', map)
 
 	addGeoJSONToMap(<%= @media_geojson %>, map);
 	</script>
