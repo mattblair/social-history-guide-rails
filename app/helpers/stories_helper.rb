@@ -127,28 +127,33 @@ module StoriesHelper
   
   def story_nearby_list nearby_array
     
-    html = <<-HTML 
-      <table class="table table-striped">
-        <caption>Nearby Stories</caption>
-        <tbody>
-    HTML
+    if nearby_array.count > 0
+      
+      html = <<-HTML 
+        <table class="table table-striped">
+          <caption>Nearby Stories</caption>
+          <tbody>
+      HTML
     
-    nearby_array.each do |story|
-        row_html = <<-ROW 
-          <tr>
-            <td>#{link_to story.title, story}</td>
-            <td class="nearby-theme">#{story.theme.title}</td>
-            <td class="nearby-distance">#{humanize_distance(story.distance.round(2), false)}</td>
-          </tr>
-        ROW
+      nearby_array.each do |story|
+          row_html = <<-ROW 
+            <tr>
+              <td>#{link_to story.title, story}</td>
+              <td class="nearby-theme">#{story.theme.title}</td>
+              <td class="nearby-distance">#{humanize_distance(story.distance.round(2), false)}</td>
+            </tr>
+          ROW
         
-        html << row_html
+          html << row_html
+      end
+    
+      html << %(</tbody>)
+      html << %(</table>)
+    
+      html.html_safe
+    else
+      nil
     end
-    
-    html << %(</tbody>)
-    html << %(</table>)
-    
-    html.html_safe
   end
   
   
