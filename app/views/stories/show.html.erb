@@ -69,7 +69,7 @@
 			<script>
 			var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
 			var map = L.map('story-map').setView(centroid, 15);
-			addTilesToMap('OpenStreetMap.BlackAndWhite', map)
+			addTilesToMap('Stamen.Terrain', map) // OpenStreetMap.BlackAndWhite
 
 			var initialGeoJSONData = <%= @geojson %>;
 			//addGeoJSONToMap(initialGeoJSONData, map);

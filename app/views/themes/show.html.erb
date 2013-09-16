@@ -23,7 +23,7 @@
 
 	<script>
 	var map = L.map('theme-map').setView([45.523683, -122.663764], 13);
-	addTilesToMap('OpenStreetMap.Mapnik', map)
+	addTilesToMap('Stamen.Terrain', map)
 
 	var storyGeoJSON = <%= @geojson %>;
 	addGeoJSONToMap(storyGeoJSON, map);
