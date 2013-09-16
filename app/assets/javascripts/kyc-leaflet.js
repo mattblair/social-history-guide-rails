@@ -25,7 +25,7 @@ function addMarkerToMap(lat, lng, map) {
 	    //shadowUrl: 'http://kycstatic.elsewiseapps.com/assets/marker-icon-shadow.png',
 		shadowUrl: 'http://kycstatic.elsewiseapps.com/assets/empty-pin-shadow.png',
 
-	    iconSize:     [15, 56], // actual size: 15, 56
+	    iconSize:     [15, 36], // actual size: 15, 56
 	    shadowSize:   [10, 10], // was 50, 64
 	    iconAnchor:   [11, 49], // point of the icon which will correspond to marker's location
 	    shadowAnchor: [4, 62],  // the same for the shadow
@@ -86,7 +86,7 @@ function addGeoJSONToMap(geojson, map) {
 		iconUrl: 'http://kycstatic.elsewiseapps.com/assets/kbb-thin-pin.png',
 		shadowUrl: 'http://kycstatic.elsewiseapps.com/assets/empty-pin-shadow.png',
 	
-	    iconSize:     [15, 56], // actual size: 15, 56
+	    iconSize:     [15, 36], // actual size: 15, 56
 	    shadowSize:   [10, 10], // was 50, 64
 	    iconAnchor:   [11, 49], // point of the icon which will correspond to marker's location
 	    shadowAnchor: [4, 62],  // the same for the shadow
