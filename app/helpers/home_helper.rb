@@ -5,36 +5,32 @@ module HomeHelper
     require 'json'
     
     # read hash from json or yaml instead
+    # also supports a caption key
     slide_data = <<-DATA
     [
       {
         "image": "A2004-002.704",
         "title": "Floods and Parks",
-        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit...",
         "link": "/stories/dkc-mccall-waterfront-park"
       },
       {
         "image": "duniway-slide",
         "title": "Abigail Scott Duniway",
-        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         "link": "/stories/abigail-scott-duniway"
       },
       {
         "image": "murnane-monument",
         "title": "A Missing Memorial",
-        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ...",
         "link": "/stories/francis-murnane-memorial"
       },
       {
         "image": "pdxA2004-002.692-cropped",
         "title": "On the Waterfront",
-        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
         "link": "/stories/crimping"
       },
       {
         "image": "psych-market24",
         "title": "The Psychedelic Market",
-        "caption": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor...",
         "link": "/stories/the-psychedelic-supermarket"
       }
     ] 
@@ -66,14 +62,15 @@ module HomeHelper
       
       active_class = index == 0 ? "active " : ""
       
+      # removed from just below the title:
+      # <p>#{slide['caption']}</p>
       a_slide = <<-slide
       <div class="#{active_class}item">
       	<a href="#{slide['link']}">
       	  <img alt="title" src="#{ENV['KYC_STATIC_PHOTOS_URL']}#{slide['image']}.jpg" />
       	</a>
   		  <div class="carousel-caption">
-            <h3>#{slide['title']}</h3>
-            <p>#{slide['caption']}</p>
+            <h4>#{slide['title']}</h4>
   		  </div>
       </div>
       slide
