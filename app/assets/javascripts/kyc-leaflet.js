@@ -8,7 +8,9 @@
 // Stamen.Watercolor
 // OpenStreetMap.BlackAndWhite
 // OpenStreetMap.Mapnik
-// Stamen.Toner'
+// OpenStreetMap.DE
+// Stamen.Toner
+// Stamen.TonerLite
 
 function addTilesToMap(tileSource, map) {
 	
