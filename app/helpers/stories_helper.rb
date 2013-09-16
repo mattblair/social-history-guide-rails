@@ -100,7 +100,7 @@ module StoriesHelper
     html = ''
     html << %(<div id="story-guest-section">)
     
-    if !guest.image_name.nil?
+    if !guest.image_name.nil? and guest.image_name.length > 0
       html << %(<img alt="Guest thumbnail" class="guest_thumbnail" src="#{ENV['KYC_STATIC_PHOTOS_URL']}#{guest.image_name}.jpg" />)
     end
     	
