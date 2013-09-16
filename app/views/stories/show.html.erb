@@ -21,7 +21,12 @@
 		</script>
 		<p class="story-image-caption"><%= @story.image_caption %> </p>
 		<%= media_credit_markup(@story, true) %>
-		<div id="media-location-button"><p><a href="javascript:addUserToMap(map, true)">Show my location</a></p></div>
+		<div id="media-location-button">
+			<p>
+				<%= image_tag("kbb-location.png", :id => "location-icon" , :alt => "Location Arrow") %>
+				<a href="javascript:addUserToMap(map, true)">Show my location</a>
+			</p>
+		</div>
 		</div> <!-- id="media-map-container" -->
 		
 	<% elsif @story.media_type.name == "photo_interview" %>
@@ -69,7 +74,9 @@
 			</script>
 		
 			<div id="story-location-button">
-				<p><a href="javascript:addUserToMap(map, true)">Show my location</a></p>
+				<p><a href="javascript:addUserToMap(map, true)">
+					<%= image_tag("kbb-location.png", :id => "location-icon" , :alt => "Location Arrow") %>
+					Show my location</a></p>
 			</div>
 			</div> <!-- id="story-map-container" -->
 		<% end %> <!-- of if media is a map conditional-->
@@ -82,5 +89,9 @@
 <% end %>
 
 <div class="back-nav-bottom">
-  <p><i class="icon-chevron-left"></i> <%= link_to "Return to #{@story.theme.title}", @story.theme %></p>
+  	<p>
+		<!-- <i class="icon-chevron-left"></i> -->
+		<%= image_tag("kbb-back.png", :id => "back-icon" , :alt => "Back Arrow") %>
+		<%= link_to "Return to #{@story.theme.title}", @story.theme %>
+	</p>
 </div>
