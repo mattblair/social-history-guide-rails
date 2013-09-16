@@ -3,40 +3,43 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-<div id="story-media-section" class="span6">
-	<% if @story.media_type.name == "map_interview" %>
-		
-		<div id="media-map-container">
-		<div id="media-map"></div>
+	
+<% if @story.media_type.name == "map_interview" %>
+	
+	<div id="story-media-section" class="span6">
+	<div id="media-map-container">
+	<div id="media-map"></div>
 
-		<%= javascript_include_tag "leaflet-providers" %>
-		<%= javascript_include_tag "kyc-leaflet" %>
+	<%= javascript_include_tag "leaflet-providers" %>
+	<%= javascript_include_tag "kyc-leaflet" %>
 
-		<script>
-		var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
-		var map = L.map('media-map').setView(centroid, 16);
-		addTilesToMap('OpenStreetMap.Mapnik', map)
+	<script>
+	var centroid = [<%= "#{@story.latitude}" %>, <%= "#{@story.longitude}" %>];
+	var map = L.map('media-map').setView(centroid, 16);
+	addTilesToMap('OpenStreetMap.Mapnik', map)
 
-		addGeoJSONToMap(<%= @media_geojson %>, map);
-		</script>
-		<p class="story-image-caption"><%= @story.image_caption %> </p>
-		<%= media_credit_markup(@story, true) %>
-		<div id="media-location-button">
-			<p>
-				<%= image_tag("kbb-location.png", :id => "location-icon" , :alt => "Location Arrow") %>
-				<a href="javascript:addUserToMap(map, true)">Show my location</a>
-			</p>
-		</div>
-		</div> <!-- id="media-map-container" -->
-		
-	<% elsif @story.media_type.name == "photo_interview" %>
-		<%= story_image_markup(@story.image_name) %>
-		<p class="story-image-caption"><%= @story.image_caption %> </p>
-		<%= media_credit_markup(@story, false) %>
-	<% else %>
-		<!-- no media available -->
-	<% end %>
-</div> <!-- #story-media-section -->
+	addGeoJSONToMap(<%= @media_geojson %>, map);
+	</script>
+	<p class="story-image-caption"><%= @story.image_caption %> </p>
+	<%= media_credit_markup(@story, true) %>
+	<div id="media-location-button">
+		<p>
+			<%= image_tag("kbb-location.png", :id => "location-icon" , :alt => "Location Arrow") %>
+			<a href="javascript:addUserToMap(map, true)">Show my location</a>
+		</p>
+	</div>
+	</div> <!-- id="media-map-container" -->
+	</div> <!-- #story-media-section -->
+	
+<% elsif @story.media_type.name == "photo_interview" %>
+	<div id="story-media-section" class="span6">
+	<%= story_image_markup(@story.image_name) %>
+	<p class="story-image-caption"><%= @story.image_caption %> </p>
+	<%= media_credit_markup(@story, false) %>
+	</div> <!-- #story-media-section -->
+<% else %>
+	<!-- no media available -->
+<% end %>
 
 <div id="story-body-section" class="span6">
 
