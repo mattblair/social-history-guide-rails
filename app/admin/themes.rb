@@ -54,7 +54,7 @@ ActiveAdmin.register Theme do
   form do |f|                         
     f.inputs "Basic Info" do       
       f.input :title
-      f.input :subtitle, :hint => "(optional)"
+      f.input :subtitle
       f.input :summary, :input_html => { :class => 'autogrow', :rows => 10, :cols => 60}, :hint => "Up to ~100 words"
       f.input :keywords, :hint => "About 100 characters"
       f.input :twitter_template, :label => "Twitter Text", :input_html => { :rows => 3, :cols => 20, :maxlength => 120 }, :hint => "Less than 120 characters, to leave space for urls, RTs, etc."
