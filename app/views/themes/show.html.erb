@@ -22,7 +22,8 @@
 	<%= javascript_include_tag "kyc-leaflet" %>
 
 	<script>
-	var map = L.map('theme-map').setView([45.523683, -122.663764], 13);
+	var map = L.map('theme-map').setView([<%= @theme.latitude %>, <%= @theme.longitude %>], <%= @theme.zoom_level %>);
+	
 	addTilesToMap('Stamen.Terrain', map)
 
 	var storyGeoJSON = <%= @geojson %>;
