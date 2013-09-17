@@ -70,7 +70,7 @@ img#brand-logo {
 // for graphic that includes logo and title
 img#header-link {
 	margin-top: 5px;
-	width: 480px; // phone: 320
+	width: 600px; // phone: 320
 	height: 100px; // phone: 66
 	float: left;
 }
@@ -144,3 +144,31 @@ footer {
 	margin-bottom: 15px;
 	font-size: 1.3em;
 }
+
+// ============================================
+// Media Queries
+// ============================================
+
+@media (max-width: 480px) { 
+	
+	img#header-link {
+		// inherits margin-top: 5px; and float:left;
+		//margin-left: 10px;
+		width: 320px;
+		height: 54px;
+	}
+	
+	#home-carousel	 {
+		max-width: 320px;
+		margin-left: 0px;
+	}
+	
+	.carousel .item {
+	  height: 240px;
+	}
+	.carousel img {
+	  max-width: 320px;
+	  height: 240px;
+	}
+}
+
