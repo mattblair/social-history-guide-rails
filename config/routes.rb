@@ -11,18 +11,19 @@ KycGuideRails::Application.routes.draw do
   
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-
-  resources :stories
-
-  resources :guests
   
-  resources :themes
+  # limit to show for initial launch
+  if Rails.env == "production"
+    resources :themes, only: :show
+    resources :stories, only: :show
+  end
   
   if Rails.env == "development"
     
     get "nearby", to: 'static_page#nearby'
     
-    resources :tidbits
+    # dev has access to all http verbs in controllers:
+    resources :stories, :guests, :themes, :tidbits
     
     # utility views for content management:
     get '/stories/:id/history', to: 'stories#history'
