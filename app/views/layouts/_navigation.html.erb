@@ -16,4 +16,24 @@
 </ul>
 <% end %>
 
-<%= link_to "Donate", donate_path, :class => "btn btn-success btn-donate hidden-phone" %>
+<% if false %> <!-- nav style doesn't play nice with separators or donate button -->
+<ul class="nav hidden-phone" id="top-right-nav">
+  <li><%= link_to "About", about_path %></li>
+  <li><%= link_to "Credits", credits_path %></li>
+  <li><%= link_to "Contact", contact_path %></li>
+  <li><%= link_to "Donate", donate_path %></li>
+  <!-- <li><%= link_to "Donate", donate_path, :class => "btn btn-success" %></li> -->
+</ul>
+<% end %>
+
+<!-- last minute nav change -->
+<% if true %>
+	<div class="hidden-phone" id="top-right-nav">
+	  <%= link_to "About", about_path %> |
+	  <%= link_to "Credits", credits_path %> |
+	  <%= link_to "Contact", contact_path %> |
+	  <%= link_to "Donate", donate_path %> <!-- button class doesn't align properly -->
+	</div>
+<% else %>
+	<%= link_to "Donate", donate_path, :class => "btn btn-success btn-donate hidden-phone" %>
+<% end %>
