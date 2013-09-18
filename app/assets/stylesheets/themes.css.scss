@@ -17,6 +17,8 @@
 
 #theme-map {
 	margin-top: 10px;
+	height: 420px;
+	width: 520px;
 }
 
 .theme-story-listing {
@@ -43,4 +45,23 @@
 	float: left;
 	clear: left;
 	margin-right: 10px;
+}
+
+// ============================================
+// Media Queries
+// ============================================
+
+@media (max-width: 480px) {
+	
+	#theme-image {
+		width: 320px;
+		margin-left: 0px;
+		float: none;
+	}
+	
+	#theme-map {
+		margin-left: 0px;
+		height: 260px;
+		width: 320px;
+	}
 }
