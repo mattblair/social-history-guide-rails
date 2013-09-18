@@ -114,6 +114,9 @@ module StoriesHelper
     	
     html << %(<p>#{guest.title}</p>)
     html << %(<p>#{guest.organization}</p>)
+    if !guest.guest_url.nil? and guest.guest_url.length > 0 
+      html << %(<p>Website: <a href="#{guest.guest_url}">#{guest.guest_url_text}</a></p>)
+    end
     html << %(<p>#{guest.bio}</p>)
     html << %(</div>)
     
