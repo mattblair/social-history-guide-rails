@@ -10,12 +10,12 @@ module HomeHelper
     [
       {
         "image": "A2004-002.704",
-        "title": "Floods and Parks",
+        "title": "The Shoreline of the Willamette",
         "link": "/stories/dkc-mccall-waterfront-park"
       },
       {
         "image": "duniway-slide",
-        "title": "Abigail Scott Duniway",
+        "title": "Leading Oregon's Suffrage Movement",
         "link": "/stories/abigail-scott-duniway"
       },
       {
@@ -25,7 +25,7 @@ module HomeHelper
       },
       {
         "image": "pdxA2004-002.692-cropped",
-        "title": "On the Waterfront",
+        "title": "Missing On the Waterfront",
         "link": "/stories/crimping"
       },
       {
