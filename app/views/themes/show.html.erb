@@ -3,13 +3,15 @@
 <p id="notice"><%= notice %></p>
 
 <div class="row">
-<%= image_tag("#{@theme.image_name}.jpg", :id => "theme-image" , :alt => "Theme image", :class => "span6") %>
+	<div class="span6">
+	<%= image_tag("#{@theme.image_name}.jpg", :id => "theme-image" , :alt => "Theme image") %>
+	</div>
 
-<div class="page-header span6" id="theme-summary">
-	<h1><%= @theme.title %></h1>
-	<h4><em><%= @theme.subtitle %></em></h4>
-	<p><%= @theme.summary %></p>
-</div>
+	<div class="span6" id="theme-summary">
+		<h1><%= @theme.title %></h1>
+		<h4><%= @theme.subtitle %></h4>
+		<p><%= @theme.summary %></p>
+	</div>
 
 </div> <!-- end of first .row -->
 
