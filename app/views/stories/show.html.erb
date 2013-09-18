@@ -31,7 +31,7 @@
 	</div> <!-- id="media-map-container" -->
 	</div> <!-- #story-media-section -->
 	
-<% elsif @story.media_type.name == "photo_interview" %>
+<% elsif @story.media_type.name == "photo_interview" and @story.image_status_id == 4 %>
 	<div id="story-media-section" class="span6">
 	<%= story_image_markup(@story.image_name) %>
 	<p class="story-image-caption"><%= @story.image_caption %> </p>
