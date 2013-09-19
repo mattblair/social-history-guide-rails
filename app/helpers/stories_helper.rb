@@ -168,7 +168,7 @@ module StoriesHelper
     <div id="more-info-section">
     	<p class="more-info-header">More Information:</p>
     	<h4 class="more-info-title">#{story.more_info_title}</h4>
-    	<p class="more-info-description">#{story.more_info_description} <a href="#{story.more_info_url}">Read More</a></p>
+    	<p class="more-info-description">#{story.more_info_description} <a href="#{story.more_info_url}" class="more-info-link">Read More</a></p>
     </div>
     HTML
     
