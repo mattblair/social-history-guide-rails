@@ -41,13 +41,22 @@ h1, h2, h3, h4, h5, h6 {
 	color: $kyc-red;
 }
 
-.subtitle {
-	color: $pshg-medium-gray;
+a {
+  color: $pshg-dark-gray;
+  &:hover {
+    color: $pshg-light-gray;
+	text-decoration: none;
+  }
 }
 
+.subtitle {
+	color: $pshg-light-gray;
+	line-height: 28px;
+}
+
+// deprecated?
 .navbar .brand {
 	margin-left: 0px;
-	//padding-top: 15px;
 	color: $kyc-red;
 	font-family: Courier,'Courier New',monospace;
 	font-size: 32px;
