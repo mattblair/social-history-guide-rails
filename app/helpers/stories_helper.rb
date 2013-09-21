@@ -90,6 +90,19 @@ module StoriesHelper
     return html.html_safe
   end
   
+  # http://support.twitter.com/articles/231474-adding-the-tweet-button-to-your-website
+  # https://twitter.com/about/resources/buttons#tweet
+  def pshg_twitter_script topic 
+    
+    # truncate topic here? or expect caller to do it?
+    
+    html = ''
+    html << %(<a href="https://twitter.com/share" class="twitter-share-button" data-text="I'm learning about #{topic} in Portland" data-hashtags="#{ENV["DEFAULT_HASH_TAG"]}">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>)
+    
+    html.html_safe
+  end
+  
   # probably specific to stories, might be used for themes
   # in initial version, this may be the only presentaiton of guest info
   # since we don't have enough details
