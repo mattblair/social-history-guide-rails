@@ -46,7 +46,12 @@
 	<h2><%= @story.title %></h2>
 
 	<h4 class="subtitle"><%= @story.subtitle %></h4>
-
+	
+	<div class="social-buttons">
+		<!-- Some of the titles are definitely too long, so use the theme title for now -->
+		<%= pshg_twitter_script(@story.theme.title) %>
+	</div>
+	
 	<%= kyc_audio_tag(@story.audio_filename) %>
 
 	<p><%= @story.summary %></p>
