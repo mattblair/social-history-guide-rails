@@ -2,6 +2,8 @@
 
 <p id="notice"><%= notice %></p>
 
+<%= pshg_facebook_js_code %>
+
 <div class="row">
 	<div class="span6">
 	<%= image_tag("#{@theme.image_name}.jpg", :id => "theme-image" , :alt => "Theme image") %>
@@ -12,6 +14,7 @@
 		<h4 class="subtitle"><%= @theme.subtitle %></h4>
 		<div class="social-buttons">
 			<%= pshg_twitter_script(@theme.title) %>
+			<%= pshg_facebook_like_button("#{ENV['WEBSITE_URL']}/themes/#{@theme.slug}") %>
 		</div>
 		<p><%= @theme.summary %></p>
 	</div>
