@@ -2,6 +2,8 @@
 
 <p id="notice"><%= notice %></p>
 
+<%= pshg_facebook_js_code %>
+
 <div class="row">
 	
 <% if @story.media_type.name == "map_interview" %>
@@ -50,6 +52,7 @@
 	<div class="social-buttons">
 		<!-- Some of the titles are definitely too long, so use the theme title for now -->
 		<%= pshg_twitter_script(@story.theme.title) %>
+		<%= pshg_facebook_like_button("#{ENV['WEBSITE_URL']}/stories/#{@story.slug}") %>
 	</div>
 	
 	<%= kyc_audio_tag(@story.audio_filename) %>
