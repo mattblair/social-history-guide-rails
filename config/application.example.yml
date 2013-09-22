@@ -31,4 +31,5 @@ KYC_STATIC_ASSETS_URL: http://kycstatic.elsewiseapps.com/assets/
 KYC_STATIC_AUDIO_URL: http://kycstatic.elsewiseapps.com/audio/
 KYC_STATIC_PHOTOS_URL: http://kycstatic.elsewiseapps.com/assets/
 WEBSITE_NAME: PDX Social History Guide
+WEBSITE_URL: http://pdxsocialhistory.org
 DEFAULT_HASH_TAG: PDXSocialHistory
