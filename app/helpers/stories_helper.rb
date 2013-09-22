@@ -92,7 +92,7 @@ module StoriesHelper
   
   # http://support.twitter.com/articles/231474-adding-the-tweet-button-to-your-website
   # https://twitter.com/about/resources/buttons#tweet
-  def pshg_twitter_script topic 
+  def pshg_twitter_button topic 
     
     # truncate topic here? or expect caller to do it?
     

@@ -13,7 +13,7 @@
 		<h1><%= @theme.title %></h1>
 		<h4 class="subtitle"><%= @theme.subtitle %></h4>
 		<div class="social-buttons">
-			<%= pshg_twitter_script(@theme.title) %>
+			<%= pshg_twitter_button(@theme.title) %>
 			<%= pshg_facebook_like_button("#{ENV['WEBSITE_URL']}/themes/#{@theme.slug}") %>
 		</div>
 		<p><%= @theme.summary %></p>
