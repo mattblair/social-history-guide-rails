@@ -103,6 +103,33 @@ module StoriesHelper
     html.html_safe
   end
   
+  # based on:
+  # https://developers.facebook.com/docs/reference/plugins/like/
+  def pshg_facebook_js_code 
+    
+    html = ''
+    html << %(
+      <div id="fb-root"></div>
+      <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));</script>
+    )
+    
+    html.html_safe
+  end
+  
+  def pshg_facebook_like_button link_to_like 
+    
+    html = ''
+    html << %(<div class="fb-like" data-href="#{link_to_like}" data-width="100" data-layout="button_count" data-show-faces="true" data-send="false"></div>)
+    
+    html.html_safe
+  end
+  
   # probably specific to stories, might be used for themes
   # in initial version, this may be the only presentaiton of guest info
   # since we don't have enough details
