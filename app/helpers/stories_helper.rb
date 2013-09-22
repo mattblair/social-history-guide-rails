@@ -125,7 +125,7 @@ module StoriesHelper
   def pshg_facebook_like_button link_to_like 
     
     html = ''
-    html << %(<div class="fb-like" data-href="#{link_to_like}" data-width="100" data-layout="button_count" data-show-faces="true" data-send="false"></div>)
+    html << %(<div class="fb-like" data-href="#{link_to_like}" data-width="80" data-layout="button_count" data-show-faces="true" data-send="false"></div>)
     
     html.html_safe
   end
