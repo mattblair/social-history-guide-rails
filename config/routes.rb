@@ -6,7 +6,9 @@ KycGuideRails::Application.routes.draw do
   get "credits", to: 'static_page#credits'
   #get "suggestions", to: 'static_page#suggestions'
   get "donate", to: 'static_page#donate'
-
+  
+  
+  
   root :to => "home#index"
   
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -16,11 +18,17 @@ KycGuideRails::Application.routes.draw do
   if Rails.env == "production"
     resources :themes, only: :show
     resources :stories, only: :show
+    
+    # pre-release
+    get "app", to: 'static_page#apppreview'
   end
   
   if Rails.env == "development"
     
     get "nearby", to: 'static_page#nearby'
+    
+    #get "app", to: 'static_page#apppreview'
+    get "app", to: 'static_page#app'
     
     # dev has access to all http verbs in controllers:
     resources :stories, :guests, :themes, :tidbits
