@@ -4,10 +4,11 @@ module StoriesHelper
   def kyc_audio_tag audio_filename
     return '' if (audio_filename.empty?)
     host_path_name = ENV["KYC_STATIC_AUDIO_URL"] + audio_filename
+    ogg_path_name = ENV["KYC_STATIC_OGG_URL"] + audio_filename
     html = <<-HTML
     <audio controls="controls" id="story_audio_player">
     	<source src="#{host_path_name}.mp3" />
-    	<source src="#{host_path_name}.ogg" />
+    	<source src="#{ogg_path_name}.ogg" />
     	  <!-- some other kind of failure-handling, like a flash fallback? -->
     	 Needs different format 
     </audio>
