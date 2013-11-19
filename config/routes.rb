@@ -1,6 +1,7 @@
 KycGuideRails::Application.routes.draw do
   
-  get "about", to: 'static_page#about'  
+  get "about", to: 'static_page#about'
+  get "app", to: 'static_page#app'
   #get "nearby", to: 'static_page#nearby'
   get "contact", to: 'static_page#contact'
   get "credits", to: 'static_page#credits'
@@ -20,15 +21,12 @@ KycGuideRails::Application.routes.draw do
     resources :stories, only: :show
     
     # pre-release
-    get "app", to: 'static_page#apppreview'
+    #get "app", to: 'static_page#apppreview'
   end
   
   if Rails.env == "development"
     
     get "nearby", to: 'static_page#nearby'
-    
-    #get "app", to: 'static_page#apppreview'
-    get "app", to: 'static_page#app'
     
     # dev has access to all http verbs in controllers:
     resources :stories, :guests, :themes, :tidbits
