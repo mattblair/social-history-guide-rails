@@ -12,3 +12,17 @@
 	font-size: 20px;
 	line-height: 24px;
 }
+
+.kyc-notice {
+	margin-top: 30px;
+	padding: 5px;
+	background-color: $pshg-light-gray;
+	color: $pshg-dark-gray;
+	
+	a {
+	  color: $kyc-red;
+	  &:hover {
+	    color: $pshg-dark-gray;
+	  }
+	}
+}
