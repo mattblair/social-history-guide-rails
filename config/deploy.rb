@@ -43,6 +43,7 @@ set :json_archive_path, "#{ENV['HOME']}/Dropbox/appWorkingNotes/knowYourCity/jso
 set :photo_source_path, "#{ENV['HOME']}/Dropbox/appWorkingNotes/knowYourCity/webPhotos/"
 
 set :app_db_path, "#{ENV['HOME']}/Documents/codeProjects/knowYourCity/knowYourCity/Resources/datastores/shg-web.sqlite"
+set :app_db_log_path, "#{ENV['HOME']}/Documents/codeProjects/knowYourCity/knowYourCity/Resources/datastores/shg-database-log.txt"
 
 # to generate photos at all needed sizes before rsync
 set :photo_scaling_script, "#{ENV['HOME']}/Documents/codeProjects/knowYourCity/contentScripts/kyc-scale-photos.rb"
@@ -85,6 +86,10 @@ namespace :archive do
     archived_db = "#{db_archive_path}/production#{archive_timestamp}.sqlite3"
     puts %x{rsync --times --rsh=ssh --human-readable --progress #{domain}:#{prod_db_path} #{archived_db} }
     puts %x{cp #{archived_db} #{app_db_path} }
+    
+    # need to clean up that database
+    # update the database datestamp file
+    puts %x{echo "Database updated from website on: #{archive_timestamp}" > #{app_db_log_path} }
   end
   
 end
