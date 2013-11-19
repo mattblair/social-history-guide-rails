@@ -1,10 +1,13 @@
 <p class="footer-menu-list"> 
 	<%= link_to_unless_current "About", about_path %> | 
-	<%= link_to_unless_current "Credits", credits_path %> | 
+	<%= link_to_unless_current "App", app_path %> | 
+	<% if false %> <!-- Folded into About to make room for App -->
+	<%= link_to_unless_current "Contact", contact_path %> | 
+	<% end %>
 	<% if false %> <!-- Deferred until > 1.0 release -->	
 	<%= link_to_unless_current "Suggestions & Submissions", suggestions_path %> | 
 	<% end %>
-	<%= link_to_unless_current "Contact", contact_path %> | 
+	<%= link_to_unless_current "Credits", credits_path %> | 
 	<%= link_to_unless_current "Donate", donate_path %>
 </p>
 
