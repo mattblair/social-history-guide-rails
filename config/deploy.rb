@@ -6,7 +6,12 @@ set :application, "kyc-portland-beta"
 set :scm, :git
 
 # or https://username@github.com/username/railsapp.git
-set :repository,  "git@github.com:mattblair/kyc-web-dev.git"
+
+# private, pre-release repo
+#set :repository,  "git@github.com:mattblair/kyc-web-dev.git"
+
+# public repo
+set :repository,  "git@github.com:mattblair/social-history-guide-rails.git"
 
 # tips via: https://help.github.com/articles/deploying-with-capistrano
 
