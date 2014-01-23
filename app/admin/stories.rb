@@ -77,7 +77,9 @@ ActiveAdmin.register Story do
   # always returns nil. should return a local-variable on show & form?
   #sidebar :audio, :if => proc{ defined? story } do
       #audio_tag("#{story.audio_filename}.mp3", :controls => true, :type => "audio/mp4")
-      kyc_audio_tag(story.audio_filename)
+      if (!story.nil? and !story.audio_filename.nil?)
+        kyc_audio_tag(story.audio_filename)
+      end
   end
   
 =begin
