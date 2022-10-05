@@ -40,7 +40,8 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
-    addressable (2.3.3)
+    addressable (2.8.1)
+      public_suffix (>= 2.0.2, < 6.0)
     annotate (2.5.0)
       rake
     arbre (1.0.1)
@@ -154,6 +155,7 @@ GEM
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
+    public_suffix (5.0.0)
     quiet_assets (1.0.2)
       railties (>= 3.1, < 5.0)
     rack (1.4.5)
